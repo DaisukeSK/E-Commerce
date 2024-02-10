@@ -1,0 +1,494 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+body #root {
+  margin: 0;
+  margin-top: 100px;
+  padding: 0 15%;
+}
+
+* {
+  font-family: Helvetica, "Times New Roman", Times, Arial, serif;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.redButton {
+  padding: 3px 15px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(45deg, rgb(240, 9, 55), rgb(255, 172, 172));
+  color: #ffffff;
+}
+.redButton:hover {
+  background: linear-gradient(45deg, rgb(182, 15, 48), rgb(241, 154, 154));
+}
+
+.productName:hover {
+  text-decoration: underline;
+  color: navy;
+}
+
+.truckPath {
+  color: #000000;
+  fill: #000000;
+  fill-rule: evenodd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 4.1;
+}
+
+.greyUl {
+  list-style: none;
+}
+.greyUl li {
+  display: flex;
+  margin: 30px auto;
+  background-color: #ececec;
+  border-radius: 7px;
+  padding: 10px 30px;
+  box-sizing: border-box;
+}
+.greyUl li .imgDiv {
+  max-width: 15%;
+}
+.greyUl li .imgDiv img {
+  width: 100%;
+  border-radius: 7px;
+}
+.greyUl li .flexRight {
+  margin-left: 50px;
+}
+.greyUl li .flexRight .productDetail {
+  font-size: 1.1em;
+}
+.greyUl li .flexRight .productDetail span {
+  font-weight: bold;
+  color: rgb(160, 0, 0);
+}
+.greyUl li .redButton {
+  margin-top: 10px;
+}
+.greyUl .order {
+  display: block;
+  background: none;
+}
+.greyUl .order div {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.greyUl .order span {
+  color: rgb(160, 0, 0);
+}
+.greyUl .order button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 5px 20px;
+  font-weight: bold;
+  font-size: 1.4em;
+  border-radius: 20px;
+  background: linear-gradient(45deg, green, lawngreen);
+}
+.greyUl .order button:hover {
+  background: linear-gradient(45deg, rgb(0, 95, 0), rgb(105, 211, 0));
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-sizing: border-box;
+  background-color: rgb(82, 79, 158);
+  z-index: 2;
+  color: #ffffff;
+}
+header .logo a {
+  color: #ffffff;
+}
+header .headerRightFlex {
+  display: flex;
+  align-items: center;
+}
+header .headerRightFlex .cartSVGflex {
+  position: relative;
+  margin: 0 10px;
+}
+header .headerRightFlex .cartSVGflex .cartSVG {
+  transform: scale(80%, 80%);
+}
+header .headerRightFlex .cartSVGflex .cartSVG path, header .headerRightFlex .cartSVGflex .cartSVG circle {
+  fill-opacity: 0;
+  stroke: #ffffff;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none;
+}
+header .headerRightFlex .cartSVGflex .cartSVG #path904 {
+  stroke-width: 0.8;
+}
+header .headerRightFlex .cartSVGflex .shoppingCartQ {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-37%);
+}
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 50px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+header ul li {
+  background-color: rgb(82, 79, 158);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-right: 25px;
+}
+header ul li a {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+header ul li a svg {
+  width: 25px;
+  margin: 0 10px;
+  overflow: visible;
+}
+header ul li a svg path {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+header ul li a .heartPath {
+  fill: none;
+  stroke-width: 2;
+  stroke-miterlimit: 4;
+  stroke-dasharray: none;
+}
+header ul li a .cartSVG path, header ul li a .cartSVG circle {
+  fill-opacity: 0;
+  stroke: #ffffff;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none;
+}
+header ul li a .cartSVG #path904 {
+  stroke-width: 0.8;
+}
+
+.searchBar {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 35px;
+  display: flex;
+  margin: 0 auto;
+}
+.searchBar select, .searchBar input[type=text] {
+  border-radius: 5px;
+  border: 1px rgb(255, 134, 47) solid;
+  font-size: 1em;
+}
+.searchBar select:focus, .searchBar input[type=text]:focus {
+  outline: none;
+}
+.searchBar input[type=text] {
+  border-radius: 5px 0 0 5px;
+  margin-left: 15px;
+  width: 200px;
+  border-right: none;
+}
+.searchBar button {
+  width: 50px;
+  border-radius: 0 5px 5px 0;
+  background-color: rgb(255, 134, 47);
+  border: 1px rgb(255, 134, 47) solid;
+  border-left: none;
+  background-image: url("../public/search.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.searchBar button:hover {
+  background-color: rgb(224, 94, 0);
+}
+
+.categorizedProduct {
+  margin: 70px 0;
+}
+.categorizedProduct h2 {
+  width: 500px;
+  background: linear-gradient(90deg, rgb(82, 79, 158), transparent);
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 5px 30px;
+  color: #ffffff;
+}
+.categorizedProduct .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.categorizedProduct .flex .imgA {
+  position: relative;
+  width: 17%;
+  max-height: 200px;
+}
+.categorizedProduct .flex .imgA h3 {
+  opacity: 0;
+  margin: 0;
+  padding: 0 5px;
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+  transform: translateY(-50%);
+}
+.categorizedProduct .flex .imgA img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 7px;
+}
+.categorizedProduct .flex .imgA::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.categorizedProduct .flex .imgA:hover h3, .categorizedProduct .flex .imgA:hover::after {
+  opacity: 1;
+}
+.categorizedProduct .flex .seeMore {
+  display: flex;
+}
+@keyframes spin {
+  0% {
+    transform: scale(100%, 100%);
+  }
+  50% {
+    transform: scale(100%, 0%);
+  }
+  100% {
+    transform: scale(100%, 100%);
+  }
+}
+.categorizedProduct .flex .seeMore svg {
+  margin-right: 5px;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+.categorizedProduct .flex .seeMore:hover {
+  color: rgb(55, 206, 55);
+}
+.categorizedProduct .flex .seeMore:hover svg {
+  fill: rgb(55, 206, 55);
+  animation-name: spin;
+}
+
+.productDetailPage .productDetailFlex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.productDetailPage .productDetailFlex h2 {
+  margin-top: 0;
+}
+.productDetailPage .productDetailFlex .productImgDiv {
+  min-width: 50%;
+  max-width: 50%;
+  margin-right: 50px;
+}
+.productDetailPage .productDetailFlex .productImgDiv a {
+  display: block;
+  margin-bottom: 30px;
+}
+.productDetailPage .productDetailFlex .productImgDiv a img {
+  width: 100%;
+  border-radius: 10px;
+}
+.productDetailPage .productDetailFlex .productImgDiv .imgDiv {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.productDetailPage .productDetailFlex .productImgDiv .imgDiv img {
+  width: 16%;
+}
+.productDetailPage .productDetailFlex .productDetail {
+  margin-top: -100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.productDetailPage .productDetailFlex .productDetail .favDiv {
+  margin-left: 90%;
+}
+.productDetailPage .productDetailFlex .productDetail .favDiv svg {
+  transform: scale(70%);
+}
+.productDetailPage .productDetailFlex .productDetail .addToCartDiv {
+  display: flex;
+  align-items: center;
+  background-color: rgb(218, 241, 234);
+  padding: 5px 30px;
+}
+.productDetailPage .productDetailFlex .productDetail .addToCartDiv .priceDiv {
+  font-size: 1.2em;
+  color: rgb(160, 0, 0);
+}
+.productDetailPage .productDetailFlex .productDetail .addToCartDiv .x {
+  margin-left: 10px;
+}
+.productDetailPage .productDetailFlex .productDetail .addToCartDiv input[type=number] {
+  width: 30px;
+  height: 20px;
+  margin: 0 10px;
+}
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly {
+  color: rgb(0, 94, 156);
+}
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck {
+  display: flex;
+  align-items: center;
+  margin: 7px 0;
+}
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck svg {
+  width: 30px;
+  height: auto;
+}
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck .truckPath {
+  fill: rgb(0, 94, 156);
+}
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck div {
+  font-weight: bold;
+  margin: 5px 0 0 10px;
+}
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .dates {
+  text-align: center;
+}
+.productDetailPage .productDetailFlex .productDetail .hr {
+  border-top: grey 1px solid;
+  width: 100%;
+  margin-top: 20px;
+}
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.productList .productDiv {
+  width: 20%;
+  margin: 20px;
+  transition: all 0.5s ease-in-out;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+}
+.productList .productDiv img {
+  max-height: 150px;
+  max-width: 90%;
+  border-radius: 7px;
+}
+.productList .productDiv .titleDiv {
+  margin: 5px 0;
+}
+.productList .productDiv .priceDiv {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: rgb(160, 0, 0);
+}
+.productList .productDiv:hover {
+  background-color: rgb(130, 238, 202);
+}
+
+.settingMain {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.settingMain form {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.settingMain form .alertDiv {
+  color: crimson;
+}
+.settingMain input[type=text], .settingMain input[type=password] {
+  margin-bottom: 10px;
+}
+.settingMain input[type=submit] {
+  width: -moz-fit-content;
+  width: fit-content;
+  background: linear-gradient(45deg, rgb(74, 74, 255), rgb(55, 206, 198));
+  margin: 0 auto;
+}
+.settingMain input[type=submit]:hover {
+  background: linear-gradient(45deg, rgb(47, 47, 182), rgb(38, 151, 146));
+}
+
+.historyMain ul li, .historyMain ul .total {
+  margin: 10px;
+  margin-left: 30px;
+}
+.historyMain ul li {
+  display: flex;
+}
+.historyMain ul li .imgA {
+  max-width: 10%;
+  min-width: 10%;
+}
+.historyMain ul li .imgA img {
+  width: 100%;
+  border-radius: 5px;
+}
+.historyMain ul li .flexRight {
+  margin-left: 30px;
+}
+.historyMain ul li .flexRight h3 {
+  margin-top: 0;
+}
+.historyMain ul li .flexRight span {
+  color: rgb(160, 0, 0);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.historyMain ul .total {
+  margin-bottom: 50px;
+}
+.historyMain ul .total span {
+  color: rgb(160, 0, 0);
+}/*# sourceMappingURL=index.css.map */

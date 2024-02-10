@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   width="55"
+   height="50"
+   viewBox="0 0 25.78125 23.4375"
+   version="1.1"
+   id="svg822"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="heart.svg"
+   fill="#000000"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs166" />
+  <g
+     id="SVGRepo_bgCarrier"
+     stroke-width="0" />
+  <g
+     id="SVGRepo_tracerCarrier"
+     stroke-linecap="round"
+     stroke-linejoin="round" />
+  <g
+     id="SVGRepo_iconCarrier">
+    <defs
+       id="defs816">
+      <inkscape:path-effect
+         only_selected="false"
+         apply_with_weight="true"
+         apply_no_weight="true"
+         helper_size="0"
+         steps="2"
+         weight="33.333333"
+         is_visible="true"
+         id="path-effect1025"
+         effect="bspline"
+         lpeversion="0" />
+      <inkscape:path-effect
+         only_selected="false"
+         apply_with_weight="true"
+         apply_no_weight="true"
+         helper_size="0"
+         steps="2"
+         weight="33.333333"
+         is_visible="true"
+         id="path-effect1021"
+         effect="bspline"
+         lpeversion="0" />
+    </defs>
+    <sodipodi:namedview
+       id="base"
+       pagecolor="#ffffff"
+       bordercolor="#666666"
+       borderopacity="1.0"
+       inkscape:pageopacity="0.0"
+       inkscape:pageshadow="2"
+       inkscape:zoom="9.192241"
+       inkscape:cx="29.590173"
+       inkscape:cy="27.849574"
+       inkscape:document-units="px"
+       inkscape:current-layer="layer1"
+       showgrid="true"
+       units="px"
+       inkscape:window-width="1366"
+       inkscape:window-height="705"
+       inkscape:window-x="-8"
+       inkscape:window-y="-8"
+       inkscape:window-maximized="1"
+       showguides="false"
+       inkscape:guide-bbox="true"
+       inkscape:showpageshadow="2"
+       inkscape:pagecheckerboard="0"
+       inkscape:deskcolor="#d1d1d1">
+      <sodipodi:guide
+         position="21.126168,16.231893"
+         orientation="1,0"
+         id="guide1575"
+         inkscape:locked="false" />
+      <sodipodi:guide
+         position="22.682243,16.722547"
+         orientation="1,0"
+         id="guide1635"
+         inkscape:locked="false" />
+      <sodipodi:guide
+         position="22.682243,1.0830921"
+         orientation="0,1"
+         id="guide1639"
+         inkscape:locked="false" />
+      <sodipodi:guide
+         position="18.859863,12.297363"
+         orientation="1,0"
+         id="guide1242"
+         inkscape:locked="false" />
+      <inkscape:grid
+         type="xygrid"
+         id="grid1103"
+         originx="0"
+         originy="0" />
+    </sodipodi:namedview>
+    <metadata
+       id="metadata819">
+      <rdf:rdf>
+        <cc:work
+           rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type
+             rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+          <dc:title />
+        </cc:work>
+      </rdf:rdf>
+    </metadata>
+    <g
+       inkscape:label="Layer 1"
+       inkscape:groupmode="layer"
+       id="layer1"
+       transform="translate(0,-289.0625)">
+      <path
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 3.8865985,292.31713 a 6.4438956,6.4294585 0 0 0 -1.7765542,2.98908 6.4438956,6.4294585 0 0 0 1.6675358,6.21011 l 9.1130439,9.09263 9.113045,-9.09263 a 6.4438956,6.4294585 0 0 0 1.667537,-6.21011 6.4438956,6.4294585 0 0 0 -4.556524,-4.54632 6.4438956,6.4294585 0 0 0 -6.224058,1.6638 6.4438956,6.4294585 0 0 0 -6.2240574,-1.6638 6.4438956,6.4294585 0 0 0 -2.7799681,1.55724 z"
+         id="rect870"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
