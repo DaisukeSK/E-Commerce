@@ -1,4 +1,5 @@
 import pool from '../db/db.js';
+import { connect } from '../server.js';
 
 export const order = async (req, res) => {
 
@@ -31,7 +32,7 @@ export const removeFromCart = async (req, res) => {
 export const getCart = async (req, res) => {
 
     try {
-        const cart = await pool.query(
+        const cart = await connect.query(
             'select * from shopping_cart inner join products on shopping_cart.product_id=products.product_id where user_id=$1',
             [req.body.user_id]
             );

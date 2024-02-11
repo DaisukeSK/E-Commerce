@@ -50,7 +50,7 @@ export type AppContextType={
 export const AppContext=createContext<AppContextType>({} as AppContextType)
 
 export const getShoppingCart=(id:number, setter:(q:number)=>void):void=>{
-  axios.post('http://localhost:8080/cart/getCart',{user_id:id})
+  axios.post('https://e-commerce-q1y2.onrender.com/cart/getCart',{user_id:id})
   .then((res:any)=>{
     let num:number=0
     res.data.map((q:cartType)=>{
@@ -68,7 +68,7 @@ export function App() {
   
   useEffect(()=>{
 
-    axios.get('http://localhost:8080/product/getAllProducts')
+    axios.get('https://e-commerce-q1y2.onrender.com/product/getAllProducts')
     // axios.get('https://api.escuelajs.co/api/v1/products')
     .then((res:any)=>{
 
@@ -76,7 +76,7 @@ export function App() {
       // setCategories([...res.data[1]])
     })
 
-    axios.get('http://localhost:8080/product/getAllCategories')
+    axios.get('https://e-commerce-q1y2.onrender.com/product/getAllCategories')
     .then((res:any)=>{
       setCategories([...res.data])
     })

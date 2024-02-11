@@ -15,7 +15,7 @@ function Setting(){
 
     const changeUserName=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        axios.post('http://localhost:8080/user/changeUserName', {userId:localStorage.getItem('id'), newName:userName.current!.value})
+        axios.post('https://e-commerce-q1y2.onrender.com/user/changeUserName', {userId:localStorage.getItem('id'), newName:userName.current!.value})
         .then((res:any)=>{
 
             if(res.data=='exist'){
@@ -30,7 +30,7 @@ function Setting(){
 
     const changePassword=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        axios.post('http://localhost:8080/user/changePassword',{userId:localStorage.getItem('id'), currentPassword:password1.current!.value, newPassword:password2.current!.value})
+        axios.post('https://e-commerce-q1y2.onrender.com/user/changePassword',{userId:localStorage.getItem('id'), currentPassword:password1.current!.value, newPassword:password2.current!.value})
         .then((res:any)=>{
             
             if(res.data=='no match'){
@@ -44,7 +44,7 @@ function Setting(){
 
     const deleteAccount=()=>{
         if(confirm('Are you sure that you want to delete account?')){
-            axios.post('http://localhost:8080/user/deleteAccount',{userId:localStorage.getItem('id')})
+            axios.post('https://e-commerce-q1y2.onrender.com/user/deleteAccount',{userId:localStorage.getItem('id')})
             .then(()=>{
                 localStorage.clear();
                 alert('See you around.')

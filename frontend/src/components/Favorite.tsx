@@ -1,9 +1,9 @@
-import { createContext,useContext,useState, useEffect } from "react"
+import { useContext,useState, useEffect } from "react"
 import { AppContext, productsType } from "../App"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-const FavContext=createContext(null)
+// const FavContext=createContext(null)
 
 function Favorite(){
 
@@ -12,7 +12,7 @@ function Favorite(){
 
     const removeFromFav=(id:number):void=>{
 
-        axios.post('http://localhost:8080/favorite/removeFromFavorite',{user_id:localStorage.getItem('id'),product_id:id})
+        axios.post('https://e-commerce-q1y2.onrender.com/favorite/removeFromFavorite',{user_id:localStorage.getItem('id'),product_id:id})
             .then((res)=>{
                 res.status==200 && (
                     setFavList((prev:Array<number>) => {
@@ -23,7 +23,7 @@ function Favorite(){
     }
 
     useEffect(()=>{
-        axios.post('http://localhost:8080/favorite/getFavorite',{userId:localStorage.getItem('id')})
+        axios.post('https://e-commerce-q1y2.onrender.com/favorite/getFavorite',{userId:localStorage.getItem('id')})
         .then((res:any)=>{
             let favListArray:Array<number>=[]
             res.data.map((data:{favorite_id:number,user_id:number,product_id:number})=>{

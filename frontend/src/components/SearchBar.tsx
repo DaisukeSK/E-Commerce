@@ -14,7 +14,7 @@ function SearchBar(){
 
   const searchProducts=()=>{
     navigate('/search')
-    axios.post('http://localhost:8080/product/searchProducts',{categoryId:categoryRef.current?.value,keyword:keywordRef.current?.value})
+    axios.post('https://e-commerce-q1y2.onrender.com/product/searchProducts',{categoryId:categoryRef.current?.value,keyword:keywordRef.current?.value})
     .then((res:any)=>{
       setProducts([...res.data])
     })
@@ -23,12 +23,12 @@ function SearchBar(){
   const categoryId=+location.href.split('/search/')[1]
   window.scrollTo(0, 0);
 
-  const testQuery=()=>{
-    axios.post('http://localhost:8080/testQuery',{categoryId:77})
-    .then((res:any)=>{
-      console.log('testQuery res',res.data)
-    })
-  }
+  // const testQuery=()=>{
+  //   axios.post('https://e-commerce-q1y2.onrender.com/testQuery',{categoryId:77})
+  //   .then((res:any)=>{
+  //     console.log('testQuery res',res.data)
+  //   })
+  // }
 
   return (
     <div className="searchBar">

@@ -14,7 +14,7 @@ function Temp(){
           .then(axios.spread((obj1,obj2,obj3,obj4)=>{
             
               let array1:any=[]
-              obj1.data.map((product:any, key:any)=>{
+              obj1.data.map((product:any)=>{
       
                   let categoryId=0
                   response.data.map((category:any)=>{
@@ -30,7 +30,7 @@ function Temp(){
               })
         
               let array2:any=[]
-              obj2.data.products.map((product:any, key:any)=>{
+              obj2.data.products.map((product:any)=>{
 
                 
       
@@ -48,7 +48,7 @@ function Temp(){
 
 
               let array3:any=[]
-              obj3.data.map((product:any, key:any)=>{
+              obj3.data.map((product:any)=>{
 
                 if(product.id<=51){
 
@@ -76,7 +76,7 @@ function Temp(){
                   response.data.map((category:any)=>{
                       category.category_name=='Coffee' && (categoryIdCoffee=category.category_id)
                   })
-              obj4.data.map((product:any, key:any)=>{
+              obj4.data.map((product:any)=>{
 
       
                 array4.push({...product,
@@ -93,8 +93,8 @@ function Temp(){
 
 
 
-              // axios.post('http://localhost:8080/product/addProductsToDB',[...array1,...array2,...array3,...array4]
-              axios.post('http://localhost:8080/product/addProductsToDB',{data1:array1,data2:array2,data3:array3,data4:array4})
+              // axios.post('https://e-commerce-q1y2.onrender.com/product/addProductsToDB',[...array1,...array2,...array3,...array4]
+              axios.post('https://e-commerce-q1y2.onrender.com/product/addProductsToDB',{data1:array1,data2:array2,data3:array3,data4:array4})
                   .then((res:any)=>{
                   console.log("product added",res.data)
                   })
@@ -120,7 +120,7 @@ function Temp(){
 
         console.log("obj3",obj3New)
 
-        axios.post('http://localhost:8080/product/addCategoriesToDB',[...obj1.data,...obj2.data,...obj3New,'Coffee'])
+        axios.post('https://e-commerce-q1y2.onrender.com/product/addCategoriesToDB',[...obj1.data,...obj2.data,...obj3New,'Coffee'])
         
         .then((res:any)=>{
         console.log("cate added",res.data)
