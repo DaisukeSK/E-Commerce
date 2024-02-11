@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import HeaderMenu from './HeaderMenu'
+import LoginSVG from './svg/LoginSVG'
 
 function Header(){
 
@@ -8,7 +9,11 @@ function Header(){
             
             <div className="logo"><Link to={'/'}>Homepage</Link></div>
 
-            { localStorage.getItem('id')? <HeaderMenu/> : <Link to={'/signIn'}>Sign In</Link> }
+            {
+            localStorage.getItem('id')?
+            <HeaderMenu/>:
+            <Link className='headerAnchor' to={'/signIn'}><LoginSVG/><span>Sign In</span></Link>
+            }
             
         </header>
     )

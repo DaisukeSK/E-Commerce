@@ -52,11 +52,11 @@ function HeaderMenu(){
             {showHeaderMenu &&
             
                 <ul onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)}>
-                    <li><Link to={'/cart'}><CartSVG/><span>Shopping Cart</span></Link></li>
-                    <li><Link to={'/history'}><HistorySVG/><span>Shopping History</span></Link></li>
-                    <li><Link to={'/favorite'}><FavoriteSVG fillColor={'none'}/><span>Favorite</span></Link></li>
-                    <li><Link to={'/setting'}><SettingSVG/><span>Setting</span></Link></li>
-                    <li onClick={signOut}><a><LogoutSVG/><span>Sign Out</span></a></li>
+                    <li><Link className='headerAnchor' to={'/cart'}><CartSVG/><span>Shopping Cart</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/history'}><HistorySVG/><span>Shopping History</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/favorite'}><FavoriteSVG fillColor={'none'}/><span>Favorite</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/setting'}><SettingSVG/><span>Setting</span></Link></li>
+                    <li onClick={signOut}><a className='headerAnchor'><LogoutSVG/><span>Sign Out</span></a></li>
                 </ul>
             }
         </>

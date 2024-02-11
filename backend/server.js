@@ -17,9 +17,9 @@ export const connect = await pool.connect()
   // .then(() => console.log('Connected to DB'))
   // .catch((err) => console.log('Error connecting to database', err));
 
-  console.log('取得前 totalCount: ', pool.totalCount);
-  console.log('取得前 idleCount: ', pool.idleCount);
-  console.log('取得前 waitingCount: ', pool.waitingCount);
+  // console.log('取得前 totalCount: ', pool.totalCount);
+  // console.log('取得前 idleCount: ', pool.idleCount);
+  // console.log('取得前 waitingCount: ', pool.waitingCount);
 
 // pool2.connect()
 //   .then(() => console.log('Connected to DB2'))

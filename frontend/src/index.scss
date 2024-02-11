@@ -24,6 +24,44 @@ a {
     // }
 }
 
+.headerAnchor {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    svg {
+        width: 25px;
+        margin: 0 10px;
+        overflow: visible;
+        path {
+            fill: #ffffff;
+            stroke: #ffffff
+        }
+    }
+    .heartPath {
+        // opacity:1;
+        fill:none;
+        // fill-opacity:1;
+        stroke-width:2;
+        stroke-miterlimit:4;
+        stroke-dasharray:none;
+        // stroke-opacity:1;
+    }
+    .cartSVG {
+        // transform: scale(80%,80%);
+        path,circle {
+            fill-opacity:0;
+            stroke:#ffffff;
+            stroke-width:0.5;
+            stroke-linecap:round;
+            stroke-linejoin:round;
+            stroke-dasharray:none;
+        }
+        #path904 {
+            stroke-width:0.8;
+        }
+    }
+}
+
 .redButton {
     padding: 3px 15px;
     border: none;
@@ -190,43 +228,43 @@ header {
             display: flex;
             align-items: center;
             padding-right: 25px;
-            a {
-                color: #ffffff;
-                display: flex;
-                align-items: center;
-                svg {
-                    width: 25px;
-                    margin: 0 10px;
-                    overflow: visible;
-                    path {
-                        fill: #ffffff;
-                        stroke: #ffffff
-                    }
-                }
-                .heartPath {
-                    // opacity:1;
-                    fill:none;
-                    // fill-opacity:1;
-                    stroke-width:2;
-                    stroke-miterlimit:4;
-                    stroke-dasharray:none;
-                    // stroke-opacity:1;
-                }
-                .cartSVG {
-                    // transform: scale(80%,80%);
-                    path,circle {
-                        fill-opacity:0;
-                        stroke:#ffffff;
-                        stroke-width:0.5;
-                        stroke-linecap:round;
-                        stroke-linejoin:round;
-                        stroke-dasharray:none;
-                    }
-                    #path904 {
-                        stroke-width:0.8;
-                    }
-                }
-            }
+            // a {
+            //     color: #ffffff;
+            //     display: flex;
+            //     align-items: center;
+            //     svg {
+            //         width: 25px;
+            //         margin: 0 10px;
+            //         overflow: visible;
+            //         path {
+            //             fill: #ffffff;
+            //             stroke: #ffffff
+            //         }
+            //     }
+            //     .heartPath {
+            //         // opacity:1;
+            //         fill:none;
+            //         // fill-opacity:1;
+            //         stroke-width:2;
+            //         stroke-miterlimit:4;
+            //         stroke-dasharray:none;
+            //         // stroke-opacity:1;
+            //     }
+            //     .cartSVG {
+            //         // transform: scale(80%,80%);
+            //         path,circle {
+            //             fill-opacity:0;
+            //             stroke:#ffffff;
+            //             stroke-width:0.5;
+            //             stroke-linecap:round;
+            //             stroke-linejoin:round;
+            //             stroke-dasharray:none;
+            //         }
+            //         #path904 {
+            //             stroke-width:0.8;
+            //         }
+            //     }
+            // }
         }
     }
 }

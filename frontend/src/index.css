@@ -17,6 +17,38 @@ a {
   text-decoration: none;
 }
 
+.headerAnchor {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.headerAnchor svg {
+  width: 25px;
+  margin: 0 10px;
+  overflow: visible;
+}
+.headerAnchor svg path {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+.headerAnchor .heartPath {
+  fill: none;
+  stroke-width: 2;
+  stroke-miterlimit: 4;
+  stroke-dasharray: none;
+}
+.headerAnchor .cartSVG path, .headerAnchor .cartSVG circle {
+  fill-opacity: 0;
+  stroke: #ffffff;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none;
+}
+.headerAnchor .cartSVG #path904 {
+  stroke-width: 0.8;
+}
+
 .redButton {
   padding: 3px 15px;
   border: none;
@@ -160,37 +192,6 @@ header ul li {
   display: flex;
   align-items: center;
   padding-right: 25px;
-}
-header ul li a {
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-}
-header ul li a svg {
-  width: 25px;
-  margin: 0 10px;
-  overflow: visible;
-}
-header ul li a svg path {
-  fill: #ffffff;
-  stroke: #ffffff;
-}
-header ul li a .heartPath {
-  fill: none;
-  stroke-width: 2;
-  stroke-miterlimit: 4;
-  stroke-dasharray: none;
-}
-header ul li a .cartSVG path, header ul li a .cartSVG circle {
-  fill-opacity: 0;
-  stroke: #ffffff;
-  stroke-width: 0.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: none;
-}
-header ul li a .cartSVG #path904 {
-  stroke-width: 0.8;
 }
 
 .searchBar {
