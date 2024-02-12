@@ -6,7 +6,7 @@ import historyRouter from './routes/historyRoutes.js';
 import favoriteRouter from './routes/favoriteRoutes.js';
 import cartRouter from './routes/cartRoutes.js';
 import pool from './db/db.js';
-// import pool2 from './db/db2.js';
+import pool2 from './db/db2.js';
 
 import bodyParser from 'body-parser';
 
@@ -21,9 +21,9 @@ export const connect = await pool.connect()
   // console.log('取得前 idleCount: ', pool.idleCount);
   // console.log('取得前 waitingCount: ', pool.waitingCount);
 
-// pool2.connect()
-//   .then(() => console.log('Connected to DB2'))
-//   .catch((err) => console.log('Error connecting to database', err));
+  // pool2.connect()
+  // .then(() => console.log('Connected to DB2'))
+  // .catch((err) => console.log('Error connecting to database', err));
 
 app.use('/user', userRouter);
 app.use('/product', productRouter);

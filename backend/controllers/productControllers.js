@@ -1,4 +1,5 @@
 import pool from '../db/db.js';
+// import pool2 from '../db/db2.js';
 import { connect } from '../server.js';
 
 export const searchProducts = async (req, res) => {
@@ -7,7 +8,7 @@ export const searchProducts = async (req, res) => {
     const categoryId=req.body.categoryId=='all'?'':`where products.category_id=${req.body.categoryId}`
 
     try {
-        const users = await pool.query(`select * from products inner join categories on products.category_id=categories.category_id ${categoryId}`);
+        const users = await connect.query(`select * from products inner join categories on products.category_id=categories.category_id ${categoryId}`);
         
         let returnArray=users.rows.filter(product=>
             product.category_name.toUpperCase().includes(keyeword) ||
@@ -41,7 +42,7 @@ export const getAllProducts = async (req, res) => {
 
     try {
         const users = await connect.query('select * from products inner join categories on products.category_id=categories.category_id');
-        // const users2 = await pool.query('select * from categories');
+        // const users2 = await connect.query('select * from categories');
         res.status(200).json(users.rows)
 
     } catch (err) {
@@ -132,7 +133,7 @@ export const addProductsToDB = async (req, res) => {
     })
 
     try {
-        const users = await pool.query(`insert into products (title,description,price,images,category_id) values ${str1},${str2},${str3},${str4}`);
+        const users = await connect.query(`insert into products (title,description,price,images,category_id) values ${str1},${str2},${str3},${str4}`);
         res.status(200).json(users.rows)
 
     } catch (err) {
@@ -148,7 +149,7 @@ export const addCategoriesToDB = async (req, res) => {
     })
 
     try {
-        const users = await pool.query(`insert into categories (category_name) values ${str} returning *`);
+        const users = await connect.query(`insert into categories (category_name) values ${str} returning *`);
         res.status(200).json(users.rows)
 
     } catch (err) {

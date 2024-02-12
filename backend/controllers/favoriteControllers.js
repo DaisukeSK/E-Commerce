@@ -1,9 +1,10 @@
 import pool from '../db/db.js';
+import { connect } from '../server.js';
 
 export const getFavorite = async (req, res) => {
 
     try {
-        const fav = await pool.query(
+        const fav = await connect.query(
             'select * from favorite where user_id=$1',
             [req.body.userId]
             );
@@ -17,7 +18,7 @@ export const getFavorite = async (req, res) => {
 export const addToFavorite = async (req, res) => {
     
     try {
-        const fav = await pool.query(
+        const fav = await connect.query(
             'insert into favorite (user_id, product_id) values ($1,$2) returning *',
             [req.body.user_id,req.body.product_id]
             );
@@ -31,7 +32,7 @@ export const addToFavorite = async (req, res) => {
 export const removeFromFavorite = async (req, res) => {
     
     try {
-        const fav = await pool.query(
+        const fav = await connect.query(
             'delete from favorite where user_id=$1 and product_id=$2',
             [req.body.user_id,req.body.product_id]
             );
@@ -45,7 +46,7 @@ export const removeFromFavorite = async (req, res) => {
 export const checkFavorite = async (req, res) => {
     
     try {
-        const fav = await pool.query(
+        const fav = await connect.query(
             'select * from favorite where user_id=$1 and product_id=$2',
             [req.body.user_id,req.body.product_id]
             );

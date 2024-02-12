@@ -7,7 +7,7 @@ const { Pool } = pkg;
 // const database2 = 'xndmjiao';
 // const port_db2 = 5432;
 
-const host2 = 'dpg-cn48htmn7f5s73921n8g-a';
+const host2 = 'dpg-cn48htmn7f5s73921n8g-a.oregon-postgres.render.com';
 const user2 = 'ecommerce_bbpe_user';
 const password2 = '2zJD6N4T50Q6z35sdPLmrecfminNiVlp';
 const database2 = 'ecommerce_bbpe';
@@ -18,11 +18,18 @@ const port_db2 = 5432;
 //   host: host2,
 //   password: password2,
 //   database: database2,
-//   port: port_db2,
+//   port: port_db2
 // });
 
+
+
+// const add='?sslmode=no-verify'
+const add='?ssl=true'
+
+const connectionString=`postgres://ecommerce_bbpe_user:2zJD6N4T50Q6z35sdPLmrecfminNiVlp@dpg-cn48htmn7f5s73921n8g-a.oregon-postgres.render.com/ecommerce_bbpe${add}`
+
 const pool2 = new Pool({
-  connectionString: 'postgres://ecommerce_bbpe_user:2zJD6N4T50Q6z35sdPLmrecfminNiVlp@dpg-cn48htmn7f5s73921n8g-a.oregon-postgres.render.com/ecommerce_bbpe',
+  connectionString: connectionString,
   max: 3
 });
 

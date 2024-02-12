@@ -8,7 +8,7 @@ function Category(props:{category:categoriesType}) {
   const [categorizedProducts, setcategorizedProducts]=useState<Array<productsType>>([])
 
   useEffect(()=>{
-    axios.post('https://e-commerce-q1y2.onrender.com/product/searchProducts',{categoryId:props.category.category_id,keyword:''})
+    axios.post('http://localhost:8080/product/searchProducts',{categoryId:props.category.category_id,keyword:''})
     .then((res:any)=>{
       setcategorizedProducts([...res.data])
     })
