@@ -20,7 +20,7 @@ function ShoppingHistory(){
     const [history, setHistory]=useState<Array<historyType>>([])
 
     useEffect(()=>{
-        axios.post('http://localhost:8080/history/get',{user_id:localStorage.getItem('id')})
+        axios.post('https://e-commerce-q1y2.onrender.com/history/get',{user_id:localStorage.getItem('id')})
         .then((res:any)=>{
             setHistory([...res.data])
         })

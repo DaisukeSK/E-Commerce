@@ -11,7 +11,7 @@ function ProductList() {
   useEffect(()=>{
 
     location.href.split('/search/')[1] &&
-    axios.post('http://localhost:8080/product/searchProducts',{categoryId:location.href.split('/search/')[1],keyword:''})
+    axios.post('https://e-commerce-q1y2.onrender.com/product/searchProducts',{categoryId:location.href.split('/search/')[1],keyword:''})
       .then((res:any)=>{
         setProducts([...res.data])
       })

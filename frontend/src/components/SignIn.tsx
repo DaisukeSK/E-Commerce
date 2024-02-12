@@ -52,7 +52,7 @@ function SignIn(){
     const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         if(signIn.name!){
-            axios.post('http://localhost:8080/user/signin',{name:signIn.name,password:signIn.password})
+            axios.post('https://e-commerce-q1y2.onrender.com/user/signin',{name:signIn.name,password:signIn.password})
             .then((res:any)=>{
                 res.data=='no match' && (setLoginFailed(true))
                 redirectToHomepage(res)
@@ -64,7 +64,7 @@ function SignIn(){
                     break;
 
                 default:
-                    axios.post('http://localhost:8080/user/createAccount',{name:newAccount.name,password:newAccount.password1})
+                    axios.post('https://e-commerce-q1y2.onrender.com/user/createAccount',{name:newAccount.name,password:newAccount.password1})
                     .then((res:any)=>{
                         if(res.data=='exist'){
                             setSignUpFailed('That user name is already taken.');
