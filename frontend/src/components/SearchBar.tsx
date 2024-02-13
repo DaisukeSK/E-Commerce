@@ -5,7 +5,7 @@ import axios from 'axios'
 
 function SearchBar(){
 
-  const { setProducts, categories } =useContext(AppContext)
+  const { setProducts, categories, backendURL } =useContext(AppContext)
 
   const categoryRef=useRef<HTMLSelectElement>(null)
   const keywordRef=useRef<HTMLInputElement>(null)
@@ -14,7 +14,7 @@ function SearchBar(){
 
   const searchProducts=()=>{
     navigate('/search')
-    axios.post('https://e-commerce-q1y2.onrender.com/product/searchProducts',{categoryId:categoryRef.current?.value,keyword:keywordRef.current?.value})
+    axios.post(`${backendURL}/product/searchProducts`,{categoryId:categoryRef.current?.value,keyword:keywordRef.current?.value})
     .then((res:any)=>{
       setProducts([...res.data])
     })
@@ -24,7 +24,7 @@ function SearchBar(){
   window.scrollTo(0, 0);
 
   // const testQuery=()=>{
-  //   axios.post('https://e-commerce-q1y2.onrender.com/testQuery',{categoryId:77})
+  //   axios.post(`${backendURL}/testQuery`,{categoryId:77})
   //   .then((res:any)=>{
   //     console.log('testQuery res',res.data)
   //   })

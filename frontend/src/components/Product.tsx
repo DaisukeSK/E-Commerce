@@ -7,7 +7,7 @@ import TruckSVG from './Header/svg/TruckSVG';
 
 function Product(props:{product:productsType}){
 
-    const {setShoppingCartQ}=useContext(AppContext)
+    const {setShoppingCartQ, backendURL}=useContext(AppContext)
     const navigate = useNavigate();
     const [favorite, setFavorite]=useState<boolean>(false)
     const [currentImg, setCurrentImg]=useState<string>(props.product.images[0])
@@ -21,14 +21,14 @@ function Product(props:{product:productsType}){
 
             if(!favorite){
 
-                axios.post('https://e-commerce-q1y2.onrender.com/favorite/addToFavorite',{user_id:userId,product_id:productId})
+                axios.post(`${backendURL}/favorite/addToFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
                     res.status==200 && (setFavorite(true))
                 })
 
             }else{
 
-                axios.post('https://e-commerce-q1y2.onrender.com/favorite/removeFromFavorite',{user_id:userId,product_id:productId})
+                axios.post(`${backendURL}/favorite/removeFromFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
                     res.status==200 && (setFavorite(false))
                 })
@@ -42,7 +42,7 @@ function Product(props:{product:productsType}){
     const addToCart=():void=>{
         if(userId){
 
-            axios.post('https://e-commerce-q1y2.onrender.com/cart/addToCart',{user_id:userId,product_id:productId, quantity:quantity.current!.value})
+            axios.post(`${backendURL}/cart/addToCart`,{user_id:userId,product_id:productId, quantity:quantity.current!.value})
             .then((res)=>{
                 
                 if(res.status==200){
@@ -59,7 +59,7 @@ function Product(props:{product:productsType}){
     useEffect(()=>{
 
         if(userId){
-            axios.post('https://e-commerce-q1y2.onrender.com/favorite/checkFavorite',{user_id:userId,product_id:productId})
+            axios.post(`${backendURL}/favorite/checkFavorite`,{user_id:userId,product_id:productId})
             .then((res)=>{
                 res.data=='exist' && (setFavorite(true))
             })

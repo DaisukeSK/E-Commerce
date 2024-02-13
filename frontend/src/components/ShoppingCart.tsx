@@ -5,14 +5,14 @@ import { AppContext, cartType } from "../App";
 
 function ShoppingCart(){
 
-    const { setShoppingCartQ }=useContext(AppContext)
+    const { setShoppingCartQ, backendURL }=useContext(AppContext)
 
     const [shoppingCart,setShoppingCart]=useState<Array<cartType>>([])
 
     const userId=localStorage.getItem('id')
 
     const removeFromCart=(productId:number,quantity:number)=>{
-        axios.post('https://e-commerce-q1y2.onrender.com/cart/removeFromCart',{user_id:userId, product_id:productId})
+        axios.post(`${backendURL}/cart/removeFromCart`,{user_id:userId, product_id:productId})
         .then((res:any)=>{
 
             if(res.status==200){
@@ -26,12 +26,12 @@ function ShoppingCart(){
 
     const order=()=>{
 
-        axios.post('https://e-commerce-q1y2.onrender.com/history/add',{state:shoppingCart})
+        axios.post(`${backendURL}/history/add`,{state:shoppingCart})
         .then((res:any)=>{
             
             if(res.status==200){
 
-                axios.post('https://e-commerce-q1y2.onrender.com/cart/order',{user_id:userId})
+                axios.post(`${backendURL}/cart/order`,{user_id:userId})
                 .then((res:any)=>{
                     
                     if(res.status==200){
@@ -44,7 +44,7 @@ function ShoppingCart(){
     }
 
     useEffect(()=>{
-        axios.post('https://e-commerce-q1y2.onrender.com/cart/getCart',{user_id:userId})
+        axios.post(`${backendURL}/cart/getCart`,{user_id:userId})
         .then((res:any)=>{
             setShoppingCart([...res.data])
         })

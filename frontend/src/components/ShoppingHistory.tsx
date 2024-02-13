@@ -1,6 +1,7 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AppContext } from "../App";
 
 type historyType={
     category_id:number,
@@ -17,10 +18,12 @@ type historyType={
 
 function ShoppingHistory(){
 
+    const { backendURL } = useContext(AppContext)
+
     const [history, setHistory]=useState<Array<historyType>>([])
 
     useEffect(()=>{
-        axios.post('https://e-commerce-q1y2.onrender.com/history/get',{user_id:localStorage.getItem('id')})
+        axios.post(`${backendURL}/history/get`,{user_id:localStorage.getItem('id')})
         .then((res:any)=>{
             setHistory([...res.data])
         })

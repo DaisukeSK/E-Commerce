@@ -6,12 +6,12 @@ import SearchBar from './SearchBar.tsx'
 
 function ProductList() {
 
-  const { products, setProducts } =useContext(AppContext)
+  const { products, setProducts, backendURL } =useContext(AppContext)
 
   useEffect(()=>{
 
     location.href.split('/search/')[1] &&
-    axios.post('https://e-commerce-q1y2.onrender.com/product/searchProducts',{categoryId:location.href.split('/search/')[1],keyword:''})
+    axios.post(`${backendURL}/product/searchProducts`,{categoryId:location.href.split('/search/')[1],keyword:''})
       .then((res:any)=>{
         setProducts([...res.data])
       })

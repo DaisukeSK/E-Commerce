@@ -12,6 +12,9 @@ import Favorite from './components/Favorite'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage/Homepage.tsx'
 
+const backendURL='https://e-commerce-q1y2.onrender.com'
+  // const backendURL='http://localhost:8080'
+
 export type productsType={
   category_id:number,
   category_name:string,
@@ -40,6 +43,7 @@ export type cartType={
 }
 
 export type AppContextType={
+  backendURL:string,
   products:Array<productsType>,
   setProducts:(product:Array<productsType>)=>void,
   categories:Array<categoriesType>,
@@ -50,7 +54,7 @@ export type AppContextType={
 export const AppContext=createContext<AppContextType>({} as AppContextType)
 
 export const getShoppingCart=(id:number, setter:(q:number)=>void):void=>{
-  axios.post('https://e-commerce-q1y2.onrender.com/cart/getCart',{user_id:id})
+  axios.post(`${backendURL}/cart/getCart`,{user_id:id})
   .then((res:any)=>{
     let num:number=0
     res.data.map((q:cartType)=>{
@@ -65,10 +69,12 @@ export function App() {
   const [products, setProducts] = useState<Array<productsType>>([])
   const [categories, setCategories] = useState<Array<categoriesType>>([])
   const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
+
+  
   
   useEffect(()=>{
 
-    axios.get('https://e-commerce-q1y2.onrender.com/product/getAllProducts')
+    axios.get(`${backendURL}/product/getAllProducts`)
     // axios.get('https://api.escuelajs.co/api/v1/products')
     .then((res:any)=>{
 
@@ -76,7 +82,7 @@ export function App() {
       // setCategories([...res.data[1]])
     })
 
-    axios.get('https://e-commerce-q1y2.onrender.com/product/getAllCategories')
+    axios.get(`${backendURL}/product/getAllCategories`)
     .then((res:any)=>{
       console.log("getAllCategories")
       setCategories([...res.data])
@@ -96,7 +102,7 @@ export function App() {
   },[products])
 
   return (
-    <AppContext.Provider value={{products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
+    <AppContext.Provider value={{backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
       <BrowserRouter>
         <Header></Header>
         {/* <Temp></Temp> */}

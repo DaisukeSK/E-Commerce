@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import { productsType, categoriesType } from '../../App.tsx'
+import { productsType, categoriesType, AppContext } from '../../App.tsx'
 
 function Category(props:{category:categoriesType}) {
+
+  const { backendURL } = useContext(AppContext)
 
   const [categorizedProducts, setcategorizedProducts]=useState<Array<productsType>>([])
 
   useEffect(()=>{
-    axios.post('https://e-commerce-q1y2.onrender.com/product/searchProducts',{categoryId:props.category.category_id,keyword:''})
+    axios.post(`${backendURL}/product/searchProducts`,{categoryId:props.category.category_id,keyword:''})
     .then((res:any)=>{
       setcategorizedProducts([...res.data])
     })
