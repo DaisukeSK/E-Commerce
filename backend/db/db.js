@@ -1,33 +1,25 @@
 import pkg from 'pg';
+import dotenv from 'dotenv';
+
 const { Pool } = pkg;
+dotenv.config();
 
-const host = 'localhost';
-const user = 'postgres';
-const password = '1226';
-const database = 'ecommerce';
-const port_db = 5432;
-
-// const host = 'otto.db.elephantsql.com';
-// const user = 'xndmjiao';
-// const password = 'Sbx1LLihVeA9kNP4HAhCW12zmwF9RApF';
-// const database = 'xndmjiao';
-// const port_db = 5432;
 
 // const pool = new Pool({
-//   user: user,
-//   host: host,
-//   password: password,
-//   database: database,
-//   port: port_db,
+//   user: process.env.user1,
+//   host: process.env.host1,
+//   password: process.env.password1,
+//   database: process.env.database1,
+//   port: process.env.port_db1,
 //   max: 4
 // });
 
 
-// const add='?sslmode=no-verify'
-const add='?ssl=true'
-const connectionString=`postgres://ecommerce_bbpe_user:2zJD6N4T50Q6z35sdPLmrecfminNiVlp@dpg-cn48htmn7f5s73921n8g-a.oregon-postgres.render.com/ecommerce_bbpe${add}`
+const addition1='?ssl=true'
+const addition2='?sslmode=no-verify'
+
 const pool = new Pool({
-  connectionString: connectionString,
+  connectionString: `${process.env.connectionString}${addition1}`,
   max: 3
 });
 

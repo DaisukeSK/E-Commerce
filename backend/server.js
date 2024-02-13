@@ -6,7 +6,7 @@ import historyRouter from './routes/historyRoutes.js';
 import favoriteRouter from './routes/favoriteRoutes.js';
 import cartRouter from './routes/cartRoutes.js';
 import pool from './db/db.js';
-import pool2 from './db/db2.js';
+// import pool2 from './db/db2.js';
 
 import bodyParser from 'body-parser';
 
@@ -17,9 +17,9 @@ export const connect = await pool.connect()
   // .then(() => console.log('Connected to DB'))
   // .catch((err) => console.log('Error connecting to database', err));
 
-  // console.log('取得前 totalCount: ', pool.totalCount);
-  // console.log('取得前 idleCount: ', pool.idleCount);
-  // console.log('取得前 waitingCount: ', pool.waitingCount);
+  // console.log('totalCount: ', pool.totalCount);
+  // console.log('idleCount: ', pool.idleCount);
+  // console.log('waitingCount: ', pool.waitingCount);
 
   // pool2.connect()
   // .then(() => console.log('Connected to DB2'))
@@ -47,7 +47,7 @@ const testQuery = async (req, res) => {
       query+=`${key==0?'':','}('${product.title.replace("'","''")}','${product.description.replace("'","''")}',${product.price},array[${str}],${product.category_id})`
       
     })
-    pool2.query(`insert into products (title,description,price,images,category_id) values ${query}`);
+    // pool2.query(`insert into products (title,description,price,images,category_id) values ${query}`);
     res.status(200).json(cart.rows)
 
   } catch (err) {
@@ -82,4 +82,4 @@ const testQuery2 = async (req, res) => {
 
 app.post('/testQuery', bodyParser.json(), testQuery2);
 
-app.listen(8080, ()=>console.log('server running'))
+app.listen(8080, ()=>console.log('Server running'))
