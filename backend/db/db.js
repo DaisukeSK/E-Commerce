@@ -18,8 +18,11 @@ dotenv.config();
 const addition1='?ssl=true'
 const addition2='?sslmode=no-verify'
 
+// const connectionString=process.env.connectionString
+const connectionString='postgres://ecommerce_bbpe_user:2zJD6N4T50Q6z35sdPLmrecfminNiVlp@dpg-cn48htmn7f5s73921n8g-a.oregon-postgres.render.com/ecommerce_bbpe'
+
 const pool = new Pool({
-  connectionString: `${process.env.connectionString}${addition1}`,
+  connectionString: `${connectionString}${addition1}`,
   max: 3
 });
 
