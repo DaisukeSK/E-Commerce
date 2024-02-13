@@ -70,7 +70,7 @@ export function App() {
   const [categories, setCategories] = useState<Array<categoriesType>>([])
   const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
 
-  
+  const [favTest, setFavTest] = useState<any>()
   
   useEffect(()=>{
 
@@ -84,22 +84,33 @@ export function App() {
 
     axios.get(`${backendURL}/product/getAllCategories`)
     .then((res:any)=>{
-      console.log("getAllCategories")
+      // console.log("getAllCategories")
       setCategories([...res.data])
     })
+
+    localStorage.getItem('id') &&
+    axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')})
+        .then((res:any)=>{
+          console.log("Fav working")
+            let favListArray:Array<number>=[]
+            res.data.map((data:{favorite_id:number,user_id:number,product_id:number})=>{
+                favListArray.push(data.product_id)
+            })
+            setFavTest([...favListArray])
+        })
 
     getShoppingCart(+localStorage.getItem('id')!,setShoppingCartQ)
 
   },[])
 
   useEffect(()=>{
-    console.log("categories:",categories)
-  },[categories])
+    console.log("favTest:",favTest)
+  },[favTest])
 
-  useEffect(()=>{
-    console.log("products:",products)
+  // useEffect(()=>{
+  //   console.log("products:",products)
     
-  },[products])
+  // },[products])
 
   return (
     <AppContext.Provider value={{backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
