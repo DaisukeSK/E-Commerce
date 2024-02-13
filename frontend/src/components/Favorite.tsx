@@ -1,4 +1,4 @@
-import { useContext,useState, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { AppContext, productsType } from "../App"
 import axios from "axios"
 import { Link } from "react-router-dom"
@@ -7,8 +7,8 @@ import { Link } from "react-router-dom"
 
 function Favorite(){
 
-    const {products,backendURL} =useContext(AppContext)
-    const [favList, setFavList]=useState<Array<number>>([])
+    const {products,backendURL,favList,setFavList} =useContext(AppContext)
+    // const [favList2, setFavList2]=useState<Array<number>>([])
 
     const removeFromFav=(id:number):void=>{
 

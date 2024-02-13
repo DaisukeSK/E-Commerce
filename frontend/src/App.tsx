@@ -48,7 +48,9 @@ export type AppContextType={
   setProducts:(product:Array<productsType>)=>void,
   categories:Array<categoriesType>,
   shoppingCartQ:number,
-  setShoppingCartQ:(q:any)=>void
+  setShoppingCartQ:(q:any)=>void,
+  favList:Array<number>,
+  setFavList:(q:any)=>void,
 }
 
 export const AppContext=createContext<AppContextType>({} as AppContextType)
@@ -70,7 +72,7 @@ export function App() {
   const [categories, setCategories] = useState<Array<categoriesType>>([])
   const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
 
-  const [favTest, setFavTest] = useState<any>()
+  const [favList, setFavList]=useState<Array<number>>([])
   
   useEffect(()=>{
 
@@ -96,7 +98,7 @@ export function App() {
             res.data.map((data:{favorite_id:number,user_id:number,product_id:number})=>{
                 favListArray.push(data.product_id)
             })
-            setFavTest([...favListArray])
+            setFavList([...favListArray])
         })
 
     getShoppingCart(+localStorage.getItem('id')!,setShoppingCartQ)
@@ -104,8 +106,8 @@ export function App() {
   },[])
 
   useEffect(()=>{
-    console.log("favTest:",favTest)
-  },[favTest])
+    console.log("favList:",favList)
+  },[favList])
 
   // useEffect(()=>{
   //   console.log("products:",products)
@@ -113,7 +115,7 @@ export function App() {
   // },[products])
 
   return (
-    <AppContext.Provider value={{backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
+    <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
       <BrowserRouter>
         <Header></Header>
         {/* <Temp></Temp> */}

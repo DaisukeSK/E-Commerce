@@ -92,7 +92,7 @@ a {
 .redButton {
     padding: 3px 15px;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     background: linear-gradient(45deg, rgb(240, 9, 55),rgb(255, 172, 172));
     color: #ffffff;
     &:hover {
@@ -326,6 +326,34 @@ header {
     }
 }
 
+.signInMain {
+    .signInDiv, .signUpDiv {
+        width: fit-content;
+        margin: 0 auto;
+        h1 {
+            text-align: center;
+        }
+        form {
+            padding: 30px 70px 10px;
+            background-color: rgb(240, 240, 240);
+            margin-bottom: 20px;
+            input {
+                display: block;
+                margin: 0 auto 20px;
+            }
+        }
+    }
+    .alert {
+        text-align: center;
+        span {
+            text-decoration: underline;
+            &:hover {
+                color: blue;
+            }
+        }
+    }
+}
+
 .searchBar {
     // background-color: aquamarine;
     width: fit-content;
@@ -545,7 +573,7 @@ header {
         }
         .productDetail {
             // width: 50%;
-            margin-top: -100px;
+            // margin-top: -100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -581,6 +609,7 @@ header {
                 
             }
             $color: rgb(0, 94, 156);
+            $color: rgb(160, 160, 160);
             .estimatedDeriverly {
                 color: $color;
                 .truck {

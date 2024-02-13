@@ -7,7 +7,7 @@ import TruckSVG from './Header/svg/TruckSVG';
 
 function Product(props:{product:productsType}){
 
-    const {setShoppingCartQ, backendURL}=useContext(AppContext)
+    const {setShoppingCartQ, backendURL, favList, setFavList}=useContext(AppContext)
     const navigate = useNavigate();
     const [favorite, setFavorite]=useState<boolean>(false)
     const [currentImg, setCurrentImg]=useState<string>(props.product.images[0])
@@ -23,7 +23,11 @@ function Product(props:{product:productsType}){
 
                 axios.post(`${backendURL}/favorite/addToFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
-                    res.status==200 && (setFavorite(true))
+                    // res.status==200 && (setFavorite(true))
+                    if(res.status==200){
+                        setFavorite(true)
+                        setFavList([...favList, productId])
+                    }
                 })
 
             }else{
@@ -31,6 +35,12 @@ function Product(props:{product:productsType}){
                 axios.post(`${backendURL}/favorite/removeFromFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
                     res.status==200 && (setFavorite(false))
+                    if(res.status==200){
+                        setFavorite(false)
+                        setFavList((prev:Array<number>) => {
+                            return prev.filter((fav:number) => fav !== productId)
+                        })
+                    }
                 })
             }
             
@@ -64,6 +74,7 @@ function Product(props:{product:productsType}){
                 res.data=='exist' && (setFavorite(true))
             })
         }
+        window.scrollTo(0, 0);
     },[])
     // date.toLocaleString('default', { month: 'long' });
     const dates=():string=>{

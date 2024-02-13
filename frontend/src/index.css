@@ -106,7 +106,7 @@ a {
 .redButton {
   padding: 3px 15px;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   background: linear-gradient(45deg, rgb(240, 9, 55), rgb(255, 172, 172));
   color: #ffffff;
 }
@@ -272,6 +272,33 @@ header ul li {
   padding-right: 25px;
 }
 
+.signInMain .signInDiv, .signInMain .signUpDiv {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+.signInMain .signInDiv h1, .signInMain .signUpDiv h1 {
+  text-align: center;
+}
+.signInMain .signInDiv form, .signInMain .signUpDiv form {
+  padding: 30px 70px 10px;
+  background-color: rgb(240, 240, 240);
+  margin-bottom: 20px;
+}
+.signInMain .signInDiv form input, .signInMain .signUpDiv form input {
+  display: block;
+  margin: 0 auto 20px;
+}
+.signInMain .alert {
+  text-align: center;
+}
+.signInMain .alert span {
+  text-decoration: underline;
+}
+.signInMain .alert span:hover {
+  color: blue;
+}
+
 .searchBar {
   width: -moz-fit-content;
   width: fit-content;
@@ -424,7 +451,6 @@ header ul li {
   width: 16%;
 }
 .productDetailPage .productDetailFlex .productDetail {
-  margin-top: -100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -455,7 +481,7 @@ header ul li {
   margin: 0 10px;
 }
 .productDetailPage .productDetailFlex .productDetail .estimatedDeriverly {
-  color: rgb(0, 94, 156);
+  color: rgb(160, 160, 160);
 }
 .productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck {
   display: flex;
@@ -467,7 +493,7 @@ header ul li {
   height: auto;
 }
 .productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck .truckPath {
-  fill: rgb(0, 94, 156);
+  fill: rgb(160, 160, 160);
 }
 .productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck div {
   font-weight: bold;

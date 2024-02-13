@@ -9,30 +9,31 @@ type signInType={ name:string, password:string }
 function SignIn(){
 
     const { setShoppingCartQ, backendURL } =useContext(AppContext)
-    const [newAccount, setNewAccount]=useState<newAccountType>({name:'',password1:'',password2:''})
-    const [signIn, setSignIn]=useState<signInType>({name:'',password:''})
+    const [newAccountInfo, setNewAccountInfo]=useState<newAccountType>({name:'',password1:'',password2:''})
+    const [signInInfo, setSignInInfo]=useState<signInType>({name:'',password:''})
     const [loginFailed, setLoginFailed]=useState<boolean>(false)
     const [signUpFailed, setSignUpFailed]=useState<string>('')
+    const [signIn, setSignIn]=useState<boolean>(true)
     
     const navigate = useNavigate();
 
     const onchangeSignIn=(e:React.ChangeEvent<HTMLInputElement>)=>{
         e.target.type=='text'?
-        setSignIn({...signIn,name:e.target.value}):
-        setSignIn({...signIn,password:e.target.value})
+        setSignInInfo({...signInInfo,name:e.target.value}):
+        setSignInInfo({...signInInfo,password:e.target.value})
     }
 
     const onchangeSignUp=(e:React.ChangeEvent<HTMLInputElement>)=>{
 
         switch(e.target.className){
             case 'name':
-                setNewAccount({...newAccount,name:e.target.value});
+                setNewAccountInfo({...newAccountInfo,name:e.target.value});
                 break;
             case 'p1':
-                setNewAccount({...newAccount,password1:e.target.value});
+                setNewAccountInfo({...newAccountInfo,password1:e.target.value});
                 break;
             case 'p2':
-                setNewAccount({...newAccount,password2:e.target.value});
+                setNewAccountInfo({...newAccountInfo,password2:e.target.value});
                 break;
             default: return;
         }
@@ -51,20 +52,24 @@ function SignIn(){
 
     const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        if(signIn.name!){
-            axios.post(`${backendURL}/user/signin`,{name:signIn.name,password:signIn.password})
+
+        // console.log("signInInfo",signInInfo)
+        // console.log("NewAccountInfo",newAccountInfo)
+
+        if(signInInfo.name!){
+            axios.post(`${backendURL}/user/signin`,{name:signInInfo.name,password:signInInfo.password})
             .then((res:any)=>{
                 res.data=='no match' && (setLoginFailed(true))
                 redirectToHomepage(res)
             })
         }else{
             switch(true){
-                case newAccount.password1!==newAccount.password2:
+                case newAccountInfo.password1!==newAccountInfo.password2:
                     setSignUpFailed('Passwords do not match.');
                     break;
 
                 default:
-                    axios.post(`${backendURL}/user/createAccount`,{name:newAccount.name,password:newAccount.password1})
+                    axios.post(`${backendURL}/user/createAccount`,{name:newAccountInfo.name,password:newAccountInfo.password1})
                     .then((res:any)=>{
                         if(res.data=='exist'){
                             setSignUpFailed('That user name is already taken.');
@@ -76,30 +81,57 @@ function SignIn(){
         }
     }
 
-    return (
-        <>
-            <div>
-                <h1>Sign In</h1>
-                <div>{loginFailed?'You entered incorrect information':''}</div>
-                <form onSubmit={(e)=>submitHandler(e)}>
-                    <input type='text' placeholder='name' required onChange={(e)=>onchangeSignIn(e)}/>
-                    <input type='password' placeholder='password' required onChange={(e)=>onchangeSignIn(e)}/>
-                    <input type='submit' value='Sign In'/>
-                </form>
-            </div>
+    const toggle=(boolean:boolean)=>{
+        setSignIn(boolean)
+        setNewAccountInfo({name:'',password1:'',password2:''})
+        setSignInInfo({name:'',password:''})
+        // console.log("NewAccountInfo",newAccountInfo)
+    }
 
-            <div>
-                <h1>Sign Up</h1>
-                <div>{signUpFailed}</div>
-                <form onSubmit={(e)=>submitHandler(e)}>
-                    <input className='name' type='input' placeholder='name' required onChange={(e)=>onchangeSignUp(e)}/>
-                    <input className='p1' type='password' placeholder='password' required onChange={(e)=>onchangeSignUp(e)}/>
-                    <input className='p2' type='password' placeholder='password' required onChange={(e)=>onchangeSignUp(e)}/>
-                    <input type='submit' value='Sign Up'/>
-                </form>
-            </div>
-            <Link to={'/'}>Go back</Link>
-        </>
+    return (
+        <main className='signInMain'>
+            {signIn &&
+            <>
+                <div className='signInDiv'>
+                    <h1>Sign In</h1>
+                    <div>{loginFailed?'You entered incorrect information':''}</div>
+                    <form onSubmit={(e)=>submitHandler(e)}>
+                        <label>User Name:</label>
+                        <input type='text' required onChange={(e)=>onchangeSignIn(e)}/>
+                        <label>Password:</label>
+                        <input type='password' required onChange={(e)=>onchangeSignIn(e)}/>
+                        <input className='redButton' type='submit' value='Sign In'/>
+                    </form>
+                </div>
+
+                <div className='alert'>Don't have an account yet? <span onClick={()=>toggle(false)}>Sign Up.</span></div>
+            
+            </>
+            }
+
+            {!signIn &&
+
+            <>
+                <div className='signUpDiv'>
+                    <h1>Sign Up</h1>
+                    <div>{signUpFailed}</div>
+                    <form onSubmit={(e)=>submitHandler(e)}>
+                        <label>User Name:</label>
+                        <input className='name' type='input' required onChange={(e)=>onchangeSignUp(e)}/>
+                        <label>Password:</label>
+                        <input className='p1' type='password' required onChange={(e)=>onchangeSignUp(e)}/>
+                        <label>Password {`(`}Confirm{`)`}:</label>
+                        <input className='p2' type='password' required onChange={(e)=>onchangeSignUp(e)}/>
+                        <input className='redButton' type='submit' value='Sign Up'/>
+                    </form>
+                </div>
+                <div className='alert'>Already have an account? <span onClick={()=>toggle(true)}>Sign In.</span></div>
+            </>
+            
+            
+            }
+            {/* <Link to={'/'}>Go back</Link> */}
+        </main>
     )
 }
 
