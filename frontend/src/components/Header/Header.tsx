@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import HeaderMenu from './HeaderMenu'
-import LoginSVG from './svg/LoginSVG'
+// import LoginSVG from './svg/LoginSVG'
 import Login2SVG from './svg/Login2SVG'
 
 function Header(){
