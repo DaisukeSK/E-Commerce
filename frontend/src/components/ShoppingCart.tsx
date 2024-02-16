@@ -83,23 +83,22 @@ function ShoppingCart(){
                                     <span className='sum'>{`$ ${(product.price*product.product_quantity).toLocaleString()}`}</span>
                                 </div>
                                 <button className='redButton' onClick={()=>removeFromCart(product.product_id,product.product_quantity)}>Remove</button>
-                                    
-                                
-
-
 
                             </div>
 
-                            
                         </li>
                     )
                 })}
 
-<hr/>
+                <hr/>
+                {shoppingCart.length==0 && <li className='noProduct'>No items in shopping-cart</li>}
+                {shoppingCart.length>=1 &&
+                
                 <li className='order'>
                     <div>Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span></div>
                     <button className='redButton' onClick={order}>Order</button>
                 </li>
+                }
 
             </ul>
 

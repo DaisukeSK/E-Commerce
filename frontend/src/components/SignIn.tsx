@@ -86,6 +86,8 @@ function SignIn(){
         setNewAccountInfo({name:'',password1:'',password2:''})
         setSignInInfo({name:'',password:''})
         // console.log("NewAccountInfo",newAccountInfo)
+        setLoginFailed(false)
+        setSignUpFailed('')
     }
 
     return (
@@ -94,8 +96,8 @@ function SignIn(){
             <>
                 <div className='signInDiv'>
                     <h1>Sign In</h1>
-                    <div>{loginFailed?'You entered incorrect information':''}</div>
                     <form onSubmit={(e)=>submitHandler(e)}>
+                        <div className='alert'>{loginFailed?'You entered incorrect information.':''}</div>
                         <label>User Name:</label>
                         <input type='text' required onChange={(e)=>onchangeSignIn(e)}/>
                         <label>Password:</label>
@@ -114,8 +116,8 @@ function SignIn(){
             <>
                 <div className='signUpDiv'>
                     <h1>Sign Up</h1>
-                    <div>{signUpFailed}</div>
                     <form onSubmit={(e)=>submitHandler(e)}>
+                        <div className='alert'>{signUpFailed}</div>
                         <label>User Name:</label>
                         <input className='name' type='input' required onChange={(e)=>onchangeSignUp(e)}/>
                         <label>Password:</label>

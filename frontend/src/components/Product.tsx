@@ -11,6 +11,7 @@ function Product(props:{product:productsType}){
     const navigate = useNavigate();
     const [favorite, setFavorite]=useState<boolean>(false)
     const [currentImg, setCurrentImg]=useState<string>(props.product.images[0])
+    const [estimatedDate, setEstimatedDate]=useState('')
     const quantity=useRef<HTMLInputElement>(null)
     const productId:number=props.product.product_id
     const userId:number=+localStorage.getItem("id")!
@@ -68,6 +69,14 @@ function Product(props:{product:productsType}){
 
     useEffect(()=>{
 
+        const rand1=Math.ceil(1+Math.random()*7)
+        const rand2=rand1+Math.ceil(1+Math.random()*2)
+        const getDate=new Date();
+        // const date1:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
+        // const date2:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
+        setEstimatedDate(`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`) 
+    
+
         if(userId){
             axios.post(`${backendURL}/favorite/checkFavorite`,{user_id:userId,product_id:productId})
             .then((res)=>{
@@ -77,14 +86,6 @@ function Product(props:{product:productsType}){
         window.scrollTo(0, 0);
     },[])
     // date.toLocaleString('default', { month: 'long' });
-    const dates=():string=>{
-        const rand1=Math.ceil(1+Math.random()*7)
-        const rand2=rand1+Math.ceil(1+Math.random()*2)
-        const getDate=new Date();
-        // const date1:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
-        // const date2:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
-        return `${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
-    }
 
     return(
         <main className='productDetailPage'>
@@ -131,7 +132,7 @@ function Product(props:{product:productsType}){
                             <TruckSVG/><div>Estimated Deriverly</div>
                         </div>
 
-                        <div className='dates'>{dates()}</div>
+                        <div className='dates'>{estimatedDate}</div>
 
                         
 

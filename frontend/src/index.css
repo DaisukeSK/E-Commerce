@@ -6,15 +6,7 @@ body #root {
   margin: 0;
   margin-top: 100px;
   padding: 0 15%;
-}
-
-.login2 {
-  fill: #c83c3c;
-  fill-opacity: 0.660057;
-  stroke: #000000;
-  stroke-width: 0;
-  stroke-linejoin: round;
-  stroke-dasharray: none;
+  position: relative;
 }
 
 * {
@@ -26,55 +18,11 @@ a {
   text-decoration: none;
 }
 
-#cart2path1 {
-  fill: #ffffff;
-  fill-opacity: 0;
-  stroke: #ffffff;
-  stroke-width: 1.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: none;
-  stroke-opacity: 1;
-}
-
-#cart2path2 {
-  fill: #ffffff;
-  fill-opacity: 0;
-  stroke: #ffffff;
-  stroke-width: 0.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: none;
-  stroke-opacity: 1;
-}
-
-#cart2circle2, #cart2circle1 {
-  fill: #ffffff;
-  fill-opacity: 0;
-  stroke: #ffffff;
-  stroke-width: 0.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: none;
-  stroke-opacity: 1;
-}
-
-#logout2 {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-#logout2 path {
-  fill: #ffffff;
-  stroke: #000000;
-  stroke-width: 0;
-  stroke-linejoin: round;
-  stroke-dasharray: none;
-}
-
 .headerAnchor {
   color: #ffffff;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 .headerAnchor svg {
   width: 25px;
@@ -85,12 +33,6 @@ a {
   fill: #ffffff;
   stroke: #ffffff;
 }
-.headerAnchor .heartPath {
-  fill: none;
-  stroke-width: 2;
-  stroke-miterlimit: 4;
-  stroke-dasharray: none;
-}
 .headerAnchor .cartSVG path, .headerAnchor .cartSVG circle {
   fill-opacity: 0;
   stroke: #ffffff;
@@ -99,33 +41,33 @@ a {
   stroke-linejoin: round;
   stroke-dasharray: none;
 }
-.headerAnchor .cartSVG #path904 {
-  stroke-width: 0.8;
+.headerAnchor span, .headerAnchor path, .headerAnchor circle {
+  transition: all 0.2s ease-in-out;
+}
+.headerAnchor:hover span {
+  color: navy;
+  text-decoration: underline;
+}
+.headerAnchor:hover svg path, .headerAnchor:hover svg circle {
+  fill: navy;
+  stroke: navy;
 }
 
 .redButton {
-  padding: 3px 15px;
+  padding: 5px 15px;
   border: none;
-  border-radius: 5px;
-  background: linear-gradient(45deg, rgb(240, 9, 55), rgb(255, 172, 172));
+  border-radius: 3px;
+  background: linear-gradient(rgb(255, 101, 132), rgb(247, 37, 79));
   color: #ffffff;
+  font-size: 1em;
 }
 .redButton:hover {
-  background: linear-gradient(45deg, rgb(182, 15, 48), rgb(241, 154, 154));
+  background: linear-gradient(rgb(241, 91, 121), rgb(189, 25, 58));
 }
 
 .productName:hover {
   text-decoration: underline;
   color: navy;
-}
-
-.truckPath {
-  color: #000000;
-  fill: #000000;
-  fill-rule: evenodd;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 4.1;
 }
 
 .greyUl {
@@ -141,6 +83,8 @@ a {
 }
 .greyUl li .imgDiv {
   max-width: 15%;
+  display: flex;
+  align-items: center;
 }
 .greyUl li .imgDiv img {
   width: 100%;
@@ -159,6 +103,11 @@ a {
 .greyUl li .redButton {
   margin-top: 10px;
 }
+.greyUl .noProduct {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 150px auto 0;
+}
 .greyUl .order {
   display: block;
   background: none;
@@ -174,14 +123,10 @@ a {
 .greyUl .order button {
   display: block;
   margin: 20px auto 0;
-  padding: 5px 20px;
-  font-weight: bold;
-  font-size: 1.4em;
-  border-radius: 20px;
-  background: linear-gradient(45deg, green, lawngreen);
+  background: linear-gradient(rgb(111, 223, 0), rgb(0, 165, 0));
 }
 .greyUl .order button:hover {
-  background: linear-gradient(45deg, rgb(0, 95, 0), rgb(105, 211, 0));
+  background: linear-gradient(rgb(93, 185, 0), rgb(0, 134, 0));
 }
 
 header {
@@ -235,7 +180,7 @@ header .headerRightFlex .cartSVGflex {
   margin: 0 10px;
 }
 header .headerRightFlex .cartSVGflex .cartSVG {
-  transform: scale(80%, 80%);
+  transform: scale(80%);
 }
 header .headerRightFlex .cartSVGflex .cartSVG path, header .headerRightFlex .cartSVGflex .cartSVG circle {
   fill-opacity: 0;
@@ -244,9 +189,6 @@ header .headerRightFlex .cartSVGflex .cartSVG path, header .headerRightFlex .car
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: none;
-}
-header .headerRightFlex .cartSVGflex .cartSVG #path904 {
-  stroke-width: 0.8;
 }
 header .headerRightFlex .cartSVGflex .shoppingCartQ {
   position: absolute;
@@ -273,8 +215,7 @@ header ul li {
 }
 
 .signInMain .signInDiv, .signInMain .signUpDiv {
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 40%;
   margin: 0 auto;
 }
 .signInMain .signInDiv h1, .signInMain .signUpDiv h1 {
@@ -285,8 +226,19 @@ header ul li {
   background-color: rgb(240, 240, 240);
   margin-bottom: 20px;
 }
+.signInMain .signInDiv form .alert, .signInMain .signUpDiv form .alert {
+  margin-bottom: 10px;
+  color: rgb(224, 0, 0);
+  text-align: center;
+}
 .signInMain .signInDiv form input, .signInMain .signUpDiv form input {
   display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.signInMain .signInDiv form input[type=submit], .signInMain .signUpDiv form input[type=submit] {
+  width: -moz-fit-content;
+  width: fit-content;
   margin: 0 auto 20px;
 }
 .signInMain .alert {
@@ -492,7 +444,7 @@ header ul li {
   width: 30px;
   height: auto;
 }
-.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck .truckPath {
+.productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck path {
   fill: rgb(160, 160, 160);
 }
 .productDetailPage .productDetailFlex .productDetail .estimatedDeriverly .truck div {
@@ -542,29 +494,34 @@ header ul li {
 
 .settingMain {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  margin-top: 180px;
 }
 .settingMain form {
-  width: -moz-fit-content;
-  width: fit-content;
+  background-color: rgb(236, 236, 236);
+  width: 30%;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 .settingMain form .alertDiv {
   color: crimson;
 }
-.settingMain input[type=text], .settingMain input[type=password] {
+.settingMain form h2 {
+  text-align: center;
+}
+.settingMain form input[type=text], .settingMain form input[type=password] {
   margin-bottom: 10px;
 }
-.settingMain input[type=submit] {
+.settingMain form input[type=submit] {
   width: -moz-fit-content;
   width: fit-content;
-  background: linear-gradient(45deg, rgb(74, 74, 255), rgb(55, 206, 198));
+  background: linear-gradient(rgb(109, 109, 255), rgb(50, 50, 230));
   margin: 0 auto;
 }
-.settingMain input[type=submit]:hover {
-  background: linear-gradient(45deg, rgb(47, 47, 182), rgb(38, 151, 146));
+.settingMain form input[type=submit]:hover {
+  background: linear-gradient(rgb(69, 69, 216), rgb(23, 23, 175));
 }
 
 .historyMain ul li, .historyMain ul .total {
@@ -594,7 +551,12 @@ header ul li {
   font-size: 1.1em;
 }
 .historyMain ul .total {
-  margin-bottom: 50px;
+  margin: 0 auto 50px;
+  padding: 10px 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  outline: 1px solid rgb(144, 235, 156);
+  background-color: rgb(203, 245, 209);
 }
 .historyMain ul .total span {
   color: rgb(160, 0, 0);

@@ -26,6 +26,7 @@ function ShoppingHistory(){
         axios.post(`${backendURL}/history/get`,{user_id:localStorage.getItem('id')})
         .then((res:any)=>{
             setHistory([...res.data])
+            console.log(res.data)
         })
     },[])
 
@@ -48,7 +49,8 @@ function ShoppingHistory(){
                         <Fragment key={key}>
 
                             {(key==0 || (product.shopping_date!==history[key-1].shopping_date)) &&
-                                <h2>{date.getFullYear()}/{date.getMonth()+1}/{date.getDate()}&nbsp;{date.getHours()}:{date.getMinutes()}</h2>
+                                <h2>{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.getHours()}:{date.getMinutes()}</h2>
+                                // <h2>{date.getHours()}:{date.getMinutes()}</h2>
                             }
                             <li>
                                 <Link className='imgA' to={`/product/${product.product_id}`}>

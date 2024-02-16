@@ -109,10 +109,10 @@ export function App() {
     console.log("favList:",favList)
   },[favList])
 
-  // useEffect(()=>{
-  //   console.log("products:",products)
+  useEffect(()=>{
+    console.log("products:",products)
     
-  // },[products])
+  },[products])
 
   return (
     <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>

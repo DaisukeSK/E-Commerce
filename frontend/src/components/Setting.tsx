@@ -63,6 +63,7 @@ function Setting(){
             <form onSubmit={(e)=>changeUserName(e)}>
                 <h2>Change User Name</h2>
                 <div className="alertDiv">{userNameAlert}</div>
+                <label>New User Name</label>
                 <input type='text' ref={userName} required/>
                 <input className='redButton' type='submit' value='Submit'/>
             </form>
