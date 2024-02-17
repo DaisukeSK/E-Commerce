@@ -40,8 +40,8 @@ function ShoppingHistory(){
 
                 {history.map((product:historyType,key:number)=>{
 
-                    let date= Date.parse(product.shopping_date)
-                    console.log("date", new Date(date));
+                    const date= new Date(Date.parse(product.shopping_date))
+                    // console.log("date", );
                     
 
                     key>0 && product.shopping_date!==history[key-1].shopping_date?
@@ -51,9 +51,9 @@ function ShoppingHistory(){
                     return (
                         <Fragment key={key}>
 
-                            {(key==0 || (product.shopping_date!==history[key-1].shopping_date)) && <></>
-                                // <h2>{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.getHours()}:{date.getMinutes()}</h2>
-                                // <h2>{date.toLocaleTimeString()}</h2>
+                            {(key==0 || (product.shopping_date!==history[key-1].shopping_date)) &&
+                                <h2>{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.getHours()}:{date.getMinutes()}</h2>
+                                // <h2>{date.toLocaleTimeString()}{date.toLocaleDateString()}</h2>
                             }
                             <li>
                                 <Link className='imgA' to={`/product/${product.product_id}`}>
