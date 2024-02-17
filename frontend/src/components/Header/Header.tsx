@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom'
 import HeaderMenu from './HeaderMenu'
 // import LoginSVG from './svg/LoginSVG'
 import Login2SVG from './svg/Login2SVG'
+import Home from './svg/Home'
 
 function Header(){
 
     return (
         <header>
             
-            <div className="logo"><Link to={'/'}>Homepage</Link></div>
+            <div className="logo"><Link to={'/'}><Home/><span>Homepage</span></Link></div>
 
             {
             localStorage.getItem('id')?

@@ -1,5 +1,9 @@
 $headerBG:rgb(82, 79, 158);
 $priceColor:rgb(160, 0, 0);
+$headerMenuColor:rgb(0, 22, 117);
+// $headerMenuColor:rgb(117, 0, 0);
+
+$headerMenuTransition: all .2s ease-in-out;
 
 body {
     margin: 0;
@@ -80,11 +84,11 @@ a {
         //     // stroke-width:0.8;
         // }
     }
-    transition: all .3s ease-in-out;
+    transition: $headerMenuTransition;
 
     span, path, circle {
 
-        transition: all .2s ease-in-out;
+        transition: $headerMenuTransition;
     }
     // svg {
     //     path, circle {
@@ -93,17 +97,17 @@ a {
     //     }
     // }
     &:hover {
-        $hoverColor: navy;
+        // $hoverColor: navy;
         span {
 
-            color: $hoverColor;
+            color: $headerMenuColor;
             text-decoration: underline;
         }
         svg {
             path, circle {
 
-                fill: $hoverColor;
-                stroke: $hoverColor;
+                fill: $headerMenuColor;
+                stroke: $headerMenuColor;
             }
         }
     }
@@ -225,9 +229,33 @@ header {
     z-index: 2;
     color: #ffffff;
     .logo {
+
         a {
 
-            color: #ffffff;
+            display: flex;
+            align-items: center;
+            svg {
+                path {
+                    fill: #ffffff;
+                    transition: $headerMenuTransition;
+                }
+            }
+            span {
+                margin-top: 5px;
+                color: #ffffff;
+                transition: $headerMenuTransition;
+            }
+            &:hover {
+                svg {
+                    path {
+                        fill: $headerMenuColor;
+                    }
+                }
+                span {
+                    // margin-top: 5px;
+                    color: $headerMenuColor;
+                }
+            }
         }
     }
 
@@ -241,7 +269,7 @@ header {
             padding: 3px 10px;
         }
         span, path {
-            transition: all .5s ease-in-out;
+            transition: $headerMenuTransition;
 
         }
         svg {
@@ -249,14 +277,15 @@ header {
             height: fit-content;
         }
         &:hover {
-            $color:rgb(0, 22, 117);
+            
+            // $color:rgb(188, 197, 238);
             span {
 
-                background-color: $color;
+                background-color: $headerMenuColor;
                 color: #ffffff;
             }
             path {
-                fill: $color;
+                fill: $headerMenuColor;
             }
         }
     }

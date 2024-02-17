@@ -25,6 +25,7 @@ function ShoppingHistory(){
     useEffect(()=>{
         axios.post(`${backendURL}/history/get`,{user_id:localStorage.getItem('id')})
         .then((res:any)=>{
+            console.log("history data:",res.data)
             setHistory([...res.data])
             console.log(res.data)
         })
@@ -39,7 +40,9 @@ function ShoppingHistory(){
 
                 {history.map((product:historyType,key:number)=>{
 
-                    let date=new Date(product.shopping_date)
+                    let date= Date.parse(product.shopping_date)
+                    console.log("date", new Date(date));
+                    
 
                     key>0 && product.shopping_date!==history[key-1].shopping_date?
                     sum=product.product_quantity*product.price:
@@ -48,9 +51,9 @@ function ShoppingHistory(){
                     return (
                         <Fragment key={key}>
 
-                            {(key==0 || (product.shopping_date!==history[key-1].shopping_date)) &&
-                                <h2>{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.getHours()}:{date.getMinutes()}</h2>
-                                // <h2>{date.getHours()}:{date.getMinutes()}</h2>
+                            {(key==0 || (product.shopping_date!==history[key-1].shopping_date)) && <></>
+                                // <h2>{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.getHours()}:{date.getMinutes()}</h2>
+                                // <h2>{date.toLocaleTimeString()}</h2>
                             }
                             <li>
                                 <Link className='imgA' to={`/product/${product.product_id}`}>

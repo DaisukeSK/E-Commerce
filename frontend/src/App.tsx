@@ -48,7 +48,7 @@ export type AppContextType={
   setProducts:(product:Array<productsType>)=>void,
   categories:Array<categoriesType>,
   shoppingCartQ:number,
-  setShoppingCartQ:(q:any)=>void,
+  setShoppingCartQ:React.Dispatch<React.SetStateAction<number>>,
   favList:Array<number>,
   setFavList:(q:any)=>void,
 }

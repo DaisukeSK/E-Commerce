@@ -3,9 +3,10 @@ import { connect } from '../server.js';
 
 export const add = async (req, res) => {
 
-    const date=new Date().toLocaleString('en-US', {
-          timeZone: 'America/Vancouver',
-        });
+    // const date=new Date().toLocaleString('en-US', {
+    //       timeZone: 'America/Vancouver',
+    //     });
+        const date=new Date().toLocaleString();
 
     let str=''
 
