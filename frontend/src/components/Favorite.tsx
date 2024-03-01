@@ -32,6 +32,7 @@ function Favorite(){
             })
             setFavList([...favListArray])
         })
+        window.scrollTo(0,0)
     },[])
 
     useEffect(()=>{
