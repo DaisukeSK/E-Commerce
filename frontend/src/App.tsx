@@ -12,8 +12,8 @@ import Favorite from './components/Favorite'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage/Homepage.tsx'
 
-const backendURL='https://e-commerce-q1y2.onrender.com'
-  // const backendURL='http://localhost:8080'
+const backendURL:string='https://e-commerce-q1y2.onrender.com'
+  // const backendURL:string='http://localhost:8080'
 
 export type productsType={
   category_id:number,
@@ -45,12 +45,22 @@ export type cartType={
 export type AppContextType={
   backendURL:string,
   products:Array<productsType>,
-  setProducts:(product:Array<productsType>)=>void,
+  setProducts: React.Dispatch<React.SetStateAction<productsType[]>>,
   categories:Array<categoriesType>,
   shoppingCartQ:number,
-  setShoppingCartQ:React.Dispatch<React.SetStateAction<number>>,
+  setShoppingCartQ: React.Dispatch<React.SetStateAction<number>>,
   favList:Array<number>,
-  setFavList:(q:any)=>void,
+  setFavList: React.Dispatch<React.SetStateAction<number[]>>,
+  setLoaded: React.Dispatch<React.SetStateAction<boolean>>,
+  loaded:boolean,
+  setSearchResult: React.Dispatch<React.SetStateAction<{
+    searched: boolean;
+    result: number;
+}>>,
+searchResult:{
+  searched: boolean;
+  result: number;
+}
 }
 
 export const AppContext=createContext<AppContextType>({} as AppContextType)
@@ -73,22 +83,36 @@ export function App() {
   const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
 
   const [favList, setFavList]=useState<Array<number>>([])
+  const [loaded, setLoaded]= useState<boolean>(false)
+  const [searchResult, setSearchResult]= useState<{searched:boolean,result:number}>({searched:false,result:0})
   
   useEffect(()=>{
+    // setLoaded(false)
 
-    axios.get(`${backendURL}/product/getAllProducts`)
-    // axios.get('https://api.escuelajs.co/api/v1/products')
-    .then((res:any)=>{
+    axios.all([
+      axios.get(`${backendURL}/product/getAllProducts`),
+      axios.get(`${backendURL}/product/getAllCategories`)
+    ])
+    .then(axios.spread((obj1,obj2)=>{
+      setProducts([...obj1.data])
+      setCategories([...obj2.data])
+      setLoaded(true)
+      console.log("axios run")
+    }))
 
-      setProducts([...res.data])
-      // setCategories([...res.data[1]])
-    })
+    // axios.get(`${backendURL}/product/getAllProducts`)
+    // // axios.get('https://api.escuelajs.co/api/v1/products')
+    // .then((res:any)=>{
 
-    axios.get(`${backendURL}/product/getAllCategories`)
-    .then((res:any)=>{
-      // console.log("getAllCategories")
-      setCategories([...res.data])
-    })
+    //   setProducts([...res.data])
+    //   // setCategories([...res.data[1]])
+    // })
+
+    // axios.get(`${backendURL}/product/getAllCategories`)
+    // .then((res:any)=>{
+    //   // console.log("getAllCategories")
+    //   setCategories([...res.data])
+    // })
 
     localStorage.getItem('id') &&
     axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')})
@@ -115,9 +139,13 @@ export function App() {
   },[products])
 
   return (
-    <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
+    <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ,setLoaded,loaded,setSearchResult,searchResult}}>
       <BrowserRouter>
         <Header></Header>
+        <div className='loading' style={{display:loaded?'none':'block'}}>
+          <div className='spin'></div>
+          <div className='message'>Loading...<br/>It may take some time.</div>
+        </div>
         {/* <Temp></Temp> */}
         <Routes>
           <Route path={'/'} element={<HomePage></HomePage>}></Route>

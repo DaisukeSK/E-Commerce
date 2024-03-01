@@ -64,7 +64,7 @@ function ShoppingHistory(){
                         <Fragment key={key}>
 
                             {(key==0 || (product.shopping_date!==history[key-1].shopping_date)) &&
-                                <h3 className="purchaseDate">{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h3>
+                                <h2>{date.toLocaleString('default', { month: 'short' })}&nbsp;{date.getDate()},&nbsp;{date.getFullYear()}&nbsp;{date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h2>
                                 // <h2>{date.toLocaleTimeString()}{date.toLocaleDateString()}</h2>
                             }
                             <li>
@@ -82,7 +82,7 @@ function ShoppingHistory(){
                             </li>
 
                             {product.shopping_date!==history[key+1]?.shopping_date &&
-                                <h3 className='total'>Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span></h3>
+                                <h2 className='total'>Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span></h2>
                             }
                             
 

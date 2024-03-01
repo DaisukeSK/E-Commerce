@@ -1,3 +1,5 @@
+// import { useContext } from 'react'
+// import { AppContext } from '../../App'
 import { Link } from 'react-router-dom'
 import HeaderMenu from './HeaderMenu'
 // import LoginSVG from './svg/LoginSVG'
@@ -5,6 +7,8 @@ import Login2SVG from './svg/Login2SVG'
 import Home from './svg/Home'
 
 function Header(){
+
+// const { setLoaded }= useContext(AppContext)
 
     return (
         <header>

@@ -42,7 +42,7 @@ function Cart2SVG(){
   {/* <defs
      id="defs2" /> */}
   <g
-     
+     className="cartG"
    //   id="layer1"
      >
     <Path1

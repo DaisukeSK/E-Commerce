@@ -5,7 +5,7 @@ import axios from 'axios'
 
 function SearchBar(){
 
-  const { setProducts, categories, backendURL } =useContext(AppContext)
+  const { setProducts, categories, backendURL,setSearchResult } =useContext(AppContext)
 
   const categoryRef=useRef<HTMLSelectElement>(null)
   const keywordRef=useRef<HTMLInputElement>(null)
@@ -16,7 +16,9 @@ function SearchBar(){
     navigate('/search')
     axios.post(`${backendURL}/product/searchProducts`,{categoryId:categoryRef.current?.value,keyword:keywordRef.current?.value})
     .then((res:any)=>{
+      console.log("length:",res.data.length)
       setProducts([...res.data])
+      setSearchResult({searched:true,result:res.data.length})
     })
   }
 

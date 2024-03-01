@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AppContext, cartType } from "../App";
+import Cart2SVG from "./Header/svg/Cart2SVG";
 
 function ShoppingCart(){
 
@@ -37,6 +38,7 @@ function ShoppingCart(){
                     if(res.status==200){
                         setShoppingCart([])
                         setShoppingCartQ(0)
+                        alert('Order confirmed.')
                     }
                 })
             }
@@ -54,7 +56,12 @@ function ShoppingCart(){
 
     return (
         <main className="cartMain">
-            <h2>Your Shopping-Cart:</h2>
+            <div className="titleflex">
+
+                <Cart2SVG></Cart2SVG>
+                <h2>Shopping-Cart:</h2>
+            </div>
+            <hr/>
 
             <ul className='greyUl'>
 
@@ -90,14 +97,18 @@ function ShoppingCart(){
                     )
                 })}
 
-                <hr/>
-                {shoppingCart.length==0 && <li className='noProduct'>No items in shopping-cart</li>}
-                {shoppingCart.length>=1 &&
                 
-                <li className='order'>
-                    <div>Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span></div>
-                    <button className='redButton' onClick={order}>Order</button>
-                </li>
+                {shoppingCart.length==0 && <li className='noProduct'>No items in Shopping-Cart</li>}
+                {shoppingCart.length>=1 &&
+
+                <>
+                
+                    <hr/>
+                    <li className='order'>
+                        <div>Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span></div>
+                        <button className='redButton' onClick={order}>Order</button>
+                    </li>
+                </>
                 }
 
             </ul>

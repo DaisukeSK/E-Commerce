@@ -5,11 +5,12 @@ import { productsType, categoriesType, AppContext } from '../../App.tsx'
 
 function Category(props:{category:categoriesType}) {
 
-  const { backendURL } = useContext(AppContext)
+  const { backendURL, setSearchResult } = useContext(AppContext)
 
   const [categorizedProducts, setcategorizedProducts]=useState<Array<productsType>>([])
 
   useEffect(()=>{
+    
     axios.post(`${backendURL}/product/searchProducts`,{categoryId:props.category.category_id,keyword:''})
     .then((res:any)=>{
       setcategorizedProducts([...res.data])
@@ -37,7 +38,7 @@ function Category(props:{category:categoriesType}) {
 
         
 
-        <Link to={`/search/${props.category.category_id}`} className='seeMore'>
+        <Link to={`/search/${props.category.category_id}`} className='seeMore' onClick={()=>setSearchResult({searched:false,result:0})}>
           <svg width='10' height='16'>
             <path d='m0 0 v16 l10 -8'/>
           </svg>

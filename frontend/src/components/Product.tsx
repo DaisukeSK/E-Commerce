@@ -71,10 +71,30 @@ function Product(props:{product:productsType}){
 
         const rand1=Math.ceil(1+Math.random()*7)
         const rand2=rand1+Math.ceil(1+Math.random()*2)
-        const getDate=new Date();
+        // const getDate=new Date();
+
+        const date1=new Date(Date.now() + ( 3600 * 1000 * 24*rand1))
+        const date2=new Date(Date.now() + ( 3600 * 1000 * 24*rand2))
         // const date1:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
         // const date2:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
-        setEstimatedDate(`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`) 
+        switch(true){
+            case date1.getFullYear()!==date2.getFullYear():
+                setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()}, ${date1.getFullYear()} - ${date2.toLocaleString('default', { month: 'short' })} ${date2.getDate()}, ${date2.getFullYear()}`)
+                break;
+            case date1.getMonth()!==date2.getMonth():
+                setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.toLocaleString('default', { month: 'short' })} ${date2.getDate()}, ${date2.getFullYear()}`)
+                break;
+            default :
+                setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.getDate()}, ${date2.getFullYear()}`)
+
+        }
+        
+        // if(date1.getMonth()==date2.getMonth()){
+        //     setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.getDate()}, ${date2.getFullYear()}`)
+        // }else{
+
+        //     setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.toLocaleString('default', { month: 'short' })} ${date2.getDate()}, ${date2.getFullYear()}`)
+        // }
     
 
         if(userId){

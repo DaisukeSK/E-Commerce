@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { AppContext, productsType } from "../App"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import FavoriteSVG from "./Header/svg/FavoriteSVG"
 
 // const FavContext=createContext(null)
 
@@ -33,11 +34,24 @@ function Favorite(){
         })
     },[])
 
+    useEffect(()=>{
+        console.log("favList",favList)
+    },[favList])
+
     return (
         <main className="favoriteMain">
-            <h2>Your favorite list:</h2>
+            <div className="titleflex">
+
+                <FavoriteSVG fillColor={'#ffffff'}></FavoriteSVG>
+                <h2>Favorite:</h2>
+                </div>
+            <hr/>
 
             <ul className='greyUl'>
+
+                {favList.length==0 &&
+                    <li className='noProduct'>No items in Favorite</li>
+                }
 
 
                 {products.map((product:productsType,key:number)=>{
