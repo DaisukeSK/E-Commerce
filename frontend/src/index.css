@@ -618,6 +618,7 @@ header ul li {
 
 .historyMain .greyUl .purchaseDate {
   margin-bottom: 0;
+  text-decoration: underline;
 }
 .historyMain .greyUl li, .historyMain .greyUl .total {
   margin: 10px;
