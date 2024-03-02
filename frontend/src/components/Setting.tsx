@@ -45,7 +45,8 @@ function Setting(){
         })
     }
 
-    const deleteAccount=()=>{
+    const deleteAccount=(e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
         if(confirm('Are you sure that you want to delete account?')){
             axios.post(`${backendURL}/user/deleteAccount`,{userId:localStorage.getItem('id')})
             .then(()=>{
@@ -78,7 +79,7 @@ function Setting(){
                 <input className='redButton' type='submit' value='Submit'/>
             </form>
 
-            <form onSubmit={deleteAccount}>
+            <form onSubmit={(e)=>deleteAccount(e)}>
                 <h2>Delete Account</h2>
                 {/* <button>Delete Account</button> */}
                 <input className='redButton' type='submit' value='Delete Account'/>

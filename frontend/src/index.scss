@@ -933,14 +933,21 @@ header {
 
 .historyMain {
 
+
+
     .greyUl {
+
+        // .noProduct {
+        //     width: fit-content;
+        //     margin: 150px auto 0;
+        // }
 
         .purchaseDate {
             margin-bottom: 0;
             text-decoration: underline;
         }
 
-        li, .total {
+        li:not(.noProduct), .total {
             margin: 10px;
             // margin-left: 30px;
         }
