@@ -645,11 +645,18 @@ header ul li {
   font-weight: bold;
   font-size: 1.1em;
 }
+.historyMain .greyUl .beforeTotal {
+  border: none;
+  border-bottom: 1px solid rgb(199, 199, 199);
+}
 .historyMain .greyUl .total {
   margin: 0 auto 50px;
-  padding: 10px 30px;
+  padding: 5px 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  outline: 1px solid rgb(144, 235, 156);
   text-align: center;
-  background-color: rgb(203, 245, 209);
+  background-color: rgb(230, 250, 233);
 }
 .historyMain .greyUl .total span {
   color: rgb(160, 0, 0);

@@ -82,7 +82,12 @@ function ShoppingHistory(){
                             </li>
 
                             {product.shopping_date!==history[key+1]?.shopping_date &&
+                                <>
+                                <hr className="beforeTotal"/>
                                 <h3 className='total'>Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span></h3>
+                                
+                                </>
+                                
                             }
                             
 

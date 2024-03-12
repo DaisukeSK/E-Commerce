@@ -975,13 +975,18 @@ header {
                 
             }
         }
+        .beforeTotal {
+            border: none;
+            border-bottom: 1px solid rgb(199, 199, 199);
+        }
         .total {
             margin: 0 auto 50px;
-            padding: 10px 30px;
-            // width: fit-content;
-            // outline: 1px solid rgb(144, 235, 156);
+            padding: 5px 30px;
+            width: fit-content;
+            outline: 1px solid rgb(144, 235, 156);
             text-align: center;
-            background-color: rgb(203, 245, 209);
+            background-color: rgb(230, 250, 233);
+            // background: linear-gradient(90deg, white, rgb(203, 245, 209), white);
             span {
                 color: $priceColor;
                 // font-weight: bold;
