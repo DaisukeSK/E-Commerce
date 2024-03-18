@@ -4,12 +4,9 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import FavoriteSVG from "./Header/svg/FavoriteSVG"
 
-// const FavContext=createContext(null)
-
 function Favorite(){
 
-    const {products,backendURL,favList,setFavList} =useContext(AppContext)
-    // const [favList2, setFavList2]=useState<Array<number>>([])
+    const { products, backendURL, favList, setFavList } =useContext(AppContext)
 
     const removeFromFav=(id:number):void=>{
 
@@ -35,25 +32,19 @@ function Favorite(){
         window.scrollTo(0,0)
     },[])
 
-    useEffect(()=>{
-        console.log("favList",favList)
-    },[favList])
-
     return (
         <main className="favoriteMain">
-            <div className="titleflex">
 
+            <div className="titleflex">
                 <FavoriteSVG fillColor={'#ffffff'}></FavoriteSVG>
                 <h2>Favorite:</h2>
-                </div>
+            </div>
+            
             <hr/>
 
             <ul className='greyUl'>
 
-                {favList.length==0 &&
-                    <li className='noProduct'>No items in Favorite</li>
-                }
-
+                {favList.length==0 && <li className='noProduct'>No items in Favorite</li>}
 
                 {products.map((product:productsType,key:number)=>{
                     return (
@@ -68,11 +59,8 @@ function Favorite(){
                                 <Link to={`/product/${product.product_id}`} key={key}>
                                     <h3 className='productName'>{product.title}</h3>
                                 </Link>
-                                {/* <div className='favLiRightFlex'> */}
                                 <div className='productDetail'><span>{`$ ${product.price.toLocaleString()}`}</span></div>
                                 <button className='redButton' onClick={()=>removeFromFav(product.product_id)}>Remove</button>
-
-                                {/* </div> */}
                             </div>
 
                         </li>

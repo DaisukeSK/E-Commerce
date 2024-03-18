@@ -1,38 +1,34 @@
 import { useState, useEffect, useRef, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { AppContext, productsType } from '../App';
 import FavoriteSVG from './Header/svg/FavoriteSVG';
 import TruckSVG from './Header/svg/TruckSVG';
+import axios from 'axios'
 
 function Product(props:{product:productsType}){
 
-    const {setShoppingCartQ, backendURL, favList, setFavList}=useContext(AppContext)
+    const { setShoppingCartQ, backendURL, favList, setFavList }=useContext(AppContext)
     const navigate = useNavigate();
-    const [favorite, setFavorite]=useState<boolean>(false)
-    const [currentImg, setCurrentImg]=useState<string>(props.product.images[0])
-    const [estimatedDate, setEstimatedDate]=useState('')
-    const quantity=useRef<HTMLInputElement>(null)
-    const productId:number=props.product.product_id
-    const userId:number=+localStorage.getItem("id")!
+    const [ favorite, setFavorite ]=useState<boolean>(false)
+    const [ currentImg, setCurrentImg ]=useState<string>(props.product.images[0])
+    const [ estimatedDate, setEstimatedDate ]=useState('')
+    const quantity: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
+    const productId: number = props.product.product_id
+    const userId: number = +localStorage.getItem("id")!
 
     const addToFavorite=():void=>{
 
         if(userId){
 
             if(!favorite){
-
                 axios.post(`${backendURL}/favorite/addToFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
-                    // res.status==200 && (setFavorite(true))
                     if(res.status==200){
                         setFavorite(true)
                         setFavList([...favList, productId])
                     }
                 })
-
             }else{
-
                 axios.post(`${backendURL}/favorite/removeFromFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
                     res.status==200 && (setFavorite(false))
@@ -55,7 +51,6 @@ function Product(props:{product:productsType}){
 
             axios.post(`${backendURL}/cart/addToCart`,{user_id:userId,product_id:productId, quantity:quantity.current!.value})
             .then((res)=>{
-                
                 if(res.status==200){
                     setShoppingCartQ((prev:number)=>+quantity.current!.value+prev)
                     alert('Product added to cart')
@@ -69,14 +64,12 @@ function Product(props:{product:productsType}){
 
     useEffect(()=>{
 
-        const rand1=Math.ceil(1+Math.random()*7)
-        const rand2=rand1+Math.ceil(1+Math.random()*2)
-        // const getDate=new Date();
+        const rand1: number = Math.ceil(1+Math.random()*7)
+        const rand2: number = rand1+Math.ceil(1+Math.random()*2)
 
-        const date1=new Date(Date.now() + ( 3600 * 1000 * 24*rand1))
-        const date2=new Date(Date.now() + ( 3600 * 1000 * 24*rand2))
-        // const date1:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand1} - ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
-        // const date2:string=`${getDate.toLocaleString('default', { month: 'short' })} ${getDate.getDate()+rand2}, ${getDate.getFullYear()}`
+        const date1: Date = new Date(Date.now() + ( 3600 * 1000 * 24*rand1))
+        const date2: Date = new Date(Date.now() + ( 3600 * 1000 * 24*rand2))
+        
         switch(true){
             case date1.getFullYear()!==date2.getFullYear():
                 setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()}, ${date1.getFullYear()} - ${date2.toLocaleString('default', { month: 'short' })} ${date2.getDate()}, ${date2.getFullYear()}`)
@@ -86,16 +79,7 @@ function Product(props:{product:productsType}){
                 break;
             default :
                 setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.getDate()}, ${date2.getFullYear()}`)
-
         }
-        
-        // if(date1.getMonth()==date2.getMonth()){
-        //     setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.getDate()}, ${date2.getFullYear()}`)
-        // }else{
-
-        //     setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.toLocaleString('default', { month: 'short' })} ${date2.getDate()}, ${date2.getFullYear()}`)
-        // }
-    
 
         if(userId){
             axios.post(`${backendURL}/favorite/checkFavorite`,{user_id:userId,product_id:productId})
@@ -105,7 +89,6 @@ function Product(props:{product:productsType}){
         }
         window.scrollTo(0, 0);
     },[])
-    // date.toLocaleString('default', { month: 'long' });
 
     return(
         <main className='productDetailPage'>
@@ -136,9 +119,8 @@ function Product(props:{product:productsType}){
                         <FavoriteSVG fillColor={favorite?'rgb(255, 120, 255)':'#aaaaaa'}/>
                     </div>
 
-
                     <h2>{props.product.title}</h2>
-                    {/* <div style={{backgroundColor:favorite?'pink':'#aaaaaa'}} onClick={addToFavorite}>Add to Favorite</div> */}
+                    
                     <div className='addToCartDiv'>
                         <div className='priceDiv'><b>{`$ ${props.product.price.toLocaleString()}`}</b></div>
                         <div className='x'>x</div>
@@ -153,8 +135,6 @@ function Product(props:{product:productsType}){
                         </div>
 
                         <div className='dates'>{estimatedDate}</div>
-
-                        
 
                     </div>
 

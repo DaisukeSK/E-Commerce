@@ -2,25 +2,16 @@ import { useContext, useState } from 'react'
 import { AppContext } from '../../App'
 import { Link,useNavigate } from 'react-router-dom'
 import ShopCart from './ShopCart'
-// import cartPath from '../../../public/shop-cart.svg'
-// import historyPath from '../../../public/history.svg'
-// import favoritePath from '../../../public/heart.svg'
-
-// import settingPath from '../../../public/setting.svg'
-// import logoutPath from '../../../public/logout.svg'
 import FavoriteSVG from './svg/FavoriteSVG'
-// import CartSVG from './svg/CartSVG'
 import Cart2SVG from './svg/Cart2SVG'
 import HistorySVG from './svg/HistorySVG'
 import SettingSVG from './svg/SettingSVG'
-// import LogoutSVG from './svg/LogoutSVG'
 import Logout2SVG from './svg/Logout2SVG'
-
 
 function HeaderMenu(){
 
     const { shoppingCartQ, favList } =useContext(AppContext)
-    const [showHeaderMenu, setShowHeaderMenu]=useState(false)
+    const [ showHeaderMenu, setShowHeaderMenu ]=useState(false)
     const navigate = useNavigate();
 
     const signOut=()=>{
@@ -29,8 +20,6 @@ function HeaderMenu(){
         alert('See you')
         window.location.reload();
     }
-
-    
 
     return (
         <>
