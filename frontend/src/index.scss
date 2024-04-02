@@ -1,7 +1,6 @@
 $headerBG:rgb(82, 79, 158);
 $priceColor:rgb(160, 0, 0);
 $headerMenuColor:rgb(0, 22, 117);
-// $headerMenuColor:rgb(117, 0, 0);
 
 $headerMenuTransition: all .2s ease-in-out;
 
@@ -13,7 +12,6 @@ body {
         margin-top: 100px;
         padding: 0 15%;
         position: relative;
-
     }
 }
 
@@ -57,7 +55,6 @@ a {
         position: absolute;
         top: 50%;
         left: 50%;
-        // transform: translate(-50%, -50%);
         width: 100px;
         height: 100px;
         border-radius: 50%;
@@ -242,7 +239,6 @@ header {
                     }
                 }
                 span {
-                    // margin-top: 5px;
                     color: $headerMenuColor;
                 }
             }
@@ -263,12 +259,9 @@ header {
 
         }
         svg {
-            // transform: scale();
             height: fit-content;
         }
         &:hover {
-            
-            // $color:rgb(188, 197, 238);
             span {
 
                 background-color: $headerMenuColor;
@@ -283,12 +276,9 @@ header {
     .headerRightFlex {
         display: flex;
         align-items: center;
-        // margin-right: 10px;
-        
         .cartSVGflex {
             position: relative;
             margin: 0 10px;
-            // background-color: aqua;
             .cartSVG {
                 transform: scale(80%);
                 path,circle {
@@ -529,7 +519,6 @@ header {
     }
 }
 
-
 .productDetailPage {
     .productDetailFlex {
         display: flex;
@@ -699,8 +688,6 @@ header {
 }
 
 .historyMain {
-
-
 
     .greyUl {
 

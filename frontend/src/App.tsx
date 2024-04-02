@@ -6,7 +6,6 @@ import ShoppingCart from './components/ShoppingCart'
 import ShoppingHistory from './components/ShoppingHistory'
 import Setting from './components/Setting'
 import Header from './components/Header/Header'
-// import Temp from './components/Temp2'
 import Product from './components/Product'
 import Favorite from './components/Favorite'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -117,7 +116,6 @@ export function App() {
                 <div className='spin'></div>
                 <div className='message'>Loading...<br/>It may take some time.</div>
             </div>
-            {/* <Temp></Temp> */}
             <Routes>
                 <Route path={'/'} element={<HomePage></HomePage>}></Route>
                 <Route path={'/search/:category?'} element={<ProductList></ProductList>}></Route>
