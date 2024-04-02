@@ -5,16 +5,16 @@ import { AppContext, categoriesType } from '../../App.tsx'
 
 function HomePage() {
   
-  const { categories } =useContext(AppContext)
+    const { categories } =useContext(AppContext)
 
-  return (
-    <>
-      <SearchBar/>
-      {categories.map((category:categoriesType, key:number)=>{
-        return <Category category={category} key={key}/>
-      })}
-    </>
-  )
+    return (
+        <>
+        <SearchBar/>
+        {categories.map((category:categoriesType, key:number)=>{
+            return <Category category={category} key={key}/>
+        })}
+        </>
+    )
 }
 
 export default HomePage
