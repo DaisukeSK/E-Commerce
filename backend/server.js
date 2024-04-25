@@ -31,29 +31,29 @@ app.use('/history', historyRouter);
 app.use('/favorite', favoriteRouter);
 app.use('/cart', cartRouter);
 
-const testQuery = async (req, res) => {
+// const testQuery = async (req, res) => {
     
-  try {
-    const cart = await pool.query('select * from products')
+//   try {
+//     const cart = await pool.query('select * from products')
 
-    let query=''
-    cart.rows.map((product,key)=>{
+//     let query=''
+//     cart.rows.map((product,key)=>{
 
-      let str=''
-      product.images.map((img,key2)=>{
-        str+=key2==0?`'${img}'`:`,'${img}'`
-      })
+//       let str=''
+//       product.images.map((img,key2)=>{
+//         str+=key2==0?`'${img}'`:`,'${img}'`
+//       })
 
-      query+=`${key==0?'':','}('${product.title.replace("'","''")}','${product.description.replace("'","''")}',${product.price},array[${str}],${product.category_id})`
+//       query+=`${key==0?'':','}('${product.title.replace("'","''")}','${product.description.replace("'","''")}',${product.price},array[${str}],${product.category_id})`
       
-    })
-    // pool2.query(`insert into products (title,description,price,images,category_id) values ${query}`);
-    res.status(200).json(cart.rows)
+//     })
+//     // pool2.query(`insert into products (title,description,price,images,category_id) values ${query}`);
+//     res.status(200).json(cart.rows)
 
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-}
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// }
 
 const testQuery2 = async (req, res) => {
     
