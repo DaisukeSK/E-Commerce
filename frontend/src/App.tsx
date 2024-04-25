@@ -12,7 +12,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage/Homepage.tsx'
 
 const backendURL:string='https://e-commerce-q1y2.onrender.com'
-  // const backendURL:string='http://localhost:8080'
+// const backendURL:string='http://localhost:8080'
 
 export type productsType={
     category_id:number,
