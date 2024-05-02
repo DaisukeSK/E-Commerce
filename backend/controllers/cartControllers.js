@@ -1,4 +1,3 @@
-import pool from '../db/db.js';
 import { connect } from '../server.js';
 
 export const order = async (req, res) => {

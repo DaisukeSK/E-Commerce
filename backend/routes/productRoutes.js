@@ -1,11 +1,11 @@
 import express from 'express';
-import { addCategoriesToDB, getAllCategories, addProductsToDB, searchProducts, getAllProducts } from '../controllers/productControllers.js';
+import { getAllCategories, searchProducts, getAllProducts } from '../controllers/productControllers.js';
 import bodyParser from 'body-parser';
 
 const productRouter = express.Router();
 
-productRouter.post('/addCategoriesToDB', bodyParser.json(), addCategoriesToDB);
-productRouter.post('/addProductsToDB', bodyParser.json(), addProductsToDB);
+// productRouter.post('/addCategoriesToDB', bodyParser.json(), addCategoriesToDB);
+// productRouter.post('/addProductsToDB', bodyParser.json(), addProductsToDB);
 productRouter.post('/searchProducts', bodyParser.json(), searchProducts);
 productRouter.get('/getAllCategories', getAllCategories);
 productRouter.get('/getAllProducts', getAllProducts);

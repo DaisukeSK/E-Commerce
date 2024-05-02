@@ -1,4 +1,3 @@
-import pool from '../db/db.js';
 import { connect } from '../server.js';
 
 export const deleteAccount = async (req, res) => {
@@ -44,12 +43,12 @@ export const changeUserName = async (req, res) => {
 export const changePassword = async (req, res) => {
 
     try {
-        const users = await connect.query(
+        const password = await connect.query(
             'select * from users where user_id=$1',
             [req.body.userId]
             );
 
-        if(users.rows[0].password==req.body.currentPassword){
+        if(password.rows[0].password==req.body.currentPassword){
             const users2 = await connect.query(
                 'update users set password=$1 where user_id=$2 returning *',
                 [req.body.newPassword, req.body.userId]

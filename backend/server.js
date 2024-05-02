@@ -8,7 +8,7 @@ import cartRouter from './routes/cartRoutes.js';
 import pool from './db/db.js';
 // import pool2 from './db/db2.js';
 
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 
 const app=express();
 app.use(cors())
@@ -55,31 +55,31 @@ app.use('/cart', cartRouter);
 //   }
 // }
 
-const testQuery2 = async (req, res) => {
+// const testQuery2 = async (req, res) => {
     
-  try {
-    const cart = await pool.query('select * from categories')
-    console.log("cart.rows:",cart.rows)
+//   try {
+//     const cart = await pool.query('select * from categories')
+//     console.log("cart.rows:",cart.rows)
 
-    let str=''
-    cart.rows.map((category,key)=>{
-      str+=`${key==0?'':','}('${category.category_name.replace("'","''")}')`
-    })
+//     let str=''
+//     cart.rows.map((category,key)=>{
+//       str+=`${key==0?'':','}('${category.category_name.replace("'","''")}')`
+//     })
 
-    const query=`insert into categories (category_name) values ${str}`
+//     const query=`insert into categories (category_name) values ${str}`
 
-    console.log("query:",query)
+//     console.log("query:",query)
 
-    // pool2.query(query);
+//     // pool2.query(query);
 
-    // pool2.query(`insert into products (title,description,price,images,category_id) values ${query}`);
-    res.status(200).json(cart.rows)
+//     // pool2.query(`insert into products (title,description,price,images,category_id) values ${query}`);
+//     res.status(200).json(cart.rows)
 
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-}
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// }
 
-app.post('/testQuery', bodyParser.json(), testQuery2);
+// app.post('/testQuery', bodyParser.json(), testQuery2);
 
 app.listen(8080, ()=>console.log('Server running'))
