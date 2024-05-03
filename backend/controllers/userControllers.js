@@ -18,12 +18,12 @@ export const deleteAccount = async (req, res) => {
 export const changeUserName = async (req, res) => {
 
     try {
-        const users = await connect.query(
+        const user = await connect.query(
             'select user_name from users where user_name=$1',
             [req.body.newName]
             );
 
-        if(users.rows.length==0){
+        if(user.rows.length==0){
 
             const users2 = await connect.query(
                 'update users set user_name=$1 where user_id=$2 returning *',
