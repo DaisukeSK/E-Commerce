@@ -15,7 +15,7 @@ This app has basic functionalities of EC websites such as<br/>
 &nbsp;&nbsp;referring purchase history<br/>
 &nbsp;&nbsp;and so on.<br/>
 
-If you don't feel like creating your own user account, please use this shared account.<br/>
+If you don't feel like creating your own user account, please use the below shared account.<br/>
 &nbsp;&nbsp;username: sample<br/>
 &nbsp;&nbsp;password: 1234<br/>
 

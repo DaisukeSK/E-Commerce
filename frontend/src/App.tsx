@@ -117,15 +117,15 @@ export function App() {
                 <div className='message'>Loading...<br/>It may take some time.</div>
             </div>
             <Routes>
-                <Route path={'/'} element={<HomePage></HomePage>}></Route>
-                <Route path={'/search/:category?'} element={<ProductList></ProductList>}></Route>
-                <Route path={'/cart'} element={<ShoppingCart></ShoppingCart>}></Route>
-                <Route path={'/history'} element={<ShoppingHistory></ShoppingHistory>}></Route>
-                <Route path={'/favorite'} element={<Favorite></Favorite>}></Route>
-                <Route path={'/setting'} element={<Setting></Setting>}></Route>
-                <Route path={'/signIn'} element={<SignIn></SignIn>}></Route>
+                <Route path={'/'} element={<HomePage/>}></Route>
+                <Route path={'/search/:category?'} element={<ProductList/>}></Route>
+                <Route path={'/cart'} element={<ShoppingCart/>}></Route>
+                <Route path={'/history'} element={<ShoppingHistory/>}></Route>
+                <Route path={'/favorite'} element={<Favorite/>}></Route>
+                <Route path={'/setting'} element={<Setting/>}></Route>
+                <Route path={'/signIn'} element={<SignIn/>}></Route>
                 {products.map((product:productsType,key:number)=>{
-                    return <Route key={key} path={`/product/${product.product_id}`} element={<Product product={product}></Product>}></Route>
+                    return <Route key={key} path={`/product/${product.product_id}`} element={<Product product={product}/>}></Route>
                 })}
             </Routes>
         </BrowserRouter>

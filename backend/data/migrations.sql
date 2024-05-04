@@ -1,7 +1,8 @@
 CREATE TABLE users(
     user_id SERIAL PRIMARY KEY,
     user_name TEXT NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    created_date TIMESTAMP NOT NULL
 );
 
 CREATE TABLE categories(

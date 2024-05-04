@@ -90,9 +90,11 @@ export const createAccount = async (req, res) => {
             );
 
         if(getUsers.rows.length==0){
+
+            const date=new Date().toLocaleString()
             const users = await connect.query(
-                'insert into users (user_name,password) values ($1, $2) returning *',
-                [req.body.name, req.body.password]
+                'insert into users (user_name,password,created_date) values ($1, $2, $3) returning *',
+                [req.body.name, req.body.password, date]
                 );
             res.status(200).json(users.rows);
         }else{
