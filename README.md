@@ -16,7 +16,7 @@ This app has basic functionalities of EC websites such as<br/>
 &nbsp;&nbsp;and so on.<br/>
 
 If you don't feel like creating your own user account, please use the below shared account.<br/>
-&nbsp;&nbsp;username: sample<br/>
+&nbsp;&nbsp;username: guest<br/>
 &nbsp;&nbsp;password: 1234<br/>
 
 I'm afraid it may sometimes take some time up to 1 minute to access database since it is using free database.

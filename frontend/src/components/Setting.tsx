@@ -17,41 +17,56 @@ function Setting(){
 
     const changeUserName=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        axios.post(`${backendURL}/user/changeUserName`, {userId:localStorage.getItem('id'), newName:userName.current!.value})
-        .then((res:any)=>{
-            if(res.data=='exist'){
-                setUserNameAlert('That user name is already taken.')
-            }else{
-                localStorage.setItem('user',userName.current!.value)
-                alert('User name changed.')
-                window.location.reload();
-            }
-        })
+
+        if(localStorage.getItem('user')=='guest'){
+            alert('You cannot change the information since this is a shared account.')
+        }else{
+            axios.post(`${backendURL}/user/changeUserName`, {userId:localStorage.getItem('id'), newName:userName.current!.value})
+            .then((res:any)=>{
+                if(res.data=='exist'){
+                    setUserNameAlert('That user name is already taken.')
+                }else{
+                    localStorage.setItem('user',userName.current!.value)
+                    alert('User name changed.')
+                    window.location.reload();
+                }
+            })
+        }
     }
 
     const changePassword=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        axios.post(`${backendURL}/user/changePassword`,{userId:localStorage.getItem('id'), currentPassword:password1.current!.value, newPassword:password2.current!.value})
-        .then((res:any)=>{
-            if(res.data=='no match'){
-                setPasswordAlert('Current password is not right.')
-            }else{
-                alert('Password changed.')
-                window.location.reload();
-            }
-        })
+
+        if(localStorage.getItem('user')=='guest'){
+            alert('You cannot change the information since this is a shared account.')
+        }else{
+            axios.post(`${backendURL}/user/changePassword`,{userId:localStorage.getItem('id'), currentPassword:password1.current!.value, newPassword:password2.current!.value})
+            .then((res:any)=>{
+                if(res.data=='no match'){
+                    setPasswordAlert('Current password is not right.')
+                }else{
+                    alert('Password changed.')
+                    window.location.reload();
+                }
+            })
+        }
     }
 
     const deleteAccount=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        if(confirm('Are you sure that you want to delete account?')){
-            axios.post(`${backendURL}/user/deleteAccount`,{userId:localStorage.getItem('id')})
-            .then(()=>{
-                localStorage.clear();
-                alert('See you around.')
-                navigate('/')
-                window.location.reload();
-            })
+
+        if(localStorage.getItem('user')=='guest'){
+            alert('You cannot change the information since this is a shared account.')
+        }else{
+            if(confirm('Are you sure that you want to delete account?')){
+                axios.post(`${backendURL}/user/deleteAccount`,{userId:localStorage.getItem('id')})
+                .then(()=>{
+                    localStorage.clear();
+                    alert('See you around.')
+                    navigate('/')
+                    window.location.reload();
+                })
+            }
         }
     }
 
