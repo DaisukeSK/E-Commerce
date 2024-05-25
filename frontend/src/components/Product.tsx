@@ -91,59 +91,57 @@ function Product(props:{product:productsType}){
     },[])
 
     return(
-        <main className='productDetailPage'>
+        <main className='productDetailFlex'>
 
-            <div className='productDetailFlex'>
+            <div className='left'>
 
-                <div className='productImgDiv'>
+                <Link to={currentImg}>
+                    <img src={currentImg}/>
+                </Link>
 
-                    <Link to={currentImg}>
-                        <img src={currentImg}/>
-                    </Link>
+                {props.product.images.length>1 &&
+                
+                    <div className='imgDiv'>
 
-                    {props.product.images.length>1 &&
-                    
-                        <div className='imgDiv'>
-
-                            {props.product.images.map((img:string,key:number)=>{
-                                return  <img src={img} key={key} style={{outline:currentImg==img?'5px solid cadetblue':'none'}} onClick={()=>setCurrentImg(img)}/>
-                            })}
-
-                        </div>
-                    }
-
-                </div>
-
-                <div className='productDetail'>
-                    <div className='favDiv' onClick={addToFavorite}>
-                        <FavoriteSVG fillColor={favorite?'rgb(255, 120, 255)':'#aaaaaa'}/>
-                    </div>
-
-                    <h2>{props.product.title}</h2>
-                    
-                    <div className='addToCartDiv'>
-                        <div className='priceDiv'><b>{`$ ${props.product.price.toLocaleString()}`}</b></div>
-                        <div className='x'>x</div>
-                        <input type='number' min='1' defaultValue='1' ref={quantity}/>
-                        <button className='redButton' onClick={addToCart}>Add to Cart</button>
+                        {props.product.images.map((img:string,key:number)=>{
+                            return  <img src={img} key={key} style={{outline:currentImg==img?'5px solid cadetblue':'none'}} onClick={()=>setCurrentImg(img)}/>
+                        })}
 
                     </div>
+                }
 
-                    <div className='estimatedDeriverly'>
-                        <div className='truck'>
-                            <TruckSVG/><div>Estimated Deriverly</div>
-                        </div>
-
-                        <div className='dates'>{estimatedDate}</div>
-
-                    </div>
-
-                    <div className='hr'></div>
-                    <p>{props.product.description}</p>
-
-                </div>
-                    
             </div>
+
+            <div className='right'>
+
+                <div className='favDiv' onClick={addToFavorite}>
+                    <FavoriteSVG fillColor={favorite?'rgb(255, 120, 255)':'#aaaaaa'}/>
+                </div>
+
+                <h2>{props.product.title}</h2>
+                
+                <div className='addToCartDiv'>
+                    <div className='priceDiv'><b>{`$ ${props.product.price.toLocaleString()}`}</b></div>
+                    <div className='x'>x</div>
+                    <input type='number' min='1' defaultValue='1' ref={quantity}/>
+                    <button className='redButton' onClick={addToCart}>Add to Cart</button>
+
+                </div>
+
+                <div className='estimatedDeriverly'>
+                    <div className='truck'>
+                        <TruckSVG/><div>Estimated Deriverly</div>
+                    </div>
+
+                    <div className='dates'>{estimatedDate}</div>
+
+                </div>
+
+                <div className='hr'></div>
+                <p>{props.product.description}</p>
+
+            </div>
+                    
         </main>
     )
 }

@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import SearchBar from '../SearchBar.tsx'
 import Category from './Category.tsx'
+import Banner from './Banner.tsx'
 import { AppContext, categoriesType } from '../../App.tsx'
 
 function HomePage() {
@@ -9,10 +10,11 @@ function HomePage() {
 
     return (
         <>
-        <SearchBar/>
-        {categories.map((category:categoriesType, key:number)=>{
-            return <Category category={category} key={key}/>
-        })}
+            <Banner></Banner>
+            <SearchBar/>
+            {categories.map((category:categoriesType, key:number)=>{
+                return <Category category={category} key={key}/>
+            })}
         </>
     )
 }

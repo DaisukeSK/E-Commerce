@@ -10,6 +10,8 @@ function ProductList() {
 
     useEffect(()=>{
 
+        setProducts([])// This is to avoid showing previous state data for a moment as soon as moving to this page.
+
         location.href.split('/search/')[1] &&
         axios.post(`${backendURL}/product/searchProducts`,{categoryId:location.href.split('/search/')[1],keyword:''})
         .then((res:any)=>{

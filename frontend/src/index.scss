@@ -1,17 +1,31 @@
-$headerBG:rgb(82, 79, 158);
+// $headerBG:rgb(82, 79, 158);
+$headerBG:rgb(39, 39, 39);
 $priceColor:rgb(160, 0, 0);
-$headerMenuColor:rgb(0, 22, 117);
+// $headerMenuColor:rgb(0, 22, 117);
+// $headerMenuColor:rgb(246, 166, 31);
+$A_orange:rgb(246, 166, 31);
 
 $headerMenuTransition: all .2s ease-in-out;
 
 body {
     margin: 0;
     padding: 0;
+    // background-color: #ececec;
+    overflow-x: hidden;
     #root {
         margin: 0;
-        margin-top: 100px;
+        // margin-top: 100px;
         padding: 0 15%;
+        padding-top: 50px;
+        box-sizing: border-box;
         position: relative;
+        height: 100vh;
+        // width: 100vw;
+        min-height: 100vh;
+        
+
+
+        
     }
 }
 
@@ -78,6 +92,7 @@ a {
     color: #ffffff;
     display: flex;
     align-items: center;
+    cursor: pointer;
     svg {
         width: 25px;
         margin: 0 10px;
@@ -109,14 +124,14 @@ a {
 
         span {
 
-            color: $headerMenuColor;
+            color: $A_orange;
             text-decoration: underline;
         }
         svg {
             path, circle {
 
-                fill: $headerMenuColor;
-                stroke: $headerMenuColor;
+                fill: $A_orange;
+                stroke: $A_orange;
             }
         }
     }
@@ -127,10 +142,13 @@ a {
     border: none;
     border-radius: 3px;
     background: linear-gradient(rgb(255, 101, 132),rgb(247, 37, 79));
+    background: linear-gradient(rgb(255, 198, 98), $A_orange);
     color: #ffffff;
     font-size: 1em;
     &:hover {
         background: linear-gradient(rgb(241, 91, 121),rgb(189, 25, 58));
+        background: linear-gradient($A_orange, rgb(233, 147, 0));
+        
     }
 }
 
@@ -141,9 +159,116 @@ a {
     }
 }
 
+.mainBanner {
+    @keyframes moveUp {
+        0% {
+            background-position-y: 60%;
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            background-position-y: 40%;
+            opacity: 0;
+        }
+    }
+    @keyframes moveDown {
+        0% {
+            background-position-y: 30%;
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            background-position-y: 70%;
+            opacity: 0;
+        }
+    }
+    @keyframes moveDown2 {
+        0% {
+            background-position-y: 20%;
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            background-position-y: 50%;
+            opacity: .5;
+        }
+    }
+
+    // @keyframes fade {
+    //     0% {
+    //         opacity: 0;
+    //     }
+    //     25% {
+    //         opacity: 1;
+    //     }
+    //     50% {
+    //         opacity: 1;
+    //     }
+    //     100% {
+    //         opacity: 0;
+    //     }
+    // }
+
+    height: 300px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-size: cover;
+
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    // animation-iteration-count: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    span {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 5px;
+        transition: all 1s ease-in-out;
+    }
+}
+
+.subBanner {
+    height: 300px;
+        width: 100vw;
+        
+        position: absolute;
+        left: 0;
+        top: 50px;
+
+        background-image: url('../public/logo.svg');
+        background-size: 30%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all 5s ease-in-out;
+}
+
 .greyUl {
     list-style: none;
     padding: 0;
+    padding-bottom: 50px;
     li {
         display: flex;
         margin: 30px 0;
@@ -215,35 +340,35 @@ header {
     background-color: $headerBG;
     z-index: 2;
     color: #ffffff;
-    .logo {
+    // .logo {
 
-        a {
+    //     a {
 
-            display: flex;
-            align-items: center;
-            svg {
-                path {
-                    fill: #ffffff;
-                    transition: $headerMenuTransition;
-                }
-            }
-            span {
-                margin-top: 5px;
-                color: #ffffff;
-                transition: $headerMenuTransition;
-            }
-            &:hover {
-                svg {
-                    path {
-                        fill: $headerMenuColor;
-                    }
-                }
-                span {
-                    color: $headerMenuColor;
-                }
-            }
-        }
-    }
+    //         display: flex;
+    //         align-items: center;
+    //         svg {
+    //             path {
+    //                 fill: #ffffff;
+    //                 transition: $headerMenuTransition;
+    //             }
+    //         }
+    //         span {
+    //             margin-top: 5px;
+    //             color: #ffffff;
+    //             transition: $headerMenuTransition;
+    //         }
+    //         &:hover {
+    //             svg {
+    //                 path {
+    //                     fill: $headerMenuColor;
+    //                 }
+    //             }
+    //             span {
+    //                 color: $headerMenuColor;
+    //             }
+    //         }
+    //     }
+    // }
 
     .signIn {
         height: fit-content;
@@ -264,11 +389,11 @@ header {
         &:hover {
             span {
 
-                background-color: $headerMenuColor;
+                background-color: $A_orange;
                 color: #ffffff;
             }
             path {
-                fill: $headerMenuColor;
+                fill: $A_orange;
             }
         }
     }
@@ -323,6 +448,7 @@ header {
     .titleflex {
         display: flex;
         align-items: center;
+        margin-top: 50px;
         svg {
             margin-right: 10px;
             .cartG {
@@ -345,9 +471,18 @@ header {
 }
 
 .signInMain {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+        // display: block;
+        // margin: 0 auto;
+    }
     .signInDiv, .signUpDiv {
         width: 40%;
-        margin: 0 auto;
+        // margin: 0 auto;
         h1 {
             text-align: center;
         }
@@ -360,13 +495,29 @@ header {
                 color: rgb(224, 0, 0);
                 text-align: center;
             }
-            input {
+            input:not(input[type='submit']) {
                 display: block;
                 width: 100%;
+                border: none;
+                // border-bottom: 1px solid grey;
+                // width: 20px;
+                padding: 5px;
                 margin-bottom: 20px;
+                background-color: #ccccccc0;
+                font-size: 1rem;
+                &::placeholder {
+                    // font-size: 1rem;
+                    color: #00000055;
+                }
+                &:focus {
+                    outline: none;
+                }
             }
             input[type='submit'] {
+
+                
                 width: fit-content;
+                display: block;
                 margin: 0 auto 20px;
             }
         }
@@ -386,10 +537,10 @@ header {
     width: fit-content;
     height: 35px;
     display: flex;
-    margin: 0 auto;
+    margin: 50px auto 0;
     select, input[type='text'] {
         border-radius: 5px;
-        border: 1px rgb(255, 134, 47) solid;
+        border: 1px $A_orange solid;
         
         font-size: 1em;
         &:focus {
@@ -405,17 +556,22 @@ header {
     button {
         width: 50px;
         border-radius: 0 5px 5px 0;
-        background-color: rgb(255, 134, 47);
-        border: 1px rgb(255, 134, 47) solid;
+        background-color: $A_orange;
+        border: 1px $A_orange solid;
         border-left: none;
         background-image: url('../public/search.svg');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         &:hover {
-            background-color: rgb(224, 94, 0);
+            background-color: rgb(231, 146, 0);
         }
     }
+}
+
+.categorizedProduct:last-child {
+    padding-bottom: 50px;
+    // outline: 5px solid red;
 }
 
 .categorizedProduct {
@@ -423,11 +579,19 @@ header {
 
     h2 {
         width: 500px;
-        background: linear-gradient(90deg, $headerBG, transparent);
+        background: linear-gradient(90deg, rgb(103, 60, 204), transparent) ;
+        // background-image: url('../public/arrow.png');
+        // background-size: 80px;
+        // background-position: left;
+        // background-repeat: no-repeat;
         margin: 0;
         margin-bottom: 15px;
         padding: 5px 30px;
         color: #ffffff;
+        // color: $A_orange;
+        // color: #000000;
+        // padding-left: 70px;
+        // text-decoration: underline;
     }
 
     .flex {
@@ -519,58 +683,82 @@ header {
     }
 }
 
-.productDetailPage {
-    .productDetailFlex {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 50px;
-        h2 {
-            margin-top: 0;
-        }
-        .productImgDiv {
+.productDetailFlex {
+    // width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    // margin-bottom: 50px;
+    // .productDetailFlex {
+        // display: flex;
+        // justify-content: space-between;
+        // margin-bottom: 50px;
+        
+        .left {
 
-            min-width: 50%;
-            max-width: 50%;
+            // min-width: 50%;
+            // max-width: 50%;
+            width: 50%;
+            // background-color: #2cff5a7c;
             margin-right: 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             
             a {
+                width: fit-content;
                 display: block;
-                margin-bottom: 30px;
+                // margin: 0 auto;
+                // margin-bottom: 30px;
                 img {
-                    width: 100%;
+                    max-width: 100%;
+                    max-height: 50vh;
                     border-radius: 10px;
+                    display: block;
                 }
             }
 
             .imgDiv {
+                margin-top: 30px;
                 display: flex;
                 justify-content: space-around;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                // max-width: 50%;
                 img {
                     width: 16%;
                 }
             }
         }
-        .productDetail {
+        .right {
+            width: 40%;
+            // background-color: #dc2cff3b;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             .favDiv {
-
-                margin-left: 90%;
+                
+                // margin-left: 90%;
+                margin: 0 0 0 auto;
                 svg {
                     transform: scale(70%);
                 }
+            }
+            h2 {
+                margin-top: 0;
             }
             .addToCartDiv {
                 display: flex;
                 align-items: center;
                 background-color: rgb(218, 241, 234);
                 padding: 5px 30px;
+                white-space: nowrap;
                 .priceDiv {
                     font-size: 1.2em;
                     color: $priceColor;
+                    
                 }
                 .x {
                     margin-left: 10px;
@@ -612,7 +800,7 @@ header {
                 margin-top: 20px;
             }
         }
-    }
+    // }
 }
 
 .itemFound {
@@ -632,6 +820,7 @@ header {
         box-sizing: border-box;
         border-radius: 7px;
         a {
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -659,7 +848,12 @@ header {
 .settingMain {
     display: flex;
     justify-content: space-between;
-    margin-top: 180px;
+    width: 100%;
+    // background-color: #dc2cff52;
+    position: relative;
+    top: 50%;
+    // left: 50%;
+    transform: translateY(-50%);
     form {
         background-color: rgb(236, 236, 236);
         width: 30%;

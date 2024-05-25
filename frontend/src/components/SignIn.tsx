@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppContext, getShoppingCart } from '../App'
 import axios from 'axios'
+import logo from '../../public/logo.svg'
 
 type newAccountType={ name:string, password1:string, password2:string }
 type signInType={ name:string, password:string }
@@ -88,16 +89,15 @@ function SignIn(){
 
     return (
         <main className='signInMain'>
+            <img src={logo} width='30%'/>
             {signIn?
                 <>
                     <div className='signInDiv'>
                         <h1>Sign In</h1>
                         <form onSubmit={(e)=>submitHandler(e)}>
                             <div className='alert'>{loginFailed?'You entered incorrect information.':''}</div>
-                            <label>User Name:</label>
-                            <input type='text' required onChange={(e)=>onchangeSignIn(e)}/>
-                            <label>Password:</label>
-                            <input type='password' required onChange={(e)=>onchangeSignIn(e)}/>
+                            <input type='text' placeholder='User Name' required onChange={(e)=>onchangeSignIn(e)}/>
+                            <input type='password' placeholder='Password' required onChange={(e)=>onchangeSignIn(e)}/>
                             <input className='redButton' type='submit' value='Sign In'/>
                         </form>
                     </div>
@@ -109,12 +109,9 @@ function SignIn(){
                         <h1>Sign Up</h1>
                         <form onSubmit={(e)=>submitHandler(e)}>
                             <div className='alert'>{signUpFailed}</div>
-                            <label>User Name:</label>
-                            <input className='name' type='input' required onChange={(e)=>onchangeSignUp(e)}/>
-                            <label>Password:</label>
-                            <input className='p1' type='password' required onChange={(e)=>onchangeSignUp(e)}/>
-                            <label>Password {`(`}Confirm{`)`}:</label>
-                            <input className='p2' type='password' required onChange={(e)=>onchangeSignUp(e)}/>
+                            <input type='input' placeholder='User Name' required onChange={(e)=>onchangeSignUp(e)}/>
+                            <input type='password' placeholder='Password' required onChange={(e)=>onchangeSignUp(e)}/>
+                            <input type='password' placeholder='Password (Confirm)' required onChange={(e)=>onchangeSignUp(e)}/>
                             <input className='redButton' type='submit' value='Sign Up'/>
                         </form>
                     </div>

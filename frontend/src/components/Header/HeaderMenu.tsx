@@ -37,7 +37,7 @@ function HeaderMenu(){
                 </div>
 
                 <svg onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)} className='arrowSVG' width='16' height='8'>
-                    <path d='m0,0 h16 l-8,8' fill={showHeaderMenu?'navy':'#ffffff'}/>
+                    <path d='m0,0 h16 l-8,8' fill={showHeaderMenu?'rgb(246, 166, 31)':'#ffffff'}/>
                 </svg>
 
             </div>
