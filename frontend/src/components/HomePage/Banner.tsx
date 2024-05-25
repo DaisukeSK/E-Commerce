@@ -33,6 +33,7 @@ function Banner() {
     },[count])
 
     const predicate:string = count==0?'better':count==7?'easy':count==14?'valuable':'amazing'
+    const color:string = count==0?'#0C53D9':count==7?'#35BB1A':count==14?'#FF3E3E':'#F6A61F'
 
     return (
         <>
@@ -44,12 +45,7 @@ function Banner() {
                 }}
             >
                 <span style={{opacity:count>=25?0:1}}>Make your life</span>
-                <span
-                    style={{
-                        opacity: count>=25?0:opacity,
-                        color: count==7?'#FFAF25':count==14?'#FF3E3E':'#FFFFFF'
-                    }}
-                >&nbsp;{predicate}</span>
+                <span style={{opacity: count>=25?0:opacity, color: color}}>&nbsp;{predicate}</span>
 
             </div>
 

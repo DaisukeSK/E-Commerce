@@ -112,22 +112,27 @@ export function App() {
         <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ,setLoaded,loaded,setSearchResult,searchResult}}>
         <BrowserRouter>
             <Header/>
-            <div className='loading' style={{display:loaded?'none':'block'}}>
-                <div className='spin'></div>
-                <div className='message'>Loading...<br/>It may take some time.</div>
-            </div>
-            <Routes>
-                <Route path={'/'} element={<HomePage/>}></Route>
-                <Route path={'/search/:category?'} element={<ProductList/>}></Route>
-                <Route path={'/cart'} element={<ShoppingCart/>}></Route>
-                <Route path={'/history'} element={<ShoppingHistory/>}></Route>
-                <Route path={'/favorite'} element={<Favorite/>}></Route>
-                <Route path={'/setting'} element={<Setting/>}></Route>
-                <Route path={'/signIn'} element={<SignIn/>}></Route>
-                {products.map((product:productsType,key:number)=>{
-                    return <Route key={key} path={`/product/${product.product_id}`} element={<Product product={product}/>}></Route>
-                })}
-            </Routes>
+            {loaded?
+                <Routes>
+                    <Route path={'/'} element={<HomePage/>}></Route>
+                    <Route path={'/search/:category?'} element={<ProductList/>}></Route>
+                    <Route path={'/cart'} element={<ShoppingCart/>}></Route>
+                    <Route path={'/history'} element={<ShoppingHistory/>}></Route>
+                    <Route path={'/favorite'} element={<Favorite/>}></Route>
+                    <Route path={'/setting'} element={<Setting/>}></Route>
+                    <Route path={'/signIn'} element={<SignIn/>}></Route>
+                    {products.map((product:productsType,key:number)=>{
+                        return <Route key={key} path={`/product/${product.product_id}`} element={<Product product={product}/>}></Route>
+                    })}
+                </Routes>
+                :
+                <div className='loading'>
+                    <div className='spin'></div>
+                    <div className='message'>Loading...<br/>It may take some time.</div>
+                </div>
+            
+            }
+            
         </BrowserRouter>
         </AppContext.Provider>
     )
