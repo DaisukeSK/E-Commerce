@@ -109,9 +109,9 @@ function SignIn(){
                         <h1>Sign Up</h1>
                         <form onSubmit={(e)=>submitHandler(e)}>
                             <div className='alert'>{signUpFailed}</div>
-                            <input type='input' placeholder='User Name' required onChange={(e)=>onchangeSignUp(e)}/>
-                            <input type='password' placeholder='Password' required onChange={(e)=>onchangeSignUp(e)}/>
-                            <input type='password' placeholder='Password (Confirm)' required onChange={(e)=>onchangeSignUp(e)}/>
+                            <input className='name' type='input' placeholder='User Name' required onChange={(e)=>onchangeSignUp(e)}/>
+                            <input className='p1' type='password' placeholder='Password' required onChange={(e)=>onchangeSignUp(e)}/>
+                            <input className='p2' type='password' placeholder='Password (Confirm)' required onChange={(e)=>onchangeSignUp(e)}/>
                             <input className='redButton' type='submit' value='Sign Up'/>
                         </form>
                     </div>

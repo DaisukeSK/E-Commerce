@@ -1,4 +1,20 @@
 import { connect } from '../server.js';
+// import { subtle } from 'crypto'
+
+// const sha256 = async(name, password)=>{
+
+//     const p = password.split('')
+//     for(let i=0; i<=3; i++){
+//         p.splice(2*i+1, 0, name[i])
+//     }
+//     const merged = p.join('')
+    
+//     console.log("merged",merged)
+
+//     const uint8  = new TextEncoder().encode(merged)
+//     const digest = await subtle.digest('SHA-256', uint8)
+//     return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2, '0')).join('')
+// }
 
 export const deleteAccount = async (req, res) => {
 
