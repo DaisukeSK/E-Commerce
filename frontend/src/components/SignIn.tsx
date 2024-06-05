@@ -7,6 +7,23 @@ import logo from '../../public/logo.svg'
 type newAccountType={ name:string, password1:string, password2:string }
 type signInType={ name:string, password:string }
 
+export const sha256 = async(password:string)=>{
+
+    const p:Array<string> = password.split('')
+
+    p.splice(p.length-1, 0, p[0])
+    p.splice(p.length-3, 0, p[1])
+
+    p.splice(1, 0, p[p.length-1])
+    p.splice(3, 0, p[p.length-3])
+    
+    const merged:string = p.join('')
+
+    const uint8:Uint8Array  = new TextEncoder().encode(merged)
+    const digest:ArrayBuffer = await crypto.subtle.digest('SHA-256', uint8)
+    return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2, '0')).join('')
+}
+
 function SignIn(){
 
     const { setShoppingCartQ, backendURL } =useContext(AppContext)
@@ -55,25 +72,40 @@ function SignIn(){
         e.preventDefault()
 
         if(signInInfo.name!){
-            axios.post(`${backendURL}/user/signin`,{name:signInInfo.name,password:signInInfo.password})
-            .then((res:any)=>{
-                res.data=='no match' && (setLoginFailed(true))
-                redirectToHomepage(res)
+            sha256(signInInfo.password)
+            .then((hash:string)=>{
+
+                axios.post(`${backendURL}/user/signin`,{name:signInInfo.name, password:hash})
+                .then((res:any)=>{
+                    res.data=='no match' && (setLoginFailed(true))
+                    redirectToHomepage(res)
+                })
+
             })
         }else{
+
             switch(true){
                 case newAccountInfo.password1!==newAccountInfo.password2:
                     setSignUpFailed('Passwords do not match.');
                     break;
 
+                case newAccountInfo.password1.length<6:
+                    setSignUpFailed('At least 6 characters required.');
+                    break;
+
                 default:
-                    axios.post(`${backendURL}/user/createAccount`,{name:newAccountInfo.name,password:newAccountInfo.password1})
-                    .then((res:any)=>{
-                        if(res.data=='exist'){
-                            setSignUpFailed('That user name is already taken.');
-                        }else if(res.request.status==200){
-                            redirectToHomepage(res)
-                        }
+                    sha256(newAccountInfo.password1)
+                    .then((hash:string)=>{
+
+                        axios.post(`${backendURL}/user/createAccount`,{name:newAccountInfo.name, password:hash})
+                        .then((res:any)=>{
+                            if(res.data=='exist'){
+                                setSignUpFailed('That user name is already taken.');
+                            }else if(res.request.status==200){
+                                redirectToHomepage(res)
+                            }
+                        })
+                        
                     })
             }
         }

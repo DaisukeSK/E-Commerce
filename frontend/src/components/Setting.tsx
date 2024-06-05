@@ -2,6 +2,7 @@ import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
+import { sha256 } from "./SignIn";
 
 function Setting(){
 
@@ -37,18 +38,30 @@ function Setting(){
     const changePassword=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
 
-        if(localStorage.getItem('user')=='guest'){
-            alert('You cannot change the information since this is a shared account.')
-        }else{
-            axios.post(`${backendURL}/user/changePassword`,{userId:localStorage.getItem('id'), currentPassword:password1.current!.value, newPassword:password2.current!.value})
-            .then((res:any)=>{
-                if(res.data=='no match'){
-                    setPasswordAlert('Current password is not right.')
-                }else{
-                    alert('Password changed.')
-                    window.location.reload();
-                }
-            })
+        switch(true){
+            case localStorage.getItem('user')=='guest':
+                alert('You cannot change the information since this is a shared account.')
+                break;
+            
+            case password2.current!.value.length<6:
+                setPasswordAlert('At least 6 characters required.')
+                break;
+            
+            default:
+                Promise.all([sha256(password1.current!.value), sha256(password2.current!.value)])
+                .then(data=>{
+
+                    axios.post(`${backendURL}/user/changePassword`,{userId:localStorage.getItem('id'), currentPassword:data[0], newPassword:data[1]})
+                    .then((res:any)=>{
+                        if(res.data=='no match'){
+                            setPasswordAlert('Current password is not right.')
+                        }else{
+                            alert('Password changed.')
+                            window.location.reload();
+                        }
+                    })
+                    
+                })
         }
     }
 
