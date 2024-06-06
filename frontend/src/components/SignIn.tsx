@@ -24,6 +24,34 @@ export const sha256 = async(password:string)=>{
     return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2, '0')).join('')
 }
 
+export const escapeSpecilChars=(string:string | undefined):string | undefined=>{
+
+    let str=string;
+    // .replaceAll() method is not available somehow.
+    while(str!.includes('<')||str!.includes('>')||str!.includes('&')||str!.includes('"')||str!.includes("'")){
+        str=str!.replace('<','*lt')
+        .replace('>','*gt')
+        .replace('&','*amp')
+        .replace('"','*quot')
+        .replace("'",'*apos')
+    }
+    return str;
+}
+
+export const decode=(string:string):string=>{
+
+    let str=string;
+    // .replaceAll method is not available somehow.
+    while(str.includes('*lt')||str.includes('*gt')||str.includes('*amp')||str.includes('*quot')||str.includes('*apos')){
+        str=str.replace('*lt','<')
+        .replace('*gt','>')
+        .replace('*amp','&')
+        .replace('*quot','"')
+        .replace('*apos',"'")
+    }
+    return str;
+}
+
 function SignIn(){
 
     const { setShoppingCartQ, backendURL } =useContext(AppContext)
@@ -61,7 +89,7 @@ function SignIn(){
 
         if(res.data[0].user_id && res.request.status==200){
             localStorage.setItem('id',res.data[0].user_id);
-            localStorage.setItem('user',res.data[0].user_name);
+            localStorage.setItem('user',decode(res.data[0].user_name));
             getShoppingCart(res.data[0].user_id,setShoppingCartQ)
             navigate("/")
             window.location.reload()
@@ -75,7 +103,7 @@ function SignIn(){
             sha256(signInInfo.password)
             .then((hash:string)=>{
 
-                axios.post(`${backendURL}/user/signin`,{name:signInInfo.name, password:hash})
+                axios.post(`${backendURL}/user/signin`,{name:escapeSpecilChars(signInInfo.name), password:hash})
                 .then((res:any)=>{
                     res.data=='no match' && (setLoginFailed(true))
                     redirectToHomepage(res)
@@ -93,11 +121,15 @@ function SignIn(){
                     setSignUpFailed('At least 6 characters required.');
                     break;
 
+                case newAccountInfo.name.includes('*'):
+                    setSignUpFailed('Special character * cannot be used.');
+                    break;
+
                 default:
                     sha256(newAccountInfo.password1)
                     .then((hash:string)=>{
 
-                        axios.post(`${backendURL}/user/createAccount`,{name:newAccountInfo.name, password:hash})
+                        axios.post(`${backendURL}/user/createAccount`,{name:escapeSpecilChars(newAccountInfo.name), password:hash})
                         .then((res:any)=>{
                             if(res.data=='exist'){
                                 setSignUpFailed('That user name is already taken.');

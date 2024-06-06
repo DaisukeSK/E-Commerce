@@ -2,6 +2,7 @@ import { useContext, useRef } from 'react'
 import { AppContext, categoriesType } from '../App'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { escapeSpecilChars } from './SignIn'
 
 function SearchBar(){
 
@@ -14,7 +15,7 @@ function SearchBar(){
 
     const searchProducts=()=>{
         navigate('/search')
-        axios.post(`${backendURL}/product/searchProducts`,{categoryId:categoryRef.current?.value,keyword:keywordRef.current?.value})
+        axios.post(`${backendURL}/product/searchProducts`,{categoryId:categoryRef.current?.value,keyword:escapeSpecilChars(keywordRef.current?.value)})
         .then((res:any)=>{
             setProducts([...res.data])
             setSearchResult({searched:true,result:res.data.length})

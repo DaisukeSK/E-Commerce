@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
-import { sha256 } from "./SignIn";
+import { sha256, escapeSpecilChars, decode } from "./SignIn";
 
 function Setting(){
 
@@ -19,20 +19,29 @@ function Setting(){
     const changeUserName=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
 
-        if(localStorage.getItem('user')=='guest'){
-            alert('You cannot change the information since this is a shared account.')
-        }else{
-            axios.post(`${backendURL}/user/changeUserName`, {userId:localStorage.getItem('id'), newName:userName.current!.value})
-            .then((res:any)=>{
-                if(res.data=='exist'){
-                    setUserNameAlert('That user name is already taken.')
-                }else{
-                    localStorage.setItem('user',userName.current!.value)
-                    alert('User name changed.')
-                    window.location.reload();
-                }
-            })
+        switch(true){
+
+            case localStorage.getItem('user')=='guest':
+                alert('You cannot change the information since this is a shared account.')
+                break;
+
+            case userName.current!.value.includes('*'):
+                setUserNameAlert('Special character * cannot be used.')
+                break;
+
+            default:
+                axios.post(`${backendURL}/user/changeUserName`, {userId:localStorage.getItem('id'), newName:escapeSpecilChars(userName.current!.value)})
+                .then((res:any)=>{
+                    if(res.data=='exist'){
+                        setUserNameAlert('That user name is already taken.')
+                    }else{
+                        localStorage.setItem('user',decode(res.data[0].user_name));
+                        alert('User name changed.')
+                        window.location.reload();
+                    }
+                })
         }
+        
     }
 
     const changePassword=(e:React.FormEvent<HTMLFormElement>)=>{
