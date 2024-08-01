@@ -10,7 +10,7 @@ function ProductList() {
 
     useEffect(()=>{
 
-        setProducts([])// This is to avoid showing previous state data for a moment as soon as moving to this page.
+        setProducts([])
 
         location.href.split('/search/')[1] &&
         axios.post(`${backendURL}/product/searchProducts`,{categoryId:location.href.split('/search/')[1],keyword:''})
@@ -29,7 +29,7 @@ function ProductList() {
 
                 {products.map((product:productsType, key:number)=>{
                     return (
-                        <li className='productLi'>
+                        <li className='productLi' key={key}>
                             <Link to={`/product/${product.product_id}`} key={key} id={`productID_${product.product_id}`}>
                                 <img src={product.images[0]}/>
                                 <div className='titleDiv'>{product.title}</div>
