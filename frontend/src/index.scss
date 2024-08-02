@@ -358,9 +358,7 @@ aside {
         // padding-left: 30px;
         li {
             padding: 5px 0;
-            a {
-
-            }
+            
             &::marker {
                 display: none;
             }
@@ -523,10 +521,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    img {
-        // display: block;
-        // margin: 0 auto;
-    }
+    
     .signInDiv, .signUpDiv {
         width: 40%;
         // margin: 0 auto;
