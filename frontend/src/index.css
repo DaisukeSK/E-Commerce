@@ -602,15 +602,13 @@ header ul li {
 }
 
 .productDetailFlex {
-  width: 90%;
   height: 100%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 .productDetailFlex .left {
   width: 50%;
-  margin-right: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -638,6 +636,7 @@ header ul li {
 }
 .productDetailFlex .right {
   width: 40%;
+  margin: 0 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;

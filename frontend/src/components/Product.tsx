@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AppContext, productsType } from '../App';
 import FavoriteSVG from './Header/svg/FavoriteSVG';
 import TruckSVG from './Header/svg/TruckSVG';
+import Aside from './Aside';
 import axios from 'axios'
 
 function Product(props:{product:productsType}){
@@ -93,6 +94,7 @@ function Product(props:{product:productsType}){
     return(
         <main className='productDetailFlex'>
 
+            <Aside></Aside>
             <div className='left'>
 
                 <Link to={currentImg}>
