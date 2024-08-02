@@ -1,43 +1,39 @@
 import { useContext, useRef } from 'react'
 import { AppContext, categoriesType } from '../App'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { escapeSpecilChars } from './SignIn'
 
 function SearchBar(){
 
-    const { setProducts, categories, backendURL, setSearchResult } =useContext(AppContext)
+    const { categories } =useContext(AppContext)
 
     const categoryRef: React.RefObject<HTMLSelectElement> = useRef<HTMLSelectElement>(null)
     const keywordRef: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
 
     const navigate=useNavigate()
 
-    const searchProducts=()=>{
-        navigate('/search')
-        axios.post(`${backendURL}/product/searchProducts`,{categoryId:categoryRef.current?.value,keyword:escapeSpecilChars(keywordRef.current?.value)})
-        .then((res:any)=>{
-            setProducts([...res.data])
-            setSearchResult({searched:true,result:res.data.length})
-        })
+    let categoryId
+    if(location.href.includes('&category=')){
+        categoryId=+location.href.split('&category=')[1]
+    }else{
+        categoryId=+location.href.split('/category/')[1]
     }
 
-    const categoryId=+location.href.split('/search/')[1]
-    window.scrollTo(0, 0);
-
     return (
-        <div className="searchBar">
+        <>
+            <div className="searchBar">
 
-            <select name='category' ref={categoryRef}>
-                <option value='all'>All</option>
-                {categories.map((category:categoriesType, key:number)=>{
-                    return <option key={key} value={category.category_id} selected={category.category_id==categoryId?true:false}>{category.category_name}</option>
-                })}
+                <select name='category' ref={categoryRef}>
+                    <option value='all'>All</option>
+                    {categories.map((category:categoriesType, key:number)=>{
+                        return <option key={key} value={category.category_id} selected={category.category_id==categoryId?true:false}>{category.category_name}</option>
+                    })}
 
-            </select>
-            <input type='text' placeholder=' Type keywords.' ref={keywordRef}/>
-            <button onClick={searchProducts}></button>
-        </div>
+                </select>
+                <input type='text' placeholder=' Type keywords.' ref={keywordRef}/>
+                <button onClick={()=>navigate(`/search?keyword=${keywordRef.current?.value}&category=${categoryRef.current?.value}`)}></button>
+            </div>
+            <hr className='underSearchBar'/>
+        </>
     )
 }
 

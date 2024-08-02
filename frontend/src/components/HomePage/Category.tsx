@@ -1,20 +1,10 @@
-import { useState, useEffect, useContext } from 'react'
-import axios from 'axios';
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { productsType, categoriesType, AppContext } from '../../App.tsx'
 
 function Category(props:{category:categoriesType}) {
 
-    const { backendURL, setSearchResult } = useContext(AppContext)
-
-    const [ categorizedProducts, setcategorizedProducts ]=useState<Array<productsType>>([])
-
-    useEffect(()=>{
-        axios.post(`${backendURL}/product/searchProducts`,{categoryId:props.category.category_id,keyword:''})
-        .then((res:any)=>{
-        setcategorizedProducts([...res.data])
-        })
-    },[])
+    const { products } = useContext(AppContext)
 
     return (
         <div className='categorizedProduct'>
@@ -23,8 +13,8 @@ function Category(props:{category:categoriesType}) {
 
             <div className='flex'>
 
-                {categorizedProducts!.map((product:productsType, key:number)=>{
-                    return key<4 && (
+                {products.map((product:productsType, key:number)=>{
+                    return props.category.category_id==product.category_id && (
                         <Link to={`/product/${product.product_id}`} className='imgA' key={key}>
                             <h3>{product.title}</h3>
                             <img src={product.images[0]}/>
@@ -32,7 +22,7 @@ function Category(props:{category:categoriesType}) {
                     )
                 })}
 
-                <Link to={`/search/${props.category.category_id}`} className='seeMore' onClick={()=>setSearchResult({searched:false,result:0})}>
+                <Link to={`/category/${props.category.category_id}`} className='seeMore'>
                     <svg width='10' height='16'>
                         <path d='m0 0 v16 l10 -8'/>
                     </svg>

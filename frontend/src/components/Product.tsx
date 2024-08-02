@@ -136,8 +136,7 @@ function Product(props:{product:productsType}){
                     <div className='dates'>{estimatedDate}</div>
 
                 </div>
-
-                <div className='hr'></div>
+                <hr/>
                 <p>{props.product.description}</p>
 
             </div>

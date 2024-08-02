@@ -2,7 +2,8 @@ import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
-import { sha256, escapeSpecilChars, decode } from "./SignIn";
+import { escapeSpecilChars, decode } from "./Functions";
+import { sha256 } from './Functions'
 
 function Setting(){
 

@@ -41,7 +41,7 @@ export type cartType={
     user_id:number
 }
 
-export type AppContextType={
+type AppContextType={
     backendURL:string,
     products:Array<productsType>,
     setProducts: React.Dispatch<React.SetStateAction<productsType[]>>,
@@ -49,17 +49,7 @@ export type AppContextType={
     shoppingCartQ:number,
     setShoppingCartQ: React.Dispatch<React.SetStateAction<number>>,
     favList:Array<number>,
-    setFavList: React.Dispatch<React.SetStateAction<number[]>>,
-    setLoaded: React.Dispatch<React.SetStateAction<boolean>>,
-    loaded:boolean,
-    setSearchResult: React.Dispatch<React.SetStateAction<{
-        searched: boolean;
-        result: number;
-    }>>,
-    searchResult:{
-        searched: boolean;
-        result: number;
-    }
+    setFavList: React.Dispatch<React.SetStateAction<number[]>>
 }
 
 export const AppContext=createContext<AppContextType>({} as AppContextType)
@@ -82,8 +72,7 @@ export function App() {
     const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
     const [favList, setFavList]=useState<Array<number>>([])
     const [loaded, setLoaded]= useState<boolean>(false)
-    const [searchResult, setSearchResult]= useState<{searched:boolean,result:number}>({searched:false,result:0})
-    
+
     useEffect(()=>{
 
         axios.all([
@@ -109,13 +98,15 @@ export function App() {
     },[])
 
     return (
-        <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ,setLoaded,loaded,setSearchResult,searchResult}}>
+        <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
         <BrowserRouter>
             <Header/>
+            
             {loaded?
                 <Routes>
                     <Route path={'/'} element={<HomePage/>}></Route>
-                    <Route path={'/search/:category?'} element={<ProductList/>}></Route>
+                    <Route path={'/search/:search?'} element={<ProductList/>}></Route>
+                    <Route path={'/category/:category?'} element={<ProductList/>}></Route>
                     <Route path={'/cart'} element={<ShoppingCart/>}></Route>
                     <Route path={'/history'} element={<ShoppingHistory/>}></Route>
                     <Route path={'/favorite'} element={<Favorite/>}></Route>
