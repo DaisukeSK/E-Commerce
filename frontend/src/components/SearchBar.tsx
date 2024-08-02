@@ -11,7 +11,7 @@ function SearchBar(){
 
     const navigate=useNavigate()
 
-    let categoryId
+    let categoryId:number
     if(location.href.includes('&category=')){
         categoryId=+location.href.split('&category=')[1]
     }else{
