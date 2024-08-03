@@ -10,6 +10,9 @@ import Product from './components/Product'
 import Favorite from './components/Favorite'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage/Homepage.tsx'
+import Banner from './components/HomePage/Banner.tsx';
+
+import Aside from './components/Aside.tsx';
 
 const backendURL:string='https://e-commerce-q1y2.onrender.com'
 // const backendURL:string='http://localhost:8080'
@@ -49,7 +52,8 @@ type AppContextType={
     shoppingCartQ:number,
     setShoppingCartQ: React.Dispatch<React.SetStateAction<number>>,
     favList:Array<number>,
-    setFavList: React.Dispatch<React.SetStateAction<number[]>>
+    setFavList: React.Dispatch<React.SetStateAction<number[]>>,
+    // setLoc: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const AppContext=createContext<AppContextType>({} as AppContextType)
@@ -95,6 +99,7 @@ export function App() {
                 setFavList([...favListArray])
             })
         getShoppingCart(+localStorage.getItem('id')!,setShoppingCartQ)
+
     },[])
 
     return (
@@ -103,25 +108,30 @@ export function App() {
             <Header/>
             
             {loaded?
-                <Routes>
-                    <Route path={'/'} element={<HomePage/>}></Route>
-                    <Route path={'/search/:search?'} element={<ProductList/>}></Route>
-                    <Route path={'/category/:category?'} element={<ProductList/>}></Route>
-                    <Route path={'/cart'} element={<ShoppingCart/>}></Route>
-                    <Route path={'/history'} element={<ShoppingHistory/>}></Route>
-                    <Route path={'/favorite'} element={<Favorite/>}></Route>
-                    <Route path={'/setting'} element={<Setting/>}></Route>
-                    <Route path={'/signIn'} element={<SignIn/>}></Route>
-                    {products.map((product:productsType,key:number)=>{
-                        return <Route key={key} path={`/product/${product.product_id}`} element={<Product product={product}/>}></Route>
-                    })}
-                </Routes>
+                <>
+                    <Banner/>
+                    <main>
+                        <Aside/>
+                        <Routes>
+                            <Route path={'/'} element={<HomePage/>}></Route>
+                            <Route path={'/search/:search?'} element={<ProductList/>}></Route>
+                            <Route path={'/category/:category?'} element={<ProductList/>}></Route>
+                            <Route path={'/cart'} element={<ShoppingCart/>}></Route>
+                            <Route path={'/history'} element={<ShoppingHistory/>}></Route>
+                            <Route path={'/favorite'} element={<Favorite/>}></Route>
+                            <Route path={'/setting'} element={<Setting/>}></Route>
+                            <Route path={'/signIn'} element={<SignIn/>}></Route>
+                            {products.map((product:productsType,key:number)=>{
+                                return <Route key={key} path={`/product/${product.product_id}`} element={<Product product={product}/>}></Route>
+                            })}
+                        </Routes>
+                    </main>
+                </>
                 :
                 <div className='loading'>
                     <div className='spin'></div>
                     <div className='message'>Loading...<br/>It may take some time.</div>
                 </div>
-            
             }
             
         </BrowserRouter>

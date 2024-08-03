@@ -29,14 +29,15 @@ function Favorite(){
             })
             setFavList([...favListArray])
         })
+
         window.scrollTo(0,0)
     },[])
 
     return (
-        <main className="favoriteMain">
+        <section className="favoriteSection">
 
             <div className="titleflex">
-                <FavoriteSVG fillColor={'#ffffff'}></FavoriteSVG>
+                <FavoriteSVG fillColor={'#ffffff'}/>
                 <h2>Favorite:</h2>
             </div>
             
@@ -67,7 +68,7 @@ function Favorite(){
                     )
                 })}
             </ul>
-        </main>
+        </section>
     )
 }
 

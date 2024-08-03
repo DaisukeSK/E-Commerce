@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AppContext, productsType } from '../App';
 import FavoriteSVG from './Header/svg/FavoriteSVG';
 import TruckSVG from './Header/svg/TruckSVG';
-import Aside from './Aside';
 import axios from 'axios'
 
 function Product(props:{product:productsType}){
@@ -88,13 +87,12 @@ function Product(props:{product:productsType}){
                 res.data=='exist' && (setFavorite(true))
             })
         }
-        window.scrollTo(0, 0);
+
     },[])
 
     return(
-        <main className='productDetailFlex'>
+        <section className='productDetail'>
 
-            <Aside></Aside>
             <div className='left'>
 
                 <Link to={currentImg}>
@@ -102,14 +100,19 @@ function Product(props:{product:productsType}){
                 </Link>
 
                 {props.product.images.length>1 &&
+
+                    <>
+                        <hr/>
+                    
+                        <div className='imgDiv'>
+
+                            {props.product.images.map((img:string,key:number)=>{
+                                return  <img src={img} key={key} style={{outline:currentImg==img?'5px solid cadetblue':'none'}} onClick={()=>setCurrentImg(img)}/>
+                            })}
+
+                        </div>
+                    </>
                 
-                    <div className='imgDiv'>
-
-                        {props.product.images.map((img:string,key:number)=>{
-                            return  <img src={img} key={key} style={{outline:currentImg==img?'5px solid cadetblue':'none'}} onClick={()=>setCurrentImg(img)}/>
-                        })}
-
-                    </div>
                 }
 
             </div>
@@ -143,7 +146,7 @@ function Product(props:{product:productsType}){
 
             </div>
                     
-        </main>
+        </section>
     )
 }
 

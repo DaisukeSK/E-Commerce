@@ -27,12 +27,13 @@ function ShoppingHistory(){
         .then((res:any)=>{
             setHistory([...res.data])
         })
+
     },[])
 
     let sum=0
 
     return (
-        <main className='historyMain'>
+        <section className='historySection'>
 
             <div className="titleflex">
                 <HistorySVG/>
@@ -91,7 +92,7 @@ function ShoppingHistory(){
                     )
                 })}
             </ul>
-        </main>
+        </section>
     )
 }
 

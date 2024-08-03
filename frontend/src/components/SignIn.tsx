@@ -108,7 +108,7 @@ function SignIn(){
     }
 
     return (
-        <main className='signInMain'>
+        <section className='signInSection'>
             <img src={logo} width='30%'/>
             {signIn?
                 <>
@@ -121,7 +121,7 @@ function SignIn(){
                             <input className='redButton' type='submit' value='Sign In'/>
                         </form>
                     </div>
-                    <div className='alert'>Don't have an account yet? <span onClick={()=>toggle(false)}>Sign Up.</span></div>
+                    <div className='toggle'>Don't have an account yet? <span onClick={()=>toggle(false)}>Sign Up.</span></div>
                 </>
                 :
                 <>
@@ -135,10 +135,10 @@ function SignIn(){
                             <input className='redButton' type='submit' value='Sign Up'/>
                         </form>
                     </div>
-                    <div className='alert'>Already have an account? <span onClick={()=>toggle(true)}>Sign In.</span></div>
+                    <div className='toggle'>Already have an account? <span onClick={()=>toggle(true)}>Sign In.</span></div>
                 </>
             }
-        </main>
+        </section>
     )
 }
 

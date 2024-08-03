@@ -3,13 +3,11 @@ import { AppContext, productsType } from '../App'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import SearchBar from './SearchBar.tsx'
-import Aside from './Aside.tsx'
 import { escapeSpecilChars } from './Functions.tsx'
 
 function ProductList() {
 
     const { products, setProducts, backendURL } =useContext(AppContext)
-
     const [searchResult, setSearchResult]= useState<{searched:boolean,result:number}>({searched:false,result:0})
 
     const loc = useLocation();
@@ -43,32 +41,27 @@ function ProductList() {
     },[loc])
 
     return (
-        <div className='productListFlex'>
+        <section className='productList'>
 
-            <Aside></Aside>
+            <SearchBar/>
 
-            <div className='right'>
+            {searchResult.searched && <div className='itemFound'>{`${searchResult.result} item(s) found.`}</div>}
+            <ul>
 
-                <SearchBar/>
-
-                {searchResult.searched && <div className='itemFound'>{`${searchResult.result} item(s) found.`}</div>}
-                <ul>
-
-                    {products.map((product:productsType, key:number)=>{
-                        return (
-                            <li key={key}>
-                            {/* <div>id:{product.product_id}</div> */}
-                                <Link to={`/product/${product.product_id}`} key={key} id={`productID_${product.product_id}`}>
-                                    <img src={product.images[0]}/>
-                                    <div className='titleDiv'>{product.title}</div>
-                                    <div className='priceDiv'>$ {product.price.toLocaleString()}</div>
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
-        </div>
+                {products.map((product:productsType, key:number)=>{
+                    return (
+                        <li key={key}>
+                        {/* <div>id:{product.product_id}</div> */}
+                            <Link to={`/product/${product.product_id}`} key={key} id={`productID_${product.product_id}`}>
+                                <img src={product.images[0]}/>
+                                <div className='titleDiv'>{product.title}</div>
+                                <div className='priceDiv'>$ {product.price.toLocaleString()}</div>
+                            </Link>
+                        </li>
+                    )
+                })}
+            </ul>
+        </section>
     )
 }
 

@@ -94,7 +94,7 @@ function Setting(){
     }
 
     return (
-        <main className="settingMain">
+        <section className="setting">
 
             <form onSubmit={(e)=>changeUserName(e)}>
                 <h2>Change User Name</h2>
@@ -119,7 +119,7 @@ function Setting(){
                 <input className='redButton' type='submit' value='Delete Account'/>
             </form>
             
-        </main>
+        </section>
     )
 }
 

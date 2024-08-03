@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react'
-
-import BG1 from '../../../public/room.png'
-import BG2 from '../../../public/cooking.png'
-import BG3 from '../../../public/hiking.png'
-import BG4 from '../../../public/grass.png'
+import { useLocation } from 'react-router-dom'
+import { BannerSec } from '../StyledComponents.tsx'
+import logo from '../../../public/logo.svg'
 
 function Banner() {
   
     const [ count, setCount ] = useState<number>(0)
     const [ opacity, setOpacity ] = useState<number>(0)
+
+    const loc=useLocation()
     
     useEffect(()=>{
         
-        [7,14,21,25,26].map(num=>{
+        [7,14,21,25,24,26].map(num=>{
             setTimeout(()=>{
                 setCount(num)
             },num*1000)
@@ -32,25 +32,19 @@ function Banner() {
         
     },[count])
 
-    const predicate:string = count==0?'better':count==7?'easy':count==14?'valuable':'amazing'
-    const color:string = count==0?'#0C53D9':count==7?'#35BB1A':count==14?'#FF3E3E':'#F6A61F'
+    return !loc.pathname.split('/')[1] && (
+       
+        <BannerSec opacity={opacity} count={count}>
 
-    return (
-        <>
-            <div
-                className='mainBanner'
-                style={{
-                    backgroundImage: `url(${count==0?BG1:count==7?BG2:count==14?BG3:BG4})`,
-                    animationName:`${count==7?'moveDown':count>=21?'moveDown2':'moveUp'}`
-                }}
-            >
-                <span style={{opacity:count>=25?0:1}}>Make your life</span>
-                <span style={{opacity: count>=25?0:opacity, color: color}}>&nbsp;{predicate}</span>
-
+            <div>
+                Make your life&nbsp;
+                <span>{count==0?'better':count==7?'easy':count==14?'valuable':'amazing'}</span>
             </div>
+            
+            <img src={logo}/>
 
-            <div style={{opacity:count==26?1:0}} className='subBanner'></div>
-        </>
+        </BannerSec>
+
     )
 }
 

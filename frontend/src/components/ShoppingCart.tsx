@@ -44,12 +44,13 @@ function ShoppingCart(){
         .then((res:any)=>{
             setShoppingCart([...res.data])
         })
+
     },[])
 
     let sum=0;
 
     return (
-        <main className="cartMain">
+        <section className="cartSection">
 
             <div className="titleflex">
                 <Cart2SVG/>
@@ -98,7 +99,7 @@ function ShoppingCart(){
                     </>
                 }
             </ul>
-        </main>
+        </section>
     )
 }
 
