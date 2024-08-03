@@ -23,7 +23,7 @@ function HeaderMenu(){
 
     return (
         <>
-            <div className='headerRightFlex'>
+            <div className='headerRight'>
 
                 <div><b>Hello, {localStorage.getItem('user')}</b></div>
 

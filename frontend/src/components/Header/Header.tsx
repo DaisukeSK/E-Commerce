@@ -9,7 +9,7 @@ function Header(){
         <header>
             
             <Link to={'/'}>
-                <img src={logo} width='80px'/>
+                <img className='leftLogo' src={logo}/>
             </Link>
 
             {localStorage.getItem('id')?
