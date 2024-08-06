@@ -1,10 +1,8 @@
 import express from 'express';
-import { getAllCategories, searchProducts, getAllProducts } from '../controllers/productControllers.js';
-import bodyParser from 'body-parser';
+import { getAllCategories, getAllProducts } from '../controllers/productControllers.js';
 
 const productRouter = express.Router();
 
-productRouter.post('/searchProducts', bodyParser.json(), searchProducts);
 productRouter.get('/getAllCategories', getAllCategories);
 productRouter.get('/getAllProducts', getAllProducts);
 

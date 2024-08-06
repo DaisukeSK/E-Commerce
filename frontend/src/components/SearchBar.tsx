@@ -6,14 +6,15 @@ function SearchBar(){
 
     const { categories } =useContext(AppContext)
 
+    const navigate=useNavigate()
+
     const categoryRef: React.RefObject<HTMLSelectElement> = useRef<HTMLSelectElement>(null)
     const keywordRef: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
 
-    const navigate=useNavigate()
+    const search:number=+location.search.split('&category=')[1]
+    const pathname:number=+location.pathname.split('/category/')[1]
 
-    const href:string=location.href
-
-    const categoryId:number=href.includes('&category=')?+href.split('&category=')[1]:+href.split('/category/')[1]
+    const categoryId:number=search?search:pathname
 
     return (
         <>
@@ -24,8 +25,8 @@ function SearchBar(){
                     {categories.map((category:categoriesType, key:number)=>{
                         return <option key={key} value={category.category_id} selected={category.category_id==categoryId?true:false}>{category.category_name}</option>
                     })}
-
                 </select>
+
                 <input type='text' placeholder=' Type keywords.' ref={keywordRef}/>
                 <button onClick={()=>navigate(`/search?keyword=${keywordRef.current?.value}&category=${categoryRef.current?.value}`)}></button>
             </div>

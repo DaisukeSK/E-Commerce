@@ -8,10 +8,11 @@ import axios from 'axios'
 function Product(props:{product:productsType}){
 
     const { setShoppingCartQ, backendURL, favList, setFavList }=useContext(AppContext)
-    const navigate = useNavigate();
     const [ favorite, setFavorite ]=useState<boolean>(false)
     const [ currentImg, setCurrentImg ]=useState<string>(props.product.images[0])
     const [ estimatedDate, setEstimatedDate ]=useState('')
+    const navigate = useNavigate();
+
     const quantity: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
     const productId: number = props.product.product_id
     const userId: number = +localStorage.getItem("id")!
@@ -31,7 +32,6 @@ function Product(props:{product:productsType}){
             }else{
                 axios.post(`${backendURL}/favorite/removeFromFavorite`,{user_id:userId,product_id:productId})
                 .then((res)=>{
-                    res.status==200 && (setFavorite(false))
                     if(res.status==200){
                         setFavorite(false)
                         setFavList((prev:Array<number>) => {
@@ -42,7 +42,7 @@ function Product(props:{product:productsType}){
             }
             
         }else{
-            navigate('/signin')
+            navigate('/signIn')
         }
     }
 
@@ -58,7 +58,7 @@ function Product(props:{product:productsType}){
             })
 
         }else{
-            navigate('/signin')
+            navigate('/signIn')
         }
     }
 
@@ -81,12 +81,7 @@ function Product(props:{product:productsType}){
                 setEstimatedDate(`${date1.toLocaleString('default', { month: 'short' })} ${date1.getDate()} - ${date2.getDate()}, ${date2.getFullYear()}`)
         }
 
-        if(userId){
-            axios.post(`${backendURL}/favorite/checkFavorite`,{user_id:userId,product_id:productId})
-            .then((res)=>{
-                res.data=='exist' && (setFavorite(true))
-            })
-        }
+        (userId && favList.includes(productId)) && (setFavorite(true))
 
     },[])
 

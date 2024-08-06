@@ -4,10 +4,10 @@ export const getFavorite = async (req, res) => {
 
     try {
         const fav = await connect.query(
-            'select * from favorite where user_id=$1',
+            'select product_id from favorite where user_id=$1',
             [req.body.userId]
             );
-        res.status(200).json(fav.rows)
+        res.status(200).json(fav.rows.map(fav=>fav.product_id))
 
     } catch (err) {
         res.status(500).send(err.message);
@@ -36,20 +36,6 @@ export const removeFromFavorite = async (req, res) => {
             [req.body.user_id,req.body.product_id]
             );
         res.status(200).json(fav.rows)
-
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
-}
-
-export const checkFavorite = async (req, res) => {
-    
-    try {
-        const fav = await connect.query(
-            'select * from favorite where user_id=$1 and product_id=$2',
-            [req.body.user_id,req.body.product_id]
-            );
-        res.status(200).json(fav.rows.length?'exist':'no exist')
 
     } catch (err) {
         res.status(500).send(err.message);

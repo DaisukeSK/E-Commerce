@@ -1,47 +1,42 @@
 import { useContext, useEffect, useState } from 'react'
-import { AppContext, productsType } from '../App'
+import { AppContext, categoriesType, productsType } from '../App'
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from './SearchBar.tsx'
 
 function ProductList() {
 
-    const { products } =useContext(AppContext)
-    const [category, setCategory] =useState<number|null>(null)
-    const [hitProducts, setHitProducts] =useState<Array<number>>([])
+    const { products, categories } =useContext(AppContext)
+    const [ category, setCategory ] =useState<number>(-1)
+    const [ searchResult, setSearchResult ] =useState<Array<number>>([])
 
     const loc = useLocation();
-
+    
     useEffect(()=>{
 
-        setCategory(null)
-        setHitProducts([])
-        
-        if(location.href.includes('/search?')){
-            const params=location.href.split('/search?keyword=')[1].split('&category=')
+        setCategory(-1)
+        setSearchResult([])
 
-            const keyeword:string=params[0].toUpperCase()
-            const categoryArray:Array<number>=params[1]=='all'?[1,2,3,4,5,6,7,8,9,10]:[+params[1]]
+        const allCategories:Array<number>=categories.map((category:categoriesType)=>category.category_id)
 
+        if(loc.pathname.split('/')[1]=='search'){
+            
+            const params:Array<string>=loc.search.split('?keyword=')[1].split('&category=')
+            const keyword:string=params[0].toUpperCase()
+            const categoryArray:Array<number>=params[1]=='all'?allCategories:[+params[1]]
             const resultArray:Array<number>=[]
 
             products.map((product:productsType)=>{
 
-                if(
-                    categoryArray.includes(product.category_id)
-                    &&
-                    (
-                        product.title.toUpperCase().includes(keyeword) ||
-                        product.description.toUpperCase().includes(keyeword)
-                    )
-                ){ resultArray.push(product.product_id) }
+                (categoryArray.includes(product.category_id) &&
+                    (product.title.toUpperCase().includes(keyword) || product.description.toUpperCase().includes(keyword))
+                ) && resultArray.push(product.product_id)
 
             })
 
-            setHitProducts([...resultArray])
+            setSearchResult([...resultArray,-1])
 
         }else{
-
-            setCategory(+location.href.split('/category/')[1])
+            setCategory(+loc.pathname.split('/category/')[1])
         }
 
         window.scrollTo(0, 0);
@@ -53,14 +48,14 @@ function ProductList() {
 
             <SearchBar/>
 
-            {!category && <div className='itemFound'>{`${hitProducts.length} item(s) found.`}</div>}
+            {searchResult.length>0 && <div className='itemFound'>{`${searchResult.length-1} item(s) found.`}</div>}
             <ul>
 
                 {products.map((product:productsType, key:number)=>{
-                    return (product.category_id==category || hitProducts.includes(product.product_id)) && (
+                    return (product.category_id==category || searchResult.includes(product.product_id)) && (
                         <li key={key}>
                         {/* <div>id:{product.product_id}</div> */}
-                            <Link to={`/product/${product.product_id}`} key={key} id={`productID_${product.product_id}`}>
+                            <Link to={`/product/${product.product_id}`} key={key}>
                                 <img src={product.images[0]}/>
                                 <div className='titleDiv'>{product.title}</div>
                                 <div className='priceDiv'>$ {product.price.toLocaleString()}</div>

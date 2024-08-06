@@ -19,7 +19,6 @@ const backendURL:string='https://e-commerce-q1y2.onrender.com'
 
 export type productsType={
     category_id:number,
-    category_name:string,
     description:string,
     images:Array<string>,
     price:number,
@@ -28,40 +27,18 @@ export type productsType={
     product_quantity?:number
 }
 
+export type cartType =productsType & {product_quantity:number,user_id:number}
+
+export type historyType =cartType & {shopping_date:string}
+
 export type categoriesType={
     category_id:number,
     category_name:string
 }
 
-export type cartType={
-    category_id:number,
-    description:string,
-    images:Array<string>,
-    price:number,
-    product_id:number,
-    title:string,
-    product_quantity:number,
-    shopping_cart_id:number,
-    user_id:number
-}
-
-export type historyType={
-    category_id:number,
-    description:string,
-    history_id:number,
-    images:Array<string>,
-    price:number,
-    product_id:number,
-    product_quantity:number,
-    shopping_date:string,
-    title:string,
-    user_id:number
-}
-
 type AppContextType={
     backendURL:string,
     products:Array<productsType>,
-    setProducts: React.Dispatch<React.SetStateAction<productsType[]>>,
     categories:Array<categoriesType>,
     shoppingCartQ:number,
     setShoppingCartQ: React.Dispatch<React.SetStateAction<number>>,
@@ -107,19 +84,14 @@ export function App() {
 
         localStorage.getItem('id') &&
         axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')})
-            .then((res:any)=>{
-                let favListArray:Array<number>=[]
-                res.data.map((data:{favorite_id:number,user_id:number,product_id:number})=>{
-                    favListArray.push(data.product_id)
-                })
-                setFavList([...favListArray])
-            })
+            .then((res:any)=>setFavList([...res.data]))
+
         getShoppingCart(+localStorage.getItem('id')!,setShoppingCartQ)
 
     },[])
 
     return (
-        <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ,shoppingCart, setShoppingCart}}>
+        <AppContext.Provider value={{favList,setFavList,backendURL,products, categories,shoppingCartQ, setShoppingCartQ,shoppingCart, setShoppingCart}}>
         <BrowserRouter>
             <Header/>
             

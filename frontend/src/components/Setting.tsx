@@ -101,7 +101,7 @@ function Setting(){
                 <div className="alertDiv">{userNameAlert}</div>
                 <label>New User Name</label>
                 <input type='text' ref={userName} required/>
-                <input className='redButton' type='submit' value='Submit'/>
+                <input className='redButton' type='submit' value='Change'/>
             </form>
 
             <form onSubmit={(e)=>changePassword(e)}>
@@ -111,7 +111,7 @@ function Setting(){
                 <input type='password' ref={password1} required/>
                 <label>New Password</label>
                 <input type='password' ref={password2} required/>
-                <input className='redButton' type='submit' value='Submit'/>
+                <input className='redButton' type='submit' value='Change'/>
             </form>
 
             <form onSubmit={(e)=>deleteAccount(e)}>
