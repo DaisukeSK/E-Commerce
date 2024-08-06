@@ -1,21 +1,8 @@
 import { useState, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { AppContext } from "../App";
-import HistorySVG from "./Header/svg/HistorySVG";
-
-type historyType={
-    category_id:number,
-    description:string,
-    history_id:number,
-    images:Array<string>,
-    price:number,
-    product_id:number,
-    product_quantity:number,
-    shopping_date:string,
-    title:string,
-    user_id:number
-}
+import { AppContext, historyType } from "../../App";
+import CommonLi from "./CommonLi";
+import HistorySVG from "../Header/svg/HistorySVG";
 
 function ShoppingHistory(){
 
@@ -27,7 +14,6 @@ function ShoppingHistory(){
         .then((res:any)=>{
             setHistory([...res.data])
         })
-
     },[])
 
     let sum=0
@@ -42,11 +28,9 @@ function ShoppingHistory(){
 
             <hr/>
 
-            <ul className='greyUl'>
+            <ul>
 
-                {history.length==0 &&
-                    <li className='noProduct'>No items in History</li>
-                }
+                {history.length==0 && <li className='noProduct'>No items in History</li>}
 
                 {history.map((product:historyType,key:number)=>{
 
@@ -68,17 +52,7 @@ function ShoppingHistory(){
                                 </h3>
                             }
 
-                            <li>
-                                <Link className='imgA' to={`/product/${product.product_id}`}>
-                                    <img src={product.images[0]}/>
-                                </Link>
-                                <div className='flexRight'>
-                                    <Link to={`/product/${product.product_id}`}>
-                                        <h3 className='productName'>{`${product.title}`}</h3>
-                                    </Link>
-                                    <div>{`$ ${product.price.toLocaleString()} x ${product.product_quantity} = `}<span>{`$ ${(product.product_quantity*product.price).toLocaleString()}`}</span></div>
-                                </div>
-                            </li>
+                            <CommonLi product={product} which='history'></CommonLi>
 
                             {product.shopping_date!==history[key+1]?.shopping_date &&
                                 <>

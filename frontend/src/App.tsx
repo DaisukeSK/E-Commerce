@@ -2,12 +2,12 @@ import { useState, useEffect, createContext } from 'react'
 import axios from 'axios';
 import ProductList from './components/ProductList'
 import SignIn from './components/SignIn'
-import ShoppingCart from './components/ShoppingCart'
-import ShoppingHistory from './components/ShoppingHistory'
+import ShoppingCart from './components/OptionMenus/ShoppingCart.tsx'
+import ShoppingHistory from './components/OptionMenus/ShoppingHistory.tsx'
 import Setting from './components/Setting'
 import Header from './components/Header/Header'
 import Product from './components/Product'
-import Favorite from './components/Favorite'
+import Favorite from './components/OptionMenus/Favorite.tsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage/Homepage.tsx'
 import Banner from './components/HomePage/Banner.tsx';
@@ -24,7 +24,8 @@ export type productsType={
     images:Array<string>,
     price:number,
     product_id:number,
-    title:string
+    title:string,
+    product_quantity?:number
 }
 
 export type categoriesType={
@@ -44,6 +45,19 @@ export type cartType={
     user_id:number
 }
 
+export type historyType={
+    category_id:number,
+    description:string,
+    history_id:number,
+    images:Array<string>,
+    price:number,
+    product_id:number,
+    product_quantity:number,
+    shopping_date:string,
+    title:string,
+    user_id:number
+}
+
 type AppContextType={
     backendURL:string,
     products:Array<productsType>,
@@ -53,7 +67,8 @@ type AppContextType={
     setShoppingCartQ: React.Dispatch<React.SetStateAction<number>>,
     favList:Array<number>,
     setFavList: React.Dispatch<React.SetStateAction<number[]>>,
-    // setLoc: React.Dispatch<React.SetStateAction<string>>
+    shoppingCart: Array<cartType>,
+    setShoppingCart: React.Dispatch<React.SetStateAction<cartType[]>>
 }
 
 export const AppContext=createContext<AppContextType>({} as AppContextType)
@@ -76,6 +91,7 @@ export function App() {
     const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
     const [favList, setFavList]=useState<Array<number>>([])
     const [loaded, setLoaded]= useState<boolean>(false)
+    const [ shoppingCart, setShoppingCart ]=useState<Array<cartType>>([])
 
     useEffect(()=>{
 
@@ -103,7 +119,7 @@ export function App() {
     },[])
 
     return (
-        <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ}}>
+        <AppContext.Provider value={{favList,setFavList,backendURL,products,setProducts,categories,shoppingCartQ, setShoppingCartQ,shoppingCart, setShoppingCart}}>
         <BrowserRouter>
             <Header/>
             

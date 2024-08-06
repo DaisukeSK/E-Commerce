@@ -1,39 +1,47 @@
 import { useContext, useEffect, useState } from 'react'
 import { AppContext, productsType } from '../App'
 import { Link, useLocation } from 'react-router-dom'
-import axios from 'axios'
 import SearchBar from './SearchBar.tsx'
-import { escapeSpecilChars } from './Functions.tsx'
 
 function ProductList() {
 
-    const { products, setProducts, backendURL } =useContext(AppContext)
-    const [searchResult, setSearchResult]= useState<{searched:boolean,result:number}>({searched:false,result:0})
+    const { products } =useContext(AppContext)
+    const [category, setCategory] =useState<number|null>(null)
+    const [hitProducts, setHitProducts] =useState<Array<number>>([])
 
     const loc = useLocation();
 
     useEffect(()=>{
 
-        setProducts([])
+        setCategory(null)
+        setHitProducts([])
         
         if(location.href.includes('/search?')){
             const params=location.href.split('/search?keyword=')[1].split('&category=')
-            console.log("params0",params[0])
-            console.log("params1",params[1])
 
-            axios.post(`${backendURL}/product/searchProducts`,{categoryId:params[1],keyword:escapeSpecilChars(params[0])})
-            .then((res:any)=>{
-                console.log("res",res)
-                setProducts([...res.data])
-                setSearchResult({searched:true,result:res.data.length})
+            const keyeword:string=params[0].toUpperCase()
+            const categoryArray:Array<number>=params[1]=='all'?[1,2,3,4,5,6,7,8,9,10]:[+params[1]]
+
+            const resultArray:Array<number>=[]
+
+            products.map((product:productsType)=>{
+
+                if(
+                    categoryArray.includes(product.category_id)
+                    &&
+                    (
+                        product.title.toUpperCase().includes(keyeword) ||
+                        product.description.toUpperCase().includes(keyeword)
+                    )
+                ){ resultArray.push(product.product_id) }
+
             })
+
+            setHitProducts([...resultArray])
+
         }else{
 
-            axios.post(`${backendURL}/product/searchProducts`,{categoryId:location.href.split('/category/')[1],keyword:''})
-            .then((res:any)=>{
-                setProducts([...res.data])
-            })
-            setSearchResult({searched:false,result:0})
+            setCategory(+location.href.split('/category/')[1])
         }
 
         window.scrollTo(0, 0);
@@ -45,11 +53,11 @@ function ProductList() {
 
             <SearchBar/>
 
-            {searchResult.searched && <div className='itemFound'>{`${searchResult.result} item(s) found.`}</div>}
+            {!category && <div className='itemFound'>{`${hitProducts.length} item(s) found.`}</div>}
             <ul>
 
                 {products.map((product:productsType, key:number)=>{
-                    return (
+                    return (product.category_id==category || hitProducts.includes(product.product_id)) && (
                         <li key={key}>
                         {/* <div>id:{product.product_id}</div> */}
                             <Link to={`/product/${product.product_id}`} key={key} id={`productID_${product.product_id}`}>

@@ -5,7 +5,7 @@ import BG3 from '../../public/hiking.png'
 import BG4 from '../../public/grass.png'
 
 export const BannerSec=Styled.section<{opacity:number, count:number}>`
-@keyframes moveUp {
+    @keyframes moveUp {
         0% {
             background-position-y: 60%;
             opacity: 0;
@@ -59,8 +59,6 @@ export const BannerSec=Styled.section<{opacity:number, count:number}>`
     height: 300px;
     width: 100%;
     position: relative;
-    // left: 0;
-    // transform: translateX(-50%);
 
     background-image: url(${props=>props.count==0?BG1:props.count==7?BG2:props.count==14?BG3:BG4});
     animation-name: ${props=>props.count==7?'moveDown':props.count>=21?'moveDown2':'moveUp'};
@@ -71,16 +69,11 @@ export const BannerSec=Styled.section<{opacity:number, count:number}>`
     animation-timing-function: ease-in-out;
     animation-fill-mode: both;
 
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-
     div, img {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    
     }
 
     div {
@@ -90,13 +83,13 @@ export const BannerSec=Styled.section<{opacity:number, count:number}>`
         text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 5px;
         opacity: ${props=>props.count>=25?0:1};
         transition: all 1s ease-in-out;
+        white-space: nowrap;
     
         span {
             
             opacity: ${props=>props.opacity};
             color: ${props=>props.count==0?'#0C53D9':props.count==7?'#35BB1A':props.count==14?'#FF3E3E':'#F6A61F'};
             transition: all 1s ease-in-out;
-            
         }
     }
     
@@ -131,19 +124,13 @@ export const StyledAside=Styled.aside`
     position: sticky;
     top: 50px;
     left: 0;
-    // padding-top: 50px;
     box-sizing: border-box;
     background-color: #d3d3d3;
     border-right: 1px solid rgb(189, 189, 189);
     ul {
-        // list-style: none;
-        // padding: 0;
-        // padding-left: 30px;
         li {
             padding: 5px 0;
             
         }
     }
-
-
-    `;
+`;
