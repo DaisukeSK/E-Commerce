@@ -9,28 +9,43 @@ function Banner() {
     const [ opacity, setOpacity ] = useState<number>(0)
 
     const loc=useLocation()
+
+    useEffect(()=>{
+
+        let interval:any;
+
+        setCount(0)
+        setOpacity(0)
+        
+        if(!loc.pathname.split('/')[1]){
+
+            let i=0;
     
-    useEffect(()=>{
-        
-        [7,14,21,25,24,26].map(num=>{
-            setTimeout(()=>{
-                setCount(num)
-            },num*1000)
-        })
-        
-    },[])
+            interval=setInterval(()=>{
 
-    useEffect(()=>{
+                i++
+                // console.log("count",i)
 
-        setTimeout(()=>{
-            setOpacity(1)
-        },2000)
+                i==28 && clearInterval(interval)
 
-        setTimeout(()=>{
-            setOpacity(0)
-        },6000)
+                switch(true){
+                    case (i==7 || i==14 || i==21 || i==24 || i==25 || i==26):
+                        setCount(i);
+                        break;
+                    case (i==2 || i==9 || i==16 || i==23):
+                        setOpacity(1)
+                        break;
+                    case (i==6 || i==13 || i==20):
+                        setOpacity(0)
+                        break;
+                }
+
+            },1000);
+        }
+
+        return () => clearInterval(interval);
         
-    },[count])
+    },[loc])
 
     return !loc.pathname.split('/')[1] && (
        

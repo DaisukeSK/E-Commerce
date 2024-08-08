@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext, cartType } from "../../App";
 import Cart2SVG from "../Header/svg/Cart2SVG";
 import CommonLi from "./CommonLi";
@@ -25,13 +25,6 @@ function ShoppingCart(){
             }
         })
     }
-
-    useEffect(()=>{
-        axios.post(`${backendURL}/cart/getCart`,{user_id:userId})
-        .then((res:any)=>{
-            setShoppingCart([...res.data])
-        })
-    },[])
 
     let sum=0;
 

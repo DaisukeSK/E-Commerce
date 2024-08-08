@@ -50,17 +50,6 @@ type AppContextType={
 
 export const AppContext=createContext<AppContextType>({} as AppContextType)
 
-export const getShoppingCart=(id:number, setter:(q:number)=>void):void=>{
-    axios.post(`${backendURL}/cart/getCart`,{user_id:id})
-    .then((res:any)=>{
-        let num:number=0
-        res.data.map((q:cartType)=>{
-        num+=q.product_quantity
-        })
-        setter(num)
-    })
-}
-
 export function App() {
 
     const [products, setProducts] = useState<Array<productsType>>([])
@@ -82,11 +71,28 @@ export function App() {
             setLoaded(true)
         }))
 
-        localStorage.getItem('id') &&
-        axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')})
-            .then((res:any)=>setFavList([...res.data]))
+        if(localStorage.getItem('id')){
 
-        getShoppingCart(+localStorage.getItem('id')!,setShoppingCartQ)
+            setLoaded(false)
+
+            axios.all([
+                axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')}),
+                axios.post(`${backendURL}/cart/getCart`,{user_id:+localStorage.getItem('id')!})
+            ])
+            .then(axios.spread((obj1,obj2)=>{
+                setFavList([...obj1.data])
+                setShoppingCart([...obj2.data])
+
+                let num:number=0
+                obj2.data.map((q:cartType)=>{
+                num+=q.product_quantity
+                })
+                setShoppingCartQ(num)
+
+                setLoaded(true)
+            }))
+
+        }
 
     },[])
 

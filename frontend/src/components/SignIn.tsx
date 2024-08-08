@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AppContext, getShoppingCart } from '../App'
+import { AppContext } from '../App'
 import { sha256, escapeSpecilChars, decode } from './Functions'
 import axios from 'axios'
 import logo from '../../public/logo.svg'
@@ -10,7 +10,7 @@ type signInType={ name:string, password:string }
 
 function SignIn(){
 
-    const { setShoppingCartQ, backendURL } =useContext(AppContext)
+    const { backendURL } =useContext(AppContext)
     const [ newAccountInfo, setNewAccountInfo ] =useState<newAccountType>({name:'',password1:'',password2:''})
     const [ signInInfo, setSignInInfo ] =useState<signInType>({name:'',password:''})
     const [ loginFailed, setLoginFailed ] =useState<boolean>(false)
@@ -46,7 +46,6 @@ function SignIn(){
         if(res.data[0].user_id && res.request.status==200){
             localStorage.setItem('id',res.data[0].user_id);
             localStorage.setItem('user',decode(res.data[0].user_name));
-            getShoppingCart(res.data[0].user_id,setShoppingCartQ)
             navigate("/")
             window.location.reload()
         }
