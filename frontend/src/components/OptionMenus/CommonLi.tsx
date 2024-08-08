@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 function CommonLi(props:{product: productsType|cartType|historyType, which:string}){
 
-    const { backendURL, setFavList, setShoppingCart, setShoppingCartQ } =useContext(AppContext)
+    const { backendURL, setFavList, setShoppingCart } =useContext(AppContext)
 
     const removeFromFav=(id:number):void=>{
 
@@ -19,14 +19,13 @@ function CommonLi(props:{product: productsType|cartType|historyType, which:strin
         })
     }
 
-    const removeFromCart=(productId:number,quantity:number)=>{
+    const removeFromCart=(productId:number)=>{
         axios.post(`${backendURL}/cart/removeFromCart`,{user_id:localStorage.getItem('id'), product_id:productId})
         .then((res:any)=>{
             if(res.status==200){
                 setShoppingCart((prev:Array<cartType>)=>{
                     return prev.filter((product:cartType) => product.product_id!== productId)
                 })
-                setShoppingCartQ((prev:number)=> prev-quantity)
             }
         })
     }
@@ -59,7 +58,7 @@ function CommonLi(props:{product: productsType|cartType|historyType, which:strin
 
                     {props.which=='cart' &&
                     
-                        <button className='redButton' onClick={()=>removeFromCart(props.product.product_id,props.product.product_quantity!)}>Remove</button>
+                        <button className='redButton' onClick={()=>removeFromCart(props.product.product_id)}>Remove</button>
                     }
                     {props.which=='fav' &&
                     

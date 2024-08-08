@@ -10,7 +10,7 @@ import Logout2SVG from './svg/Logout2SVG'
 
 function HeaderMenu(){
 
-    const { shoppingCartQ, favList } =useContext(AppContext)
+    const { shoppingCart, favList } =useContext(AppContext)
     const [ showHeaderMenu, setShowHeaderMenu ]=useState(false)
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function HeaderMenu(){
 
                     <ShopCart/>
                     <div className='shoppingCartQ'>
-                        <b>{shoppingCartQ==undefined?'-':shoppingCartQ}</b>
+                        <b>{shoppingCart.length}</b>
                     </div>
 
                 </div>
@@ -45,7 +45,7 @@ function HeaderMenu(){
             {showHeaderMenu &&
             
                 <ul onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)}>
-                    <li><Link className='headerAnchor' to={'/cart'}><Cart2SVG/><span>Shopping Cart&nbsp;{`(`}<b>{shoppingCartQ}</b>{`)`}</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/cart'}><Cart2SVG/><span>Shopping Cart&nbsp;{`(`}<b>{shoppingCart.length}</b>{`)`}</span></Link></li>
                     <li><Link className='headerAnchor' to={'/history'}><HistorySVG/><span>Shopping History</span></Link></li>
                     <li><Link className='headerAnchor' to={'/favorite'}><FavoriteSVG fillColor={'#ffffff'}/><span>Favorite&nbsp;{`(`}<b>{favList.length}</b>{`)`}</span></Link></li>
                     <li><Link className='headerAnchor' to={'/setting'}><SettingSVG/><span>Setting</span></Link></li>

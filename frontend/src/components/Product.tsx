@@ -7,7 +7,7 @@ import axios from 'axios'
 
 function Product(props:{product:productsType}){
 
-    const { setShoppingCartQ, backendURL, favList, setFavList }=useContext(AppContext)
+    const { setShoppingCart, backendURL, favList, setFavList }=useContext(AppContext)
     const [ favorite, setFavorite ]=useState<boolean>(false)
     const [ currentImg, setCurrentImg ]=useState<string>(props.product.images[0])
     const [ estimatedDate, setEstimatedDate ]=useState('')
@@ -52,7 +52,7 @@ function Product(props:{product:productsType}){
             axios.post(`${backendURL}/cart/addToCart`,{user_id:userId,product_id:productId, quantity:quantity.current!.value})
             .then((res)=>{
                 if(res.status==200){
-                    setShoppingCartQ((prev:number)=>+quantity.current!.value+prev)
+                    setShoppingCart([...res.data])
                     alert('Product added to cart')
                 }
             })

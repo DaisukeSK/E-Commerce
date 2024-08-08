@@ -40,8 +40,6 @@ type AppContextType={
     backendURL:string,
     products:Array<productsType>,
     categories:Array<categoriesType>,
-    shoppingCartQ:number,
-    setShoppingCartQ: React.Dispatch<React.SetStateAction<number>>,
     favList:Array<number>,
     setFavList: React.Dispatch<React.SetStateAction<number[]>>,
     shoppingCart: Array<cartType>,
@@ -54,7 +52,6 @@ export function App() {
 
     const [products, setProducts] = useState<Array<productsType>>([])
     const [categories, setCategories] = useState<Array<categoriesType>>([])
-    const [shoppingCartQ, setShoppingCartQ] = useState<number>(0)
     const [favList, setFavList]=useState<Array<number>>([])
     const [loaded, setLoaded]= useState<boolean>(false)
     const [ shoppingCart, setShoppingCart ]=useState<Array<cartType>>([])
@@ -83,12 +80,6 @@ export function App() {
                 setFavList([...obj1.data])
                 setShoppingCart([...obj2.data])
 
-                let num:number=0
-                obj2.data.map((q:cartType)=>{
-                num+=q.product_quantity
-                })
-                setShoppingCartQ(num)
-
                 setLoaded(true)
             }))
 
@@ -97,7 +88,7 @@ export function App() {
     },[])
 
     return (
-        <AppContext.Provider value={{favList,setFavList,backendURL,products, categories,shoppingCartQ, setShoppingCartQ,shoppingCart, setShoppingCart}}>
+        <AppContext.Provider value={{favList,setFavList,backendURL,products, categories, shoppingCart, setShoppingCart}}>
         <BrowserRouter>
             <Header/>
             

@@ -6,7 +6,7 @@ import axios from "axios";
 
 function ShoppingCart(){
 
-    const { setShoppingCartQ, backendURL, shoppingCart, setShoppingCart }=useContext(AppContext)
+    const { backendURL, shoppingCart, setShoppingCart }=useContext(AppContext)
 
     const userId=localStorage.getItem('id')
 
@@ -18,7 +18,6 @@ function ShoppingCart(){
                 .then((res:any)=>{
                     if(res.status==200){
                         setShoppingCart([])
-                        setShoppingCartQ(0)
                         alert('Order confirmed.')
                     }
                 })
