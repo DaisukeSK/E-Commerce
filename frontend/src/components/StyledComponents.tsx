@@ -173,6 +173,7 @@ export const AsideForMobile=Styled.aside<{open:boolean}>`
     width: 200px;
     height: 100vh;
     background-color: #aaaaaa;
+    z-index: 1;
 
     &>img {
         padding: 10px;

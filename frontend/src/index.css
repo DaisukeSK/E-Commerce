@@ -608,6 +608,7 @@ header .hamburger {
 header .headerRight {
   display: flex;
   align-items: center;
+  position: relative;
 }
 header .headerRight .cartSVGflex {
   position: relative;
@@ -630,10 +631,13 @@ header .headerRight .cartSVGflex .shoppingCartQ {
   left: 50%;
   transform: translateX(-37%);
 }
-header .headerRight .arrowSVGforLaptop {
-  display: block;
-}
-header .headerRight .arrowSVGforMobile {
+header .headerRight .hiddenDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
   display: none;
 }
 header .headerAnchor {
@@ -645,6 +649,7 @@ header .headerAnchor {
 }
 header .headerAnchor svg {
   width: 25px;
+  height: 25px;
   margin: 0 10px;
   overflow: visible;
 }
@@ -831,15 +836,11 @@ aside.forLaptop ul {
   header .headerRight .cartSVGflex .cartSVG {
     transform: scale(65%);
   }
-  header .headerRight .arrowSVGforLaptop {
-    display: none;
-  }
-  header .headerRight .arrowSVGforMobile {
+  header .headerRight .hiddenDiv {
     display: block;
   }
   header > ul {
-    padding: 0;
-    top: 40px;
+    padding-top: 40px;
   }
   aside.forLaptop {
     display: none;

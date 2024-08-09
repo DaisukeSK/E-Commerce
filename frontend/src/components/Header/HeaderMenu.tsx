@@ -36,13 +36,11 @@ function HeaderMenu(){
 
                 </div>
 
-                <svg onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)} className='arrowSVGforLaptop' width='16' height='8'>
+                <svg onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)} width='16' height='8'>
                     <path d='m0,0 h16 l-8,8' fill={showHeaderMenu?'rgb(246, 166, 31)':'#ffffff'}/>
                 </svg>
 
-                <svg onClick={()=>setShowHeaderMenu(!showHeaderMenu)} className='arrowSVGforMobile' width='16' height='8'>
-                    <path d='m0,0 h16 l-8,8' fill={showHeaderMenu?'rgb(246, 166, 31)':'#ffffff'}/>
-                </svg>
+                <div className='hiddenDiv' onClick={()=>setShowHeaderMenu(!showHeaderMenu)}></div>
 
             </div>
 

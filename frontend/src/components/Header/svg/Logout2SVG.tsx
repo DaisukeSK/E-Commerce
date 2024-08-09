@@ -8,7 +8,6 @@ const Path=styled.path`
 function Logout2SVG(){
     return (
         <svg
-            style={{height:'fit-content'}}
             width="450"
             height="500"
             viewBox="0 0 450 500"
