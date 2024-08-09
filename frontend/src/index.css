@@ -598,9 +598,12 @@ header {
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 166, 1, 0.473);
 }
-header .leftLogo {
+header .leftLogo img {
   width: 80px;
   display: block;
+}
+header .hamburger {
+  display: none;
 }
 header .headerRight {
   display: flex;
@@ -686,7 +689,7 @@ header .signIn:hover span {
 header .signIn:hover path {
   fill: rgb(246, 166, 31);
 }
-header ul {
+header > ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -696,7 +699,7 @@ header ul {
   top: 0;
   right: 0;
 }
-header ul li {
+header > ul li {
   background-color: rgb(39, 39, 39);
   height: 50px;
   display: flex;
@@ -704,7 +707,7 @@ header ul li {
   padding-right: 25px;
 }
 
-aside {
+aside.forLaptop {
   min-width: 250px;
   height: calc(100vh - 50px);
   position: sticky;
@@ -714,7 +717,7 @@ aside {
   background-color: rgb(70, 70, 70);
   border-right: 1px solid rgb(189, 189, 189);
 }
-aside ul {
+aside.forLaptop ul {
   list-style: none;
   padding-left: 20px;
 }
@@ -759,4 +762,73 @@ aside ul {
 .underSearchBar {
   width: 95%;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 500px) {
+  body #root {
+    padding-top: 40px;
+  }
+  @keyframes spin {
+    0% {
+      transform: scale(100%, 100%);
+    }
+    50% {
+      transform: scale(100%, 0%);
+    }
+    100% {
+      transform: scale(100%, 100%);
+    }
+  }
+  hr {
+    border: none;
+  }
+  @keyframes spinnin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  @keyframes blinkin {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes blinkin2 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  header {
+    height: 40px;
+    padding: 0 10px;
+  }
+  header .leftLogo {
+    display: none;
+  }
+  header .hamburger {
+    display: block;
+  }
+  header .headerRight .cartSVGflex {
+    margin: 0;
+  }
+  header .headerRight .cartSVGflex .cartSVG {
+    transform: scale(65%);
+  }
+  header > ul {
+    padding-top: 40px;
+  }
+  aside.forLaptop {
+    display: none;
+  }
 }/*# sourceMappingURL=index.css.map */

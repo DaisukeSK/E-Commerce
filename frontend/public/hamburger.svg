@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   width="35"
+   height="20"
+   viewBox="0 -0.5 13.671875 7.8125"
+   fill="none"
+   stroke="#ff0000"
+   stroke-width="0.00025"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="hamburgerMenu.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="6.6618556"
+     inkscape:cx="52.462861"
+     inkscape:cy="32.123182"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <g
+     id="SVGRepo_bgCarrier"
+     stroke-width="0"
+     transform="translate(-4.6685189,-8.0470443)" />
+  <g
+     id="SVGRepo_tracerCarrier"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     transform="translate(-4.6685189,-8.0470443)" />
+  <g
+     id="SVGRepo_iconCarrier"
+     transform="matrix(0.7531178,0,0,0.7531178,-2.596914,-6.0077225)"
+     style="fill:#ffffff;fill-opacity:1">
+    <path
+       d="m 5.5,7.75 c -0.41421,0 -0.75,0.33579 -0.75,0.75 0,0.41421 0.33579,0.75 0.75,0.75 z m 14,1.5 c 0.4142,0 0.75,-0.33579 0.75,-0.75 0,-0.41421 -0.3358,-0.75 -0.75,-0.75 z m -14,2.5 c -0.41421,0 -0.75,0.3358 -0.75,0.75 0,0.4142 0.33579,0.75 0.75,0.75 z m 12,1.5 c 0.4142,0 0.75,-0.3358 0.75,-0.75 0,-0.4142 -0.3358,-0.75 -0.75,-0.75 z m -12,2.5 c -0.41421,0 -0.75,0.3358 -0.75,0.75 0,0.4142 0.33579,0.75 0.75,0.75 z m 7,1.5 c 0.4142,0 0.75,-0.3358 0.75,-0.75 0,-0.4142 -0.3358,-0.75 -0.75,-0.75 z m -7,-8 h 14 v -1.5 h -14 z m 0,4 h 12 v -1.5 h -12 z m 0,4 h 7 v -1.5 h -7 z"
+       fill="#000000"
+       id="path4"
+       style="fill:#ffffff;fill-opacity:1" />
+  </g>
+</svg>

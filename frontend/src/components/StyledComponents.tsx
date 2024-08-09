@@ -4,9 +4,10 @@ import BG2 from '../../public/cooking.png'
 import BG3 from '../../public/hiking.png'
 import BG4 from '../../public/grass.png'
 
+const maxWidth='500px';
 const A_orange='rgb(246, 166, 31)';
 
-export const BannerSec=Styled.section<{opacity:number, count:number}>`
+export const BannerForLaptop=Styled.section<{opacity:number, count:number}>`
     @keyframes moveUp {
         0% {
             background-position-y: 60%;
@@ -116,7 +117,30 @@ export const BannerSec=Styled.section<{opacity:number, count:number}>`
         transition: all 3.5s;
         z-index: 1;
     }
+
+    @media only screen and (max-width: ${maxWidth}) {
+        display: none;
+    }
     
+`;
+
+export const BannerForMobile=Styled.section`
+
+    display: none;
+
+    background-image: url(${BG4});
+    background-size: cover;
+    padding: 20px 0;
+    img {
+        width: 70%;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    @media only screen and (max-width: ${maxWidth}) {
+        display: block;
+    }
+
 `;
 
 export const AsideLi=Styled.li<{selected:boolean}>`
@@ -127,8 +151,8 @@ export const AsideLi=Styled.li<{selected:boolean}>`
         padding: 3px 7px;
         border-radius: 3px;
         transition: all .3s;
-        background-color: ${props=>props.selected?'rgb(100, 100, 100)':'transparent'};
-        outline: 1px solid ${props=>props.selected?'grey':'transparent'};
+        background-color: ${props=>props.selected?'#ffffff':'transparent'};
+        color: ${props=>props.selected?'#000000':'#ffffff'};
         pointer-events: ${props=>props.selected?'none':'auto'};
         &:hover {
             background-color: ${A_orange};
@@ -137,3 +161,43 @@ export const AsideLi=Styled.li<{selected:boolean}>`
     }
             
 `;
+
+export const AsideForMobile=Styled.aside<{open:boolean}>`
+
+    display: none;
+
+    position: absolute;
+    top: 0;
+    left: ${props=>props.open?0:'-200px'};
+    transition: all .5s;
+    width: 200px;
+    height: 100vh;
+    background-color: #aaaaaa;
+
+    &>img {
+        padding: 10px;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 20px;
+        li {
+            padding: 5px 0;
+            a {
+            display: flex;
+            align-items: center;
+                svg {
+                    width: 20px;
+                    height: fit-content;
+                    margin-right: 10px;
+                
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: ${maxWidth}) {
+        display: block;
+    }
+
+`

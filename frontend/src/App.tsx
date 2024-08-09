@@ -105,7 +105,7 @@ export function App() {
                 <div className='loading'>
                     <div className='spin'></div>
                     <div className='message'>
-                        <span>Loading...<br/>It may take some time.</span>
+                        <span>Loading...<br/>It may take up to 1 minute.</span>
                         <span>Please wait while<br/>waking up the server.</span>
                     </div>
                 </div>

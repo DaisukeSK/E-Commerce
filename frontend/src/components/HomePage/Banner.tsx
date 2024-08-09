@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { BannerSec } from '../StyledComponents.tsx'
+import { BannerForLaptop, BannerForMobile } from '../StyledComponents.tsx'
 import logo from '../../../public/logo.svg'
 
 function Banner() {
@@ -49,16 +49,23 @@ function Banner() {
 
     return !loc.pathname.split('/')[1] && (
        
-        <BannerSec opacity={opacity} count={count}>
+        <>
+            <BannerForLaptop opacity={opacity} count={count}>
 
-            <div>
-                Make your life&nbsp;
-                <span>{count==0?'better':count==7?'easy':count==14?'valuable':'amazing'}</span>
-            </div>
-            
-            <img src={logo}/>
+                <div>
+                    Make your life&nbsp;
+                    <span>{count==0?'better':count==7?'easy':count==14?'valuable':'amazing'}</span>
+                </div>
+                
+                <img src={logo}/>
 
-        </BannerSec>
+            </BannerForLaptop>
+
+            <BannerForMobile>
+                <img src={logo}/>
+            </BannerForMobile>
+        
+        </>
 
     )
 }

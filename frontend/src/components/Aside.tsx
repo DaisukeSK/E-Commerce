@@ -10,7 +10,7 @@ function Aside(){
     const loc=useLocation()
 
     return loc.pathname.split('/')[1]!=='signIn' && (
-        <aside>
+        <aside className='forLaptop'>
 
             <ul>
                 {categories.map((category:categoriesType,key:number)=>{
