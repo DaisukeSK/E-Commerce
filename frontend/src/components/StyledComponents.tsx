@@ -4,6 +4,8 @@ import BG2 from '../../public/cooking.png'
 import BG3 from '../../public/hiking.png'
 import BG4 from '../../public/grass.png'
 
+const A_orange='rgb(246, 166, 31)';
+
 export const BannerSec=Styled.section<{opacity:number, count:number}>`
     @keyframes moveUp {
         0% {
@@ -117,20 +119,21 @@ export const BannerSec=Styled.section<{opacity:number, count:number}>`
     
 `;
 
-export const StyledAside=Styled.aside`
+export const AsideLi=Styled.li<{selected:boolean}>`
 
-    min-width: 250px;
-    height: ${window.innerHeight-50}px;
-    position: sticky;
-    top: 50px;
-    left: 0;
-    box-sizing: border-box;
-    background-color: #d3d3d3;
-    border-right: 1px solid rgb(189, 189, 189);
-    ul {
-        li {
-            padding: 5px 0;
-            
+    padding: 5px 0;
+    a {
+        color: #ffffff;
+        padding: 3px 7px;
+        border-radius: 3px;
+        transition: all .3s;
+        background-color: ${props=>props.selected?'rgb(100, 100, 100)':'transparent'};
+        outline: 1px solid ${props=>props.selected?'grey':'transparent'};
+        pointer-events: ${props=>props.selected?'none':'auto'};
+        &:hover {
+            background-color: ${A_orange};
+            color: #000000;
         }
     }
+            
 `;

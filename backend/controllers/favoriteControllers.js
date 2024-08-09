@@ -2,16 +2,23 @@ import { connect } from '../server.js';
 
 export const getFavorite = async (req, res) => {
 
-    try {
-        const fav = await connect.query(
-            'select product_id from favorite where user_id=$1',
-            [req.body.userId]
-            );
-        res.status(200).json(fav.rows.map(fav=>fav.product_id))
+    if(req.body.userId){
 
-    } catch (err) {
-        res.status(500).send(err.message);
+        try {
+            const fav = await connect.query(
+                'select product_id from favorite where user_id=$1',
+                [req.body.userId]
+                );
+            res.status(200).json(fav.rows.map(fav=>fav.product_id))
+    
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+
+    }else{
+        res.status(200).send('fav no id');
     }
+
 }
 
 export const addToFavorite = async (req, res) => {

@@ -60,30 +60,19 @@ export function App() {
 
         axios.all([
             axios.get(`${backendURL}/product/getAllProducts`),
-            axios.get(`${backendURL}/product/getAllCategories`)
+            axios.get(`${backendURL}/product/getAllCategories`),
+            axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')!}),
+            axios.post(`${backendURL}/cart/getCart`,{user_id:+localStorage.getItem('id')!})
         ])
-        .then(axios.spread((obj1,obj2)=>{
+        .then(axios.spread((obj1,obj2,obj3,obj4)=>{
+            
             setProducts([...obj1.data])
             setCategories([...obj2.data])
+            setFavList([...obj3.data])
+            setShoppingCart([...obj4.data])
+
             setLoaded(true)
         }))
-
-        if(localStorage.getItem('id')){
-
-            setLoaded(false)
-
-            axios.all([
-                axios.post(`${backendURL}/favorite/getFavorite`,{userId:localStorage.getItem('id')}),
-                axios.post(`${backendURL}/cart/getCart`,{user_id:+localStorage.getItem('id')!})
-            ])
-            .then(axios.spread((obj1,obj2)=>{
-                setFavList([...obj1.data])
-                setShoppingCart([...obj2.data])
-
-                setLoaded(true)
-            }))
-
-        }
 
     },[])
 
@@ -115,7 +104,10 @@ export function App() {
                 :
                 <div className='loading'>
                     <div className='spin'></div>
-                    <div className='message'>Loading...<br/>It may take some time.</div>
+                    <div className='message'>
+                        <span>Loading...<br/>It may take some time.</span>
+                        <span>Please wait while<br/>waking up the server.</span>
+                    </div>
                 </div>
             }
             

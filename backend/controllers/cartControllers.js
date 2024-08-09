@@ -30,16 +30,22 @@ export const removeFromCart = async (req, res) => {
 
 export const getCart = async (req, res) => {
 
-    try {
-        const cart = await connect.query(
-            'select * from shopping_cart inner join products on shopping_cart.product_id=products.product_id where user_id=$1',
-            [req.body.user_id]
-            );
-        res.status(200).json(cart.rows)
+    if(req.body.user_id){
 
-    } catch (err) {
-        res.status(500).send(err.message);
+        try {
+            const cart = await connect.query(
+                'select * from shopping_cart inner join products on shopping_cart.product_id=products.product_id where user_id=$1',
+                [req.body.user_id]
+                );
+            res.status(200).json(cart.rows)
+    
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    }else{
+        res.status(200).send('cart no id')
     }
+
 }
 
 export const addToCart = async (req, res) => {

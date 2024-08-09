@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext, categoriesType } from '../App'
-import { StyledAside } from './StyledComponents'
+import { AsideLi } from './StyledComponents'
 
 function Aside(){
 
@@ -10,19 +10,19 @@ function Aside(){
     const loc=useLocation()
 
     return loc.pathname.split('/')[1]!=='signIn' && (
-        <StyledAside>
+        <aside>
 
             <ul>
                 {categories.map((category:categoriesType,key:number)=>{
                     return (
-                        <li key={key}>
+                        <AsideLi key={key} selected={+loc.pathname.split('/category/')[1]==category.category_id?true:false}>
                             <Link to={`/category/${category.category_id}`}>{category.category_name}</Link>
-                        </li>
+                        </AsideLi>
                         )
                 })}
             </ul>
 
-        </StyledAside>
+        </aside>
     )
 }
 

@@ -73,7 +73,7 @@ function SignIn(){
                     break;
 
                 case newAccountInfo.password1.length<6:
-                    setSignUpFailed('At least 6 characters required.');
+                    setSignUpFailed('Password requires at least 6 characters.');
                     break;
 
                 case newAccountInfo.name.includes('*'):

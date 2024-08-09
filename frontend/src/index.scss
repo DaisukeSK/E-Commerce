@@ -709,6 +709,14 @@ input[type='submit'] {
             opacity: 0;
         }
     }
+    @keyframes blinkin2 {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
     .spin {
         position: absolute;
         top: 50%;
@@ -725,10 +733,24 @@ input[type='submit'] {
         text-align: center;
         font-weight: bold;
         position: absolute;
+        width: 300px;
+        height: 50px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         animation: 1s linear infinite 0s blinkin;
+        span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            animation: 6s steps(2,jump-none) infinite blinkin2;
+            &:first-of-type {
+                animation-delay: 3s;
+            }
+        }
+        
     }
 }
 
@@ -1050,7 +1072,22 @@ header {
     }
 }
 
-
+aside {
+    min-width: 250px;
+    height: calc(100vh - #{$headerHeight});
+    position: sticky;
+    top: 50px;
+    left: 0;
+    box-sizing: border-box;
+    background-color: rgb(70, 70, 70);
+    
+    border-right: 1px solid rgb(189, 189, 189);
+    ul { // li styles in styled components
+        list-style: none;
+        padding-left: 20px;
+        
+    }
+}
 
 
 
