@@ -630,6 +630,12 @@ header .headerRight .cartSVGflex .shoppingCartQ {
   left: 50%;
   transform: translateX(-37%);
 }
+header .headerRight .arrowSVGforLaptop {
+  display: block;
+}
+header .headerRight .arrowSVGforMobile {
+  display: none;
+}
 header .headerAnchor {
   color: #ffffff;
   display: flex;
@@ -825,8 +831,15 @@ aside.forLaptop ul {
   header .headerRight .cartSVGflex .cartSVG {
     transform: scale(65%);
   }
+  header .headerRight .arrowSVGforLaptop {
+    display: none;
+  }
+  header .headerRight .arrowSVGforMobile {
+    display: block;
+  }
   header > ul {
-    padding-top: 40px;
+    padding: 0;
+    top: 40px;
   }
   aside.forLaptop {
     display: none;

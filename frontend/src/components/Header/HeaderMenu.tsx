@@ -36,7 +36,11 @@ function HeaderMenu(){
 
                 </div>
 
-                <svg onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)} className='arrowSVG' width='16' height='8'>
+                <svg onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)} className='arrowSVGforLaptop' width='16' height='8'>
+                    <path d='m0,0 h16 l-8,8' fill={showHeaderMenu?'rgb(246, 166, 31)':'#ffffff'}/>
+                </svg>
+
+                <svg onClick={()=>setShowHeaderMenu(!showHeaderMenu)} className='arrowSVGforMobile' width='16' height='8'>
                     <path d='m0,0 h16 l-8,8' fill={showHeaderMenu?'rgb(246, 166, 31)':'#ffffff'}/>
                 </svg>
 
@@ -45,10 +49,10 @@ function HeaderMenu(){
             {showHeaderMenu &&
             
                 <ul onMouseEnter={()=>setShowHeaderMenu(true)} onMouseLeave={()=>setShowHeaderMenu(false)}>
-                    <li><Link className='headerAnchor' to={'/cart'}><Cart2SVG/><span>Shopping Cart&nbsp;{`(`}<b>{shoppingCart.length}</b>{`)`}</span></Link></li>
-                    <li><Link className='headerAnchor' to={'/history'}><HistorySVG/><span>Shopping History</span></Link></li>
-                    <li><Link className='headerAnchor' to={'/favorite'}><FavoriteSVG fillColor={'#ffffff'}/><span>Favorite&nbsp;{`(`}<b>{favList.length}</b>{`)`}</span></Link></li>
-                    <li><Link className='headerAnchor' to={'/setting'}><SettingSVG/><span>Setting</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/cart'} onClick={()=>setShowHeaderMenu(false)}><Cart2SVG/><span>Shopping Cart&nbsp;{`(`}<b>{shoppingCart.length}</b>{`)`}</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/history'} onClick={()=>setShowHeaderMenu(false)}><HistorySVG/><span>Shopping History</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/favorite'} onClick={()=>setShowHeaderMenu(false)}><FavoriteSVG fillColor={'#ffffff'}/><span>Favorite&nbsp;{`(`}<b>{favList.length}</b>{`)`}</span></Link></li>
+                    <li><Link className='headerAnchor' to={'/setting'} onClick={()=>setShowHeaderMenu(false)}><SettingSVG/><span>Setting</span></Link></li>
                     <li onClick={signOut}><a className='headerAnchor'><Logout2SVG/><span>Sign Out</span></a></li>
                 </ul>
             }
