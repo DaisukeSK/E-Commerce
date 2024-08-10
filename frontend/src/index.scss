@@ -444,16 +444,21 @@ body {
                 justify-content: center;
                 align-items: center;
                 height: calc(100vh - #{$headerHeight});
+
+                img {
+                    width: 70%;
+                    max-width: 350px;
+                }
                 
                 .signInDiv, .signUpDiv {
-                    width: 40%;
+                    width: 90%;
                     max-width: 450px;
                     
                     h1 {
                         text-align: center;
                     }
                     form {
-                        padding: 30px 70px;
+                        padding: 30px 20%;
                         background-color: rgb(240, 240, 240);
                         outline: 1px solid rgb(212, 212, 212);
                         margin-bottom: 20px;
@@ -829,38 +834,51 @@ aside.forLaptop {
 
 .searchBar {
     width: fit-content;
-    height: 35px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 20px auto;
+
+    select, .textFlex {
+        height: 35px;
+        margin: 0 10px;
+    }
     
     select, input[type='text'] {
         border-radius: 5px;
         border: 1px $A_orange solid;
+        box-sizing: border-box;
         
         font-size: 1em;
         &:focus {
             outline: none;
         }
     }
-    input[type='text'] {
-        border-radius: 5px 0 0 5px;
-        margin-left: 15px;
-        width: 200px;
-        border-right: none;
-    }
-    button {
-        cursor: pointer;
-        width: 50px;
-        border-radius: 0 5px 5px 0;
-        background-color: $A_orange;
-        border: 1px $A_orange solid;
-        border-left: none;
-        background-image: url('../public/search.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        &:hover {
-            background-color: rgb(231, 146, 0);
+    .textFlex {
+
+        display: flex;
+        // margin-left: 15px;
+
+        input[type='text'] {
+            border-radius: 5px 0 0 5px;
+            // margin-left: 15px;
+            width: 200px;
+            border-right: none;
+        }
+        button {
+            cursor: pointer;
+            width: 50px;
+            border-radius: 0 5px 5px 0;
+            background-color: $A_orange;
+            border: 1px $A_orange solid;
+            border-left: none;
+            background-image: url('../public/search.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            &:hover {
+                background-color: rgb(231, 146, 0);
+            }
         }
     }
 }
@@ -1014,9 +1032,9 @@ body {
                     // list-style: none;
                     // padding: 0;
                     li {
-                        // width: 220px;
+                        width: 90%;
                         // height: 300px;
-                        // margin: 20px;
+                        margin: 15px 0;
                         // transition: all .5s ease-in-out;
                         // padding: 10px;
                         // box-sizing: border-box;
@@ -1410,7 +1428,7 @@ a {
 }
 
 hr {
-    border: none;
+    // border: none;
     // border-top: 1px solid $hrColor;
 }
 
@@ -1681,38 +1699,55 @@ aside.forLaptop {
 
 .searchBar {
     // width: fit-content;
-    // height: 35px;
     // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
     // margin: 20px auto;
+
+    select, .textFlex {
+        height: 30px;
+    }
+
+    select {
+        margin-bottom: 15px;
+        width: 250px;
+
+    }
     
     select, input[type='text'] {
         // border-radius: 5px;
         // border: 1px $A_orange solid;
+        // box-sizing: border-box;
         
         // font-size: 1em;
         &:focus {
             // outline: none;
         }
     }
-    input[type='text'] {
-        // border-radius: 5px 0 0 5px;
+    .textFlex {
+
+        // display: flex;
         // margin-left: 15px;
-        // width: 200px;
-        // border-right: none;
-    }
-    button {
-        // cursor: pointer;
-        // width: 50px;
-        // border-radius: 0 5px 5px 0;
-        // background-color: $A_orange;
-        // border: 1px $A_orange solid;
-        // border-left: none;
-        // background-image: url('../public/search.svg');
-        // background-size: contain;
-        // background-repeat: no-repeat;
-        // background-position: center;
-        &:hover {
-            // background-color: rgb(231, 146, 0);
+
+        input[type='text'] {
+            // border-radius: 5px 0 0 5px;
+            // width: 200px;
+            // border-right: none;
+        }
+        button {
+            // cursor: pointer;
+            // width: 50px;
+            // border-radius: 0 5px 5px 0;
+            // background-color: $A_orange;
+            // border: 1px $A_orange solid;
+            // border-left: none;
+            // background-image: url('../public/search.svg');
+            // background-size: contain;
+            // background-repeat: no-repeat;
+            // background-position: center;
+            &:hover {
+                // background-color: rgb(231, 146, 0);
+            }
         }
     }
 }

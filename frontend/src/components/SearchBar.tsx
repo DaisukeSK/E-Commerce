@@ -27,8 +27,11 @@ function SearchBar(){
                     })}
                 </select>
 
-                <input type='text' placeholder=' Type keywords.' ref={keywordRef}/>
-                <button onClick={()=>navigate(`/search?keyword=${keywordRef.current?.value}&category=${categoryRef.current?.value}`)}></button>
+                <div className='textFlex'>
+                    <input type='text' placeholder=' Type keywords.' ref={keywordRef}/>
+                    <button onClick={()=>navigate(`/search?keyword=${keywordRef.current?.value}&category=${categoryRef.current?.value}`)}></button>
+                </div>
+
             </div>
             <hr className='underSearchBar'/>
         </>

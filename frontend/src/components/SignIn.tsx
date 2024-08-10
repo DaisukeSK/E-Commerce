@@ -108,7 +108,7 @@ function SignIn(){
 
     return (
         <section className='signInSection'>
-            <img src={logo} width='30%'/>
+            <img src={logo}/>
             {signIn?
                 <>
                     <div className='signInDiv'>

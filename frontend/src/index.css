@@ -387,15 +387,19 @@ body #root > main .signInSection {
   align-items: center;
   height: calc(100vh - 50px);
 }
+body #root > main .signInSection img {
+  width: 70%;
+  max-width: 350px;
+}
 body #root > main .signInSection .signInDiv, body #root > main .signInSection .signUpDiv {
-  width: 40%;
+  width: 90%;
   max-width: 450px;
 }
 body #root > main .signInSection .signInDiv h1, body #root > main .signInSection .signUpDiv h1 {
   text-align: center;
 }
 body #root > main .signInSection .signInDiv form, body #root > main .signInSection .signUpDiv form {
-  padding: 30px 70px;
+  padding: 30px 20%;
   background-color: rgb(240, 240, 240);
   outline: 1px solid rgb(212, 212, 212);
   margin-bottom: 20px;
@@ -736,25 +740,33 @@ aside.forLaptop ul {
 .searchBar {
   width: -moz-fit-content;
   width: fit-content;
-  height: 35px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 20px auto;
+}
+.searchBar select, .searchBar .textFlex {
+  height: 35px;
+  margin: 0 10px;
 }
 .searchBar select, .searchBar input[type=text] {
   border-radius: 5px;
   border: 1px rgb(246, 166, 31) solid;
+  box-sizing: border-box;
   font-size: 1em;
 }
 .searchBar select:focus, .searchBar input[type=text]:focus {
   outline: none;
 }
-.searchBar input[type=text] {
+.searchBar .textFlex {
+  display: flex;
+}
+.searchBar .textFlex input[type=text] {
   border-radius: 5px 0 0 5px;
-  margin-left: 15px;
   width: 200px;
   border-right: none;
 }
-.searchBar button {
+.searchBar .textFlex button {
   cursor: pointer;
   width: 50px;
   border-radius: 0 5px 5px 0;
@@ -766,7 +778,7 @@ aside.forLaptop ul {
   background-repeat: no-repeat;
   background-position: center;
 }
-.searchBar button:hover {
+.searchBar .textFlex button:hover {
   background-color: rgb(231, 146, 0);
 }
 
@@ -790,8 +802,9 @@ aside.forLaptop ul {
       transform: scale(100%, 100%);
     }
   }
-  hr {
-    border: none;
+  body #root > main .productList ul li {
+    width: 90%;
+    margin: 15px 0;
   }
   @keyframes spinnin {
     from {
@@ -844,5 +857,12 @@ aside.forLaptop ul {
   }
   aside.forLaptop {
     display: none;
+  }
+  .searchBar select, .searchBar .textFlex {
+    height: 30px;
+  }
+  .searchBar select {
+    margin-bottom: 15px;
+    width: 250px;
   }
 }/*# sourceMappingURL=index.css.map */
