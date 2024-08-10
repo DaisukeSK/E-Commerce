@@ -201,4 +201,47 @@ export const AsideForMobile=Styled.aside<{open:boolean}>`
         display: block;
     }
 
-`
+`;
+
+const blue='#273fc7'
+export const SeeMore=Styled.div<{formobile:boolean}>`
+
+    display: ${props=>props.formobile?'none':'block'};
+    margin: ${props=>props.formobile?'5px auto':0};
+    width: fit-content;
+
+    a {
+        color: ${props=>props.formobile?blue:'#ffffff'};
+        transition: all .2s;
+        display: flex;
+    
+        @keyframes spin{
+            0% {
+                transform: scale(100%, 100%);
+            }
+            50% {
+                transform: scale(100%, 0%);
+            }
+            100% {
+                transform: scale(100%, 100%);
+            }
+        }
+        svg {
+            margin-right: 5px;
+            fill: ${props=>props.formobile?blue:'#ffffff'};
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+        &:hover {
+            color: rgb(120, 255, 120);
+            svg {
+                fill: rgb(120, 255, 120);
+                animation-name: spin;
+            }
+        }
+    }
+
+    @media only screen and (max-width: ${maxWidth}) {
+        display: ${props=>props.formobile?'block':'none'};
+    }
+`;

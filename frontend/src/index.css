@@ -21,35 +21,44 @@ body #root > main .homepage .categorizedProduct {
   width: 100%;
   margin: 50px auto;
 }
-body #root > main .homepage .categorizedProduct h2 {
-  width: 500px;
-  background: linear-gradient(90deg, rgb(103, 60, 204), transparent);
+body #root > main .homepage .categorizedProduct .headerFlex {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 30px;
+  box-sizing: border-box;
+  background: linear-gradient(45deg, #3853eb, #273fc7);
+}
+body #root > main .homepage .categorizedProduct .headerFlex h1 {
+  font-size: 1.7rem;
   margin: 0;
-  margin-bottom: 15px;
-  margin-left: 15px;
-  padding: 5px 30px;
   color: #ffffff;
 }
-body #root > main .homepage .categorizedProduct .flex {
+body #root > main .homepage .categorizedProduct .productFlex {
   display: flex;
   justify-content: space-between;
   width: -moz-fit-content;
   width: fit-content;
   width: 85%;
-  margin: 0 auto;
+  margin: 20px auto;
   align-items: center;
   padding: 0 20px;
 }
-body #root > main .homepage .categorizedProduct .flex .imgA {
+body #root > main .homepage .categorizedProduct .productFlex .imgA {
   position: relative;
   width: 20%;
-  height: 30vh;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
   display: none;
 }
-body #root > main .homepage .categorizedProduct .flex .imgA:first-of-type, body #root > main .homepage .categorizedProduct .flex .imgA:nth-of-type(2), body #root > main .homepage .categorizedProduct .flex .imgA:nth-of-type(3), body #root > main .homepage .categorizedProduct .flex .imgA:nth-of-type(4) {
+body #root > main .homepage .categorizedProduct .productFlex .imgA:first-of-type, body #root > main .homepage .categorizedProduct .productFlex .imgA:nth-of-type(2), body #root > main .homepage .categorizedProduct .productFlex .imgA:nth-of-type(3), body #root > main .homepage .categorizedProduct .productFlex .imgA:nth-of-type(4) {
   display: block;
 }
-body #root > main .homepage .categorizedProduct .flex .imgA h3 {
+body #root > main .homepage .categorizedProduct .productFlex .imgA h3 {
   opacity: 0;
   margin: 0;
   padding: 0 5px;
@@ -63,16 +72,15 @@ body #root > main .homepage .categorizedProduct .flex .imgA h3 {
   z-index: 1;
   transition: all 0.5s ease-in-out;
 }
-body #root > main .homepage .categorizedProduct .flex .imgA img {
+body #root > main .homepage .categorizedProduct .productFlex .imgA img {
   display: block;
   margin: 0 auto;
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  border-radius: 10px;
 }
-body #root > main .homepage .categorizedProduct .flex .imgA::after {
+body #root > main .homepage .categorizedProduct .productFlex .imgA::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -83,36 +91,12 @@ body #root > main .homepage .categorizedProduct .flex .imgA::after {
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
-body #root > main .homepage .categorizedProduct .flex .imgA:hover h3, body #root > main .homepage .categorizedProduct .flex .imgA:hover::after {
+body #root > main .homepage .categorizedProduct .productFlex .imgA:hover h3, body #root > main .homepage .categorizedProduct .productFlex .imgA:hover::after {
   opacity: 1;
 }
-body #root > main .homepage .categorizedProduct .flex .seeMore {
-  display: flex;
-  color: #a0a0a0;
-}
-@keyframes spin {
-  0% {
-    transform: scale(100%, 100%);
-  }
-  50% {
-    transform: scale(100%, 0%);
-  }
-  100% {
-    transform: scale(100%, 100%);
-  }
-}
-body #root > main .homepage .categorizedProduct .flex .seeMore svg {
-  margin-right: 5px;
-  fill: #a0a0a0;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-}
-body #root > main .homepage .categorizedProduct .flex .seeMore:hover {
-  color: rgb(55, 206, 55);
-}
-body #root > main .homepage .categorizedProduct .flex .seeMore:hover svg {
-  fill: rgb(55, 206, 55);
-  animation-name: spin;
+body #root > main .homepage .categorizedProduct hr {
+  width: 90%;
+  margin: 0 auto;
 }
 body #root > main .productList .itemFound {
   height: 25px;
@@ -787,16 +771,20 @@ aside.forLaptop ul {
   body #root {
     padding-top: 40px;
   }
-  @keyframes spin {
-    0% {
-      transform: scale(100%, 100%);
-    }
-    50% {
-      transform: scale(100%, 0%);
-    }
-    100% {
-      transform: scale(100%, 100%);
-    }
+  body #root > main .homepage .categorizedProduct .headerFlex {
+    padding: 3px 10px;
+  }
+  body #root > main .homepage .categorizedProduct .headerFlex h1 {
+    font-size: 1.5rem;
+  }
+  body #root > main .homepage .categorizedProduct .productFlex .imgA {
+    width: 27%;
+  }
+  body #root > main .homepage .categorizedProduct .productFlex .imgA:nth-of-type(4) {
+    display: none;
+  }
+  body #root > main .homepage .categorizedProduct .productFlex .imgA h3 {
+    display: none;
   }
   body #root > main .productList ul li {
     width: 90%;

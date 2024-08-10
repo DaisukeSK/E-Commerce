@@ -1,17 +1,32 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { productsType, categoriesType, AppContext } from '../../App.tsx'
+import { SeeMore } from '../StyledComponents.tsx'
 
 function Category(props:{category:categoriesType}) {
 
     const { products } = useContext(AppContext)
 
+    const link: JSX.Element=
+        <Link to={`/category/${props.category.category_id}`}>
+            <svg width='10' height='16'>
+                <path d='m0 0 v16 l10 -8'/>
+            </svg>
+            <span>See More</span>
+        </Link>
+
     return (
         <div className='categorizedProduct'>
 
-            <h2>{props.category.category_name}</h2>
+            <div className='headerFlex'>
 
-            <div className='flex'>
+                <h1>{props.category.category_name}</h1>
+                <SeeMore formobile={false}>{link}</SeeMore>
+
+            </div>
+
+
+            <div className='productFlex'>
 
                 {products.map((product:productsType, key:number)=>{
                     return props.category.category_id==product.category_id && (
@@ -22,14 +37,11 @@ function Category(props:{category:categoriesType}) {
                     )
                 })}
 
-                <Link to={`/category/${props.category.category_id}`} className='seeMore'>
-                    <svg width='10' height='16'>
-                        <path d='m0 0 v16 l10 -8'/>
-                    </svg>
-                    <span>See More</span>
-                </Link>
-
             </div>
+
+            <SeeMore formobile={true}>{link}</SeeMore>
+
+            <hr/>
 
         </div>
     )
