@@ -693,10 +693,6 @@ header .signIn span {
 header .signIn span, header .signIn path {
   transition: all 0.2s ease-in-out;
 }
-header .signIn svg {
-  height: -moz-fit-content;
-  height: fit-content;
-}
 header .signIn:hover span {
   background-color: rgb(246, 166, 31);
   color: #ffffff;
