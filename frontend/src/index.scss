@@ -7,6 +7,9 @@ $headerHeight: 50px;
 // $headerMenuColor:rgb(246, 166, 31);
 $A_orange:rgb(246, 166, 31);
 
+// $box-shadow: 2px 2px 7px rgb(161, 161, 161);
+$box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+
 $headerMenuTransition: all .2s ease-in-out;
 
 body {
@@ -81,7 +84,7 @@ body {
                             // height: 30vh;
                             aspect-ratio: 1/1;
                             border-radius: 10px;
-                            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+                            box-shadow: $box-shadow;
                             overflow: hidden;
                             
                             display: none;
@@ -160,6 +163,7 @@ body {
                         padding: 10px;
                         box-sizing: border-box;
                         outline: 1px solid rgb(168, 168, 168);
+                        box-shadow: $box-shadow;
                         background-color: #a0a0a02f;
                         border-radius: 7px;
                         a {
@@ -195,6 +199,9 @@ body {
 
                 display: flex;
                 justify-content: center;
+
+                padding: 20px 0;
+                box-sizing: border-box;
             
                 .left, .right {
                     width: 47%;
@@ -212,15 +219,17 @@ body {
                     img {
                         border-radius: 10px;
                         display: block;
-                        box-shadow: 2px 2px 7px rgb(161, 161, 161);
+                        box-shadow: $box-shadow;
                     }
                     
                     a {
 
                         display: block;
-                        max-width: 80%;
-                        max-height: 55vh;
+                        max-width: 60%;
+                        // max-height: 55vh;
+                        aspect-ratio: 1/1;
                         img {
+                            object-fit: contain;
                             width: 100%;
                             height: 100%;
                         }
@@ -246,15 +255,17 @@ body {
                 .right {
 
                     padding: 0 30px;
-                    .favDiv {
-                        
-                        margin: 0 0 0 auto;
-                        svg {
-                            transform: scale(70%);
+
+                    .top {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+
+                        hr {
+                            display: none;
                         }
-                    }
-                    h2 {
-                        margin-top: 0;
+
                     }
                     .addToCartDiv {
                         display: flex;
@@ -262,6 +273,7 @@ body {
                         background-color: rgb(218, 241, 234);
                         padding: 5px 30px;
                         white-space: nowrap;
+                        margin-bottom: 5px;
                         .priceDiv {
                             font-size: 1.2em;
                             color: $priceColor;
@@ -277,33 +289,41 @@ body {
                         }
                         
                     }
-                    $color: rgb(0, 94, 156);
-                    $color: rgb(160, 160, 160);
-                    .estimatedDeriverly {
-                        color: $color;
-                        .truck {
-                            display: flex;
-                            align-items: center;
-                            margin: 7px 0;
-                            svg {
-                                width: 30px;
-                                height: auto;
-                            }
-                            path {
-                                fill: $color;
-                            }
-                            div {
-                                font-weight: bold;
-                                margin: 5px 0 0 10px;
-                            }
-                        }
-                        .dates {
-                            text-align: center;
-                        }
+                    // $color: rgb(0, 94, 156);
+                    // $color: rgb(160, 160, 160);
+
+                    .arriving {
+                        color: rgb(27, 27, 27);
+
                     }
+                    // .estimatedDeriverly {
+                    //     color: $color;
+                    //     .truck {
+                    //         display: flex;
+                    //         align-items: center;
+                    //         margin: 7px 0;
+                    //         svg {
+                    //             width: 30px;
+                    //             height: auto;
+                    //         }
+                    //         path {
+                    //             fill: $color;
+                    //         }
+                    //         div {
+                    //             font-weight: bold;
+                    //             margin: 5px 0 0 10px;
+                    //         }
+                    //     }
+                    //     .dates {
+                    //         text-align: center;
+                    //     }
+                    // }
                     hr {
                         width: 100%;
-                        margin-top: 20px;
+                        margin: 20px 0;
+                    }
+                    p {
+                        margin: 0;
                     }
                 }
             }
@@ -1075,11 +1095,13 @@ body {
             
             .productDetail {
 
-                // display: flex;
+                display: block;
                 // justify-content: center;
             
                 .left, .right {
-                    // width: 47%;
+                    // width: 95%;
+                    // margin: 0 auto;
+                    // background-color: aquamarine;
                     // display: flex;
                     // flex-direction: column;
                     // justify-content: center;
@@ -1089,20 +1111,25 @@ body {
                 
                 .left {
 
+                    width: 100%;
+
                     // border-right: 1px solid $hrColor;
+                    border: none;
                     
                     img {
                         // border-radius: 10px;
                         // display: block;
-                        // box-shadow: 2px 2px 7px rgb(161, 161, 161);
+                        // box-shadow: $box-shadow;
                     }
                     
                     a {
 
                         // display: block;
-                        // max-width: 80%;
-                        // max-height: 55vh;
+                        // max-width: 60%;
+                        // // max-height: 55vh;
+                        // aspect-ratio: 1/1;
                         img {
+                            // object-fit: contain;
                             // width: 100%;
                             // height: 100%;
                         }
@@ -1110,7 +1137,8 @@ body {
         
                     hr {
                         // width: 90%;
-                        // margin: 30px auto;
+                        margin: 10px auto;
+                        border: none;
                     }
         
                     .imgDiv {
@@ -1127,16 +1155,25 @@ body {
                 }
                 .right {
 
-                    // padding: 0 30px;
-                    .favDiv {
-                        
-                        // margin: 0 0 0 auto;
-                        svg {
-                            // transform: scale(70%);
+                    padding: 0;
+                    width: 85%;
+                    margin: 0 auto;
+
+                    .top {
+                        // display: flex;
+                        // align-items: center;
+                        // justify-content: space-around;
+                        // flex-wrap: wrap;
+
+                        hr {
+                            display: block;
                         }
-                    }
-                    h2 {
-                        // margin-top: 0;
+
+                        h2 {
+                            margin-top: 0;
+                        }
+
+
                     }
                     .addToCartDiv {
                         // display: flex;
@@ -1144,6 +1181,7 @@ body {
                         // background-color: rgb(218, 241, 234);
                         // padding: 5px 30px;
                         // white-space: nowrap;
+                        // margin-bottom: 5px;
                         .priceDiv {
                             // font-size: 1.2em;
                             // color: $priceColor;
@@ -1159,33 +1197,47 @@ body {
                         }
                         
                     }
-                    $color: rgb(0, 94, 156);
-                    $color: rgb(160, 160, 160);
-                    .estimatedDeriverly {
-                        // color: $color;
-                        .truck {
-                            // display: flex;
-                            // align-items: center;
-                            // margin: 7px 0;
-                            svg {
-                                // width: 30px;
-                                // height: auto;
-                            }
-                            path {
-                                // fill: $color;
-                            }
-                            div {
-                                // font-weight: bold;
-                                // margin: 5px 0 0 10px;
-                            }
-                        }
-                        .dates {
-                            // text-align: center;
-                        }
+                    // $color: rgb(0, 94, 156);
+                    // $color: rgb(160, 160, 160);
+
+                    .arriving {
+                        // color: rgb(27, 27, 27);
+
                     }
+                    // .estimatedDeriverly {
+                    //     color: $color;
+                    //     .truck {
+                    //         display: flex;
+                    //         align-items: center;
+                    //         margin: 7px 0;
+                    //         svg {
+                    //             width: 30px;
+                    //             height: auto;
+                    //         }
+                    //         path {
+                    //             fill: $color;
+                    //         }
+                    //         div {
+                    //             font-weight: bold;
+                    //             margin: 5px 0 0 10px;
+                    //         }
+                    //     }
+                    //     .dates {
+                    //         text-align: center;
+                    //     }
+                    // }
                     hr {
                         // width: 100%;
-                        // margin-top: 20px;
+                        // margin: 20px 0;
+                    }
+
+                    .hidden {
+                        // display: none;
+                        border: none;
+                        margin: 10px 0;
+                    }
+                    p {
+                        // margin: 0;
                     }
                 }
             }

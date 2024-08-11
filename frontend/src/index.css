@@ -51,7 +51,7 @@ body #root > main .homepage .categorizedProduct .productFlex .imgA {
   width: 20%;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   display: none;
 }
@@ -118,6 +118,7 @@ body #root > main .productList ul li {
   padding: 10px;
   box-sizing: border-box;
   outline: 1px solid rgb(168, 168, 168);
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
   background-color: rgba(160, 160, 160, 0.1843137255);
   border-radius: 7px;
 }
@@ -150,6 +151,8 @@ body #root > main .productList ul li:hover {
 body #root > main .productDetail {
   display: flex;
   justify-content: center;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 body #root > main .productDetail .left, body #root > main .productDetail .right {
   width: 47%;
@@ -165,14 +168,16 @@ body #root > main .productDetail .left {
 body #root > main .productDetail .left img {
   border-radius: 10px;
   display: block;
-  box-shadow: 2px 2px 7px rgb(161, 161, 161);
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 body #root > main .productDetail .left a {
   display: block;
-  max-width: 80%;
-  max-height: 55vh;
+  max-width: 60%;
+  aspect-ratio: 1/1;
 }
 body #root > main .productDetail .left a img {
+  -o-object-fit: contain;
+     object-fit: contain;
   width: 100%;
   height: 100%;
 }
@@ -195,14 +200,14 @@ body #root > main .productDetail .left .imgDiv img {
 body #root > main .productDetail .right {
   padding: 0 30px;
 }
-body #root > main .productDetail .right .favDiv {
-  margin: 0 0 0 auto;
+body #root > main .productDetail .right .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-body #root > main .productDetail .right .favDiv svg {
-  transform: scale(70%);
-}
-body #root > main .productDetail .right h2 {
-  margin-top: 0;
+body #root > main .productDetail .right .top hr {
+  display: none;
 }
 body #root > main .productDetail .right .addToCartDiv {
   display: flex;
@@ -210,6 +215,7 @@ body #root > main .productDetail .right .addToCartDiv {
   background-color: rgb(218, 241, 234);
   padding: 5px 30px;
   white-space: nowrap;
+  margin-bottom: 5px;
 }
 body #root > main .productDetail .right .addToCartDiv .priceDiv {
   font-size: 1.2em;
@@ -223,31 +229,15 @@ body #root > main .productDetail .right .addToCartDiv input[type=number] {
   height: 20px;
   margin: 0 10px;
 }
-body #root > main .productDetail .right .estimatedDeriverly {
-  color: rgb(160, 160, 160);
-}
-body #root > main .productDetail .right .estimatedDeriverly .truck {
-  display: flex;
-  align-items: center;
-  margin: 7px 0;
-}
-body #root > main .productDetail .right .estimatedDeriverly .truck svg {
-  width: 30px;
-  height: auto;
-}
-body #root > main .productDetail .right .estimatedDeriverly .truck path {
-  fill: rgb(160, 160, 160);
-}
-body #root > main .productDetail .right .estimatedDeriverly .truck div {
-  font-weight: bold;
-  margin: 5px 0 0 10px;
-}
-body #root > main .productDetail .right .estimatedDeriverly .dates {
-  text-align: center;
+body #root > main .productDetail .right .arriving {
+  color: rgb(27, 27, 27);
 }
 body #root > main .productDetail .right hr {
   width: 100%;
-  margin-top: 20px;
+  margin: 20px 0;
+}
+body #root > main .productDetail .right p {
+  margin: 0;
 }
 body #root > main .cartSection, body #root > main .historySection, body #root > main .favoriteSection {
   padding: 25px;
@@ -789,6 +779,32 @@ aside.forLaptop ul {
   body #root > main .productList ul li {
     width: 90%;
     margin: 15px 0;
+  }
+  body #root > main .productDetail {
+    display: block;
+  }
+  body #root > main .productDetail .left {
+    width: 100%;
+    border: none;
+  }
+  body #root > main .productDetail .left hr {
+    margin: 10px auto;
+    border: none;
+  }
+  body #root > main .productDetail .right {
+    padding: 0;
+    width: 85%;
+    margin: 0 auto;
+  }
+  body #root > main .productDetail .right .top hr {
+    display: block;
+  }
+  body #root > main .productDetail .right .top h2 {
+    margin-top: 0;
+  }
+  body #root > main .productDetail .right .hidden {
+    border: none;
+    margin: 10px 0;
   }
   @keyframes spinnin {
     from {

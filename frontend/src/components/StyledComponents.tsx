@@ -245,3 +245,27 @@ export const SeeMore=Styled.div<{formobile:boolean}>`
         display: ${props=>props.formobile?'block':'none'};
     }
 `;
+
+export const FavDiv=Styled.div<{fav:boolean}>`
+
+    cursor: pointer;
+    background-color: ${props=>props.fav?'pink':'#f1f1f1'};
+    display: flex;
+    align-items: center;
+    padding: 1px 5px;
+    border: 1px solid ${props=>props.fav?'#FF4BAC':'rgb(202, 202, 202)'};
+    border-radius: 5px;
+    transition: all .3s;
+    margin: 0 20px;
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 7px;
+    }
+    span {
+        font-size: .9rem;
+    }
+    &: hover {
+        background-color: ${props=>props.fav?'#FFA7B6':'#DCDCDC'};
+    }
+`;

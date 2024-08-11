@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext, productsType } from '../App';
 import FavoriteSVG from './Header/svg/FavoriteSVG';
-import TruckSVG from './Header/svg/TruckSVG';
+import { FavDiv } from './StyledComponents';
 import axios from 'axios'
 
 function Product(props:{product:productsType}){
@@ -107,35 +107,33 @@ function Product(props:{product:productsType}){
 
                         </div>
                     </>
-                
                 }
 
             </div>
 
             <div className='right'>
 
-                <div className='favDiv' onClick={addToFavorite}>
-                    <FavoriteSVG fillColor={favorite?'rgb(255, 120, 255)':'#aaaaaa'}/>
+                <div className='top'>
+
+                    <hr/>
+                    <h2>{props.product.title}</h2>
+                    <FavDiv fav={favorite} onClick={addToFavorite}>
+                        <FavoriteSVG fillColor={favorite?'rgb(255, 120, 255)':'#aaaaaa'}/>
+                        <span>{favorite?'Remove from ':'Add to '}Favorite</span>
+                    </FavDiv>
+
                 </div>
 
-                <h2>{props.product.title}</h2>
+                <hr className='hidden'/>
                 
                 <div className='addToCartDiv'>
                     <div className='priceDiv'><b>{`$ ${props.product.price.toLocaleString()}`}</b></div>
                     <div className='x'>x</div>
                     <input type='number' min='1' defaultValue='1' ref={quantity}/>
                     <button className='redButton' onClick={addToCart}>Add to Cart</button>
-
                 </div>
 
-                <div className='estimatedDeriverly'>
-                    <div className='truck'>
-                        <TruckSVG/><div>Estimated Deriverly</div>
-                    </div>
-
-                    <div className='dates'>{estimatedDate}</div>
-
-                </div>
+                <div className='arriving'>Arriving <b>{estimatedDate}</b></div>
                 <hr/>
                 <p>{props.product.description}</p>
 
