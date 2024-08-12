@@ -218,7 +218,7 @@ body #root > main .productDetail .right .addToCartDiv {
   margin-bottom: 5px;
 }
 body #root > main .productDetail .right .addToCartDiv .priceDiv {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   color: rgb(160, 0, 0);
 }
 body #root > main .productDetail .right .addToCartDiv .x {
@@ -262,7 +262,6 @@ body #root > main .cartSection .titleflex svg .historyG path, body #root > main 
 body #root > main .cartSection ul, body #root > main .historySection ul, body #root > main .favoriteSection ul {
   list-style: none;
   padding: 0;
-  padding-bottom: 50px;
 }
 body #root > main .cartSection ul li, body #root > main .historySection ul li, body #root > main .favoriteSection ul li {
   display: flex;
@@ -272,34 +271,38 @@ body #root > main .cartSection ul li, body #root > main .historySection ul li, b
   border-radius: 7px;
   padding: 10px 30px;
   box-sizing: border-box;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 body #root > main .cartSection ul li .imgA, body #root > main .historySection ul li .imgA, body #root > main .favoriteSection ul li .imgA {
   min-width: 120px;
   width: 120px;
   aspect-ratio: 1/1;
-  display: flex;
-  align-items: center;
+  display: block;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 body #root > main .cartSection ul li .imgA img, body #root > main .historySection ul li .imgA img, body #root > main .favoriteSection ul li .imgA img {
   width: 100%;
   height: 100%;
+  display: block;
   -o-object-fit: contain;
      object-fit: contain;
-  border-radius: 7px;
 }
 body #root > main .cartSection ul li .right, body #root > main .historySection ul li .right, body #root > main .favoriteSection ul li .right {
   margin-left: 30px;
 }
-body #root > main .cartSection ul li .right a h3, body #root > main .historySection ul li .right a h3, body #root > main .favoriteSection ul li .right a h3 {
+body #root > main .cartSection ul li .right > a h3, body #root > main .historySection ul li .right > a h3, body #root > main .favoriteSection ul li .right > a h3 {
   margin: 0;
   margin-bottom: 5px;
 }
 body #root > main .cartSection ul li .right .flex, body #root > main .historySection ul li .right .flex, body #root > main .favoriteSection ul li .right .flex {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 body #root > main .cartSection ul li .right .flex .price, body #root > main .historySection ul li .right .flex .price, body #root > main .favoriteSection ul li .right .flex .price {
-  font-size: 1.1em;
+  font-size: 1.1rem;
   margin-right: 20px;
 }
 body #root > main .cartSection ul li .right .flex .price span, body #root > main .historySection ul li .right .flex .price span, body #root > main .favoriteSection ul li .right .flex .price span {
@@ -312,44 +315,46 @@ body #root > main .cartSection ul .noProduct, body #root > main .historySection 
   margin: 150px auto 0;
 }
 body #root > main .cartSection ul .order, body #root > main .historySection ul .order, body #root > main .favoriteSection ul .order {
+  margin: 0;
+  padding: 0;
   display: block;
   background: none;
+  box-shadow: none;
 }
 body #root > main .cartSection ul .order div, body #root > main .historySection ul .order div, body #root > main .favoriteSection ul .order div {
   text-align: center;
   font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 body #root > main .cartSection ul .order span, body #root > main .historySection ul .order span, body #root > main .favoriteSection ul .order span {
   color: rgb(160, 0, 0);
 }
 body #root > main .cartSection ul .order button, body #root > main .historySection ul .order button, body #root > main .favoriteSection ul .order button {
   display: block;
-  margin: 20px auto 0;
+  margin: 5px auto 0;
   background: linear-gradient(rgb(111, 223, 0), rgb(0, 165, 0));
 }
 body #root > main .cartSection ul .order button:hover, body #root > main .historySection ul .order button:hover, body #root > main .favoriteSection ul .order button:hover {
   background: linear-gradient(rgb(93, 185, 0), rgb(0, 134, 0));
 }
 body #root > main .historySection ul .purchaseDate {
-  margin-bottom: 0;
+  margin-bottom: -10px;
   text-decoration: underline;
 }
 body #root > main .historySection ul li:not(.noProduct), body #root > main .historySection ul .total {
-  margin: 10px;
+  margin: 20px;
 }
-body #root > main .historySection ul .beforeTotal {
-  border: none;
-  border-bottom: 1px solid rgb(199, 199, 199);
+body #root > main .historySection ul hr {
+  margin: 15px 0;
 }
 body #root > main .historySection ul .total {
   margin: 0 auto 50px;
   padding: 5px 30px;
+  box-sizing: border-box;
   width: -moz-fit-content;
   width: fit-content;
-  outline: 1px solid rgb(144, 235, 156);
-  text-align: center;
-  background-color: rgb(230, 250, 233);
+  background-color: rgb(172, 240, 181);
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 body #root > main .historySection ul .total span {
   color: rgb(160, 0, 0);
@@ -805,6 +810,41 @@ aside.forLaptop ul {
   body #root > main .productDetail .right .hidden {
     border: none;
     margin: 10px 0;
+  }
+  body #root > main .cartSection, body #root > main .historySection, body #root > main .favoriteSection {
+    padding: 10px;
+  }
+  body #root > main .cartSection .titleflex, body #root > main .historySection .titleflex, body #root > main .favoriteSection .titleflex {
+    justify-content: center;
+  }
+  body #root > main .cartSection .titleflex svg, body #root > main .historySection .titleflex svg, body #root > main .favoriteSection .titleflex svg {
+    width: 40px;
+  }
+  body #root > main .cartSection .titleflex h2, body #root > main .historySection .titleflex h2, body #root > main .favoriteSection .titleflex h2 {
+    margin: 10px 0;
+  }
+  body #root > main .cartSection ul li, body #root > main .historySection ul li, body #root > main .favoriteSection ul li {
+    display: block;
+    margin: 30px 10px;
+    padding: 10px 0;
+  }
+  body #root > main .cartSection ul li .imgA, body #root > main .historySection ul li .imgA, body #root > main .favoriteSection ul li .imgA {
+    width: 70px;
+    margin: 0 auto 10px;
+  }
+  body #root > main .cartSection ul li .right, body #root > main .historySection ul li .right, body #root > main .favoriteSection ul li .right {
+    margin: 0;
+    text-align: center;
+  }
+  body #root > main .cartSection ul li .right > a h3, body #root > main .historySection ul li .right > a h3, body #root > main .favoriteSection ul li .right > a h3 {
+    font-weight: 100;
+  }
+  body #root > main .cartSection ul li .right .flex .price, body #root > main .historySection ul li .right .flex .price, body #root > main .favoriteSection ul li .right .flex .price {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+  body #root > main .cartSection ul li .right .flex .redButton, body #root > main .historySection ul li .right .flex .redButton, body #root > main .favoriteSection ul li .right .flex .redButton {
+    padding: 3px 10px;
   }
   @keyframes spinnin {
     from {

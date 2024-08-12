@@ -15,7 +15,7 @@ function Favorite(){
 
             <div className="titleflex">
                 <FavoriteSVG fillColor={'#ffffff'}/>
-                <h2>Favorite:</h2>
+                <h2>Favorite</h2>
             </div>
             
             <hr/>

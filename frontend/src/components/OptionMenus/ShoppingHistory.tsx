@@ -23,7 +23,7 @@ function ShoppingHistory(){
 
             <div className="titleflex">
                 <HistorySVG/>
-                <h2>Shopping-History:</h2>
+                <h2>Shopping-History</h2>
             </div>
 
             <hr/>
@@ -56,7 +56,7 @@ function ShoppingHistory(){
 
                             {product.shopping_date!==history[key+1]?.shopping_date &&
                                 <>
-                                    <hr className="beforeTotal"/>
+                                    <hr/>
                                     <h3 className='total'>
                                         Total:&nbsp;<span>{`$ ${sum.toLocaleString()}`}</span>
                                     </h3>

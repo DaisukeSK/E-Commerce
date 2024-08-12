@@ -275,7 +275,7 @@ body {
                         white-space: nowrap;
                         margin-bottom: 5px;
                         .priceDiv {
-                            font-size: 1.2em;
+                            font-size: 1.2rem;
                             color: $priceColor;
                             
                         }
@@ -356,7 +356,7 @@ body {
                 ul {
                     list-style: none;
                     padding: 0;
-                    padding-bottom: 50px;
+                    // padding-bottom: 50px;
                     li {
                         display: flex;
                         align-items: center;
@@ -365,23 +365,27 @@ body {
                         border-radius: 7px;
                         padding: 10px 30px;
                         box-sizing: border-box;
+                        box-shadow: $box-shadow;
                         .imgA {
                             min-width: 120px;
                             width: 120px;
                             aspect-ratio: 1/1;
-                            display: flex;
-                            align-items: center;
+                            display: block;
+                            // align-items: center;
+                            border-radius: 7px;
+                            overflow: hidden;
+                            box-shadow: $box-shadow;
                             img {
                                 width: 100%;
                                 height: 100%;
+                                display: block;
                                 object-fit: contain;
-                                border-radius: 7px;
                             }
                         }
                         .right {
                             margin-left: 30px;
                 
-                            a {
+                            &>a {
                                 h3 {
                                     margin: 0;
                                     margin-bottom: 5px;
@@ -390,9 +394,10 @@ body {
                 
                             .flex {
                                 display: flex;
+                                justify-content: center;
                                 align-items: center;
                                 .price {
-                                    font-size: 1.1em;
+                                    font-size: 1.1rem;
                                     margin-right: 20px;
                                     span {
                                         font-weight: bold;
@@ -408,19 +413,22 @@ body {
                         margin: 150px auto 0;
                     }
                     .order {
+                        margin: 0;
+                        padding: 0;
                         display: block;
                         background: none;
+                        box-shadow: none;
                         div {
                             text-align: center;
                             font-weight: bold;
-                            font-size: 1.4em;
+                            font-size: 1.4rem;
                         }
                         span {
                             color: $priceColor;
                         }
                         button {
                             display: block;
-                            margin: 20px auto 0;
+                            margin: 5px auto 0;
                             background: linear-gradient( rgb(111, 223, 0), rgb(0, 165, 0));
                             &:hover {
                                 background: linear-gradient( rgb(93, 185, 0), rgb(0, 134, 0));
@@ -434,25 +442,28 @@ body {
                 ul {
             
                     .purchaseDate {
-                        margin-bottom: 0;
+                        margin-bottom: -10px;
                         text-decoration: underline;
                     }
             
                     li:not(.noProduct), .total {
-                        margin: 10px;
+                        margin: 20px;
                     }
                     
-                    .beforeTotal {
-                        border: none;
-                        border-bottom: 1px solid rgb(199, 199, 199);
+                    hr {
+                        margin: 15px 0;
+                        // border: none;
+                        // border-bottom: 1px solid rgb(199, 199, 199);
                     }
                     .total {
                         margin: 0 auto 50px;
                         padding: 5px 30px;
+                        // border: 1px solid rgb(144, 235, 156);
+                        box-sizing: border-box;
                         width: fit-content;
-                        outline: 1px solid rgb(144, 235, 156);
-                        text-align: center;
-                        background-color: rgb(230, 250, 233);
+                        // text-align: center;
+                        background-color: rgb(172, 240, 181);
+                        box-shadow: $box-shadow;
                         span {
                             color: $priceColor;
                         }
@@ -1243,12 +1254,14 @@ body {
             }
             
             .cartSection, .historySection, .favoriteSection {
-                // padding: 25px;
+                padding: 10px;
                 // box-sizing: border-box;
                 .titleflex {
                     // display: flex;
                     // align-items: center;
+                    justify-content: center;
                     svg {
+                        width: 40px;
                         // margin-right: 10px;
                         .cartG {
                             path, circle {
@@ -1266,39 +1279,50 @@ body {
                             }
                         }
                     }
+                    h2 {
+                        margin: 10px 0;
+                    }
                 }
                 ul {
                     // list-style: none;
                     // padding: 0;
-                    // padding-bottom: 50px;
+                    // // padding-bottom: 50px;
                     li {
-                        // display: flex;
+                        display: block;
                         // align-items: center;
-                        // margin: 30px 0;
+                        margin: 30px 10px;
                         // background-color: #ececec;
                         // border-radius: 7px;
-                        // padding: 10px 30px;
+                        padding: 10px 0;
                         // box-sizing: border-box;
+                        // box-shadow: $box-shadow;
                         .imgA {
                             // min-width: 120px;
-                            // width: 120px;
+                            width: 70px;
+                            
+                            margin: 0 auto 10px;
                             // aspect-ratio: 1/1;
-                            // display: flex;
-                            // align-items: center;
+                            // // display: flex;
+                            // // align-items: center;
+                            // border-radius: 7px;
+                            // overflow: hidden;
+                            // box-shadow: $box-shadow;
                             img {
                                 // width: 100%;
                                 // height: 100%;
+                                // display: block;
                                 // object-fit: contain;
-                                // border-radius: 7px;
                             }
                         }
                         .right {
-                            // margin-left: 30px;
+                            margin: 0;
+                            text-align: center;
                 
-                            a {
+                            &>a {
                                 h3 {
                                     // margin: 0;
                                     // margin-bottom: 5px;
+                                    font-weight: 100;
                                 }
                             }
                 
@@ -1306,12 +1330,15 @@ body {
                                 // display: flex;
                                 // align-items: center;
                                 .price {
-                                    // font-size: 1.1em;
-                                    // margin-right: 20px;
+                                    font-size: 1rem;
+                                    margin-right: 10px;
                                     span {
                                         // font-weight: bold;
                                         // color: $priceColor;
                                     }
+                                }
+                                .redButton {
+                                    padding: 3px 10px;
                                 }
                             }
                         }
@@ -1322,8 +1349,11 @@ body {
                         // margin: 150px auto 0;
                     }
                     .order {
+                        // margin: 0;
+                        // padding: 0;
                         // display: block;
                         // background: none;
+                        // box-shadow: none;
                         div {
                             // text-align: center;
                             // font-weight: bold;
@@ -1334,7 +1364,8 @@ body {
                         }
                         button {
                             // display: block;
-                            // margin: 20px auto 0;
+                            // padding: 3px 10px;
+                            // margin: 5px auto 0;
                             // background: linear-gradient( rgb(111, 223, 0), rgb(0, 165, 0));
                             &:hover {
                                 // background: linear-gradient( rgb(93, 185, 0), rgb(0, 134, 0));
@@ -1352,21 +1383,24 @@ body {
                         // text-decoration: underline;
                     }
             
-                    li:not(.noProduct), .total {
-                        // margin: 10px;
+                    li:not(.noProduct, .total) {
+                        // margin: 20px;
                     }
                     
-                    .beforeTotal {
+                    hr {
+                        // margin: 15px 0;
                         // border: none;
                         // border-bottom: 1px solid rgb(199, 199, 199);
                     }
                     .total {
                         // margin: 0 auto 50px;
                         // padding: 5px 30px;
+                        // // border: 1px solid rgb(144, 235, 156);
+                        // box-sizing: border-box;
                         // width: fit-content;
-                        // outline: 1px solid rgb(144, 235, 156);
-                        // text-align: center;
-                        // background-color: rgb(230, 250, 233);
+                        // // text-align: center;
+                        // background-color: rgb(172, 240, 181);
+                        // box-shadow: $box-shadow;
                         span {
                             // color: $priceColor;
                         }

@@ -8,7 +8,6 @@ function CommonLi(props:{product: productsType|cartType|historyType, which:strin
     const { backendURL, setFavList, setShoppingCart } =useContext(AppContext)
 
     const removeFromFav=(id:number):void=>{
-
         axios.post(`${backendURL}/favorite/removeFromFavorite`,{user_id:localStorage.getItem('id'),product_id:id})
             .then((res)=>{
                 res.status==200 && (
@@ -44,25 +43,28 @@ function CommonLi(props:{product: productsType|cartType|historyType, which:strin
                 </Link>
                 <div className="flex">
 
-                    {props.which=='fav'?
-                        <div className='price'><span>{`$ ${props.product.price.toLocaleString()}`}</span></div>
-                        :
+                    <div className='price'>
+                        {props.which=='fav'?
+                            <span>{`$ ${props.product.price.toLocaleString()}`}</span>
+                            :
+                            <>
+                                {`$ ${props.product.price.toLocaleString()} x ${props.product.product_quantity!} = `}
+                                <span className='sum'>{`$ ${(props.product.price*props.product.product_quantity!).toLocaleString()}`}</span>
+                            </>
+                        }
+                    </div>
 
-                        <div className='price'>
-                            {`$ ${props.product.price.toLocaleString()} x ${props.product.product_quantity!} = `}
-                            <span className='sum'>{`$ ${(props.product.price*props.product.product_quantity!).toLocaleString()}`}</span>
-                        </div>
-                    }
-
-
-
-                    {props.which=='cart' &&
-                    
-                        <button className='redButton' onClick={()=>removeFromCart(props.product.product_id)}>Remove</button>
-                    }
-                    {props.which=='fav' &&
-                    
-                    <button className='redButton' onClick={()=>removeFromFav(props.product.product_id)}>Remove</button>
+                    {props.which!=='history' &&
+                        <button
+                            className='redButton'
+                            onClick={()=>props.which=='cart'?
+                                removeFromCart(props.product.product_id)
+                                :props.which=='fav' &&
+                                removeFromFav(props.product.product_id)
+                            }
+                        >
+                            Remove
+                        </button>
                     }
 
                 </div>
