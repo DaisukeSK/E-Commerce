@@ -8,8 +8,6 @@ function Favorite(){
 
     const { products, favList } =useContext(AppContext)
 
-    window.scrollTo(0,0)
-
     return (
         <section className="favoriteSection">
 

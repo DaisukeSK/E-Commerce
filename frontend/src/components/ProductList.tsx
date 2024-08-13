@@ -39,8 +39,6 @@ function ProductList() {
             setCategory(+loc.pathname.split('/category/')[1])
         }
 
-        window.scrollTo(0, 0);
-
     },[loc])
 
     return (

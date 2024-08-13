@@ -298,7 +298,6 @@ body #root > main .cartSection ul li .right > a h3, body #root > main .historySe
 }
 body #root > main .cartSection ul li .right .flex, body #root > main .historySection ul li .right .flex, body #root > main .favoriteSection ul li .right .flex {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 body #root > main .cartSection ul li .right .flex .price, body #root > main .historySection ul li .right .flex .price, body #root > main .favoriteSection ul li .right .flex .price {
@@ -823,28 +822,39 @@ aside.forLaptop ul {
   body #root > main .cartSection .titleflex h2, body #root > main .historySection .titleflex h2, body #root > main .favoriteSection .titleflex h2 {
     margin: 10px 0;
   }
-  body #root > main .cartSection ul li, body #root > main .historySection ul li, body #root > main .favoriteSection ul li {
+  body #root > main .cartSection ul li:not(.noProduct), body #root > main .historySection ul li:not(.noProduct), body #root > main .favoriteSection ul li:not(.noProduct) {
     display: block;
     margin: 30px 10px;
     padding: 10px 0;
   }
-  body #root > main .cartSection ul li .imgA, body #root > main .historySection ul li .imgA, body #root > main .favoriteSection ul li .imgA {
+  body #root > main .cartSection ul li:not(.noProduct) .imgA, body #root > main .historySection ul li:not(.noProduct) .imgA, body #root > main .favoriteSection ul li:not(.noProduct) .imgA {
     width: 70px;
     margin: 0 auto 10px;
   }
-  body #root > main .cartSection ul li .right, body #root > main .historySection ul li .right, body #root > main .favoriteSection ul li .right {
+  body #root > main .cartSection ul li:not(.noProduct) .right, body #root > main .historySection ul li:not(.noProduct) .right, body #root > main .favoriteSection ul li:not(.noProduct) .right {
     margin: 0;
     text-align: center;
   }
-  body #root > main .cartSection ul li .right > a h3, body #root > main .historySection ul li .right > a h3, body #root > main .favoriteSection ul li .right > a h3 {
+  body #root > main .cartSection ul li:not(.noProduct) .right > a h3, body #root > main .historySection ul li:not(.noProduct) .right > a h3, body #root > main .favoriteSection ul li:not(.noProduct) .right > a h3 {
     font-weight: 100;
   }
-  body #root > main .cartSection ul li .right .flex .price, body #root > main .historySection ul li .right .flex .price, body #root > main .favoriteSection ul li .right .flex .price {
+  body #root > main .cartSection ul li:not(.noProduct) .right .flex, body #root > main .historySection ul li:not(.noProduct) .right .flex, body #root > main .favoriteSection ul li:not(.noProduct) .right .flex {
+    justify-content: center;
+  }
+  body #root > main .cartSection ul li:not(.noProduct) .right .flex .price, body #root > main .historySection ul li:not(.noProduct) .right .flex .price, body #root > main .favoriteSection ul li:not(.noProduct) .right .flex .price {
     font-size: 1rem;
     margin-right: 10px;
   }
-  body #root > main .cartSection ul li .right .flex .redButton, body #root > main .historySection ul li .right .flex .redButton, body #root > main .favoriteSection ul li .right .flex .redButton {
+  body #root > main .cartSection ul li:not(.noProduct) .right .flex .redButton, body #root > main .historySection ul li:not(.noProduct) .right .flex .redButton, body #root > main .favoriteSection ul li:not(.noProduct) .right .flex .redButton {
     padding: 3px 10px;
+  }
+  body #root > main .setting {
+    display: block;
+  }
+  body #root > main .setting form {
+    width: 90%;
+    margin: 20px auto;
+    min-height: auto;
   }
   @keyframes spinnin {
     from {

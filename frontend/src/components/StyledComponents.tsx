@@ -172,7 +172,7 @@ export const AsideForMobile=Styled.aside<{open:boolean}>`
     transition: all .5s;
     width: 200px;
     height: 100vh;
-    background-color: #aaaaaa;
+    background-color: #333333;
     z-index: 1;
 
     &>img {
@@ -181,20 +181,34 @@ export const AsideForMobile=Styled.aside<{open:boolean}>`
 
     ul {
         list-style: none;
-        padding-left: 20px;
+        margin: 0;
+        padding: 0;
         li {
-            padding: 5px 0;
+            padding: 5px 0 5px 20px;
             a {
-            display: flex;
-            align-items: center;
-                svg {
-                    width: 20px;
-                    height: fit-content;
-                    margin-right: 10px;
-                
-                }
+                display: block;
+                width: fit-content;
+                color: #ffffff;
             }
         }
+        .home {
+
+            width: fit-content;
+            margin: 0 auto;
+            padding: 0;
+            a {
+                
+                img {
+                    width: 120px;
+                    display: block;
+                }
+            }
+        
+        }
+            hr {
+                border-top: 1px solid rgba(170, 170, 170, .5);
+                width: 90%;
+            }
     }
 
     @media only screen and (max-width: ${maxWidth}) {

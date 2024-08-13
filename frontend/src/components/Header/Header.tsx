@@ -26,9 +26,12 @@ function Header(){
             <AsideForMobile open={openAside}>
                 <img onClick={()=>setOpenAside(false)} src={hamburger}/>
                 <ul>
-                    <li>
-                        <Link onClick={()=>setOpenAside(false)} to={`/`}>Homepage</Link>
+                    <li className='home'>
+                        <Link onClick={()=>setOpenAside(false)} to={`/`}><img src={logo}/></Link>
                     </li>
+
+                    <hr/>
+                    
                     {categories.map((category:categoriesType,key:number)=>{
                         return (
                             <li key={key}>

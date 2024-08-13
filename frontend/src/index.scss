@@ -394,7 +394,7 @@ body {
                 
                             .flex {
                                 display: flex;
-                                justify-content: center;
+                                // justify-content: center;
                                 align-items: center;
                                 .price {
                                     font-size: 1.1rem;
@@ -1287,7 +1287,7 @@ body {
                     // list-style: none;
                     // padding: 0;
                     // // padding-bottom: 50px;
-                    li {
+                    li:not(.noProduct) {
                         display: block;
                         // align-items: center;
                         margin: 30px 10px;
@@ -1329,6 +1329,7 @@ body {
                             .flex {
                                 // display: flex;
                                 // align-items: center;
+                                justify-content: center;
                                 .price {
                                     font-size: 1rem;
                                     margin-right: 10px;
@@ -1470,14 +1471,15 @@ body {
             
             .setting {
 
-                // display: flex;
+                display: block;
                 // justify-content: space-evenly;
                 // align-items: center;
 
                 form {
                     // background-color: rgb(236, 236, 236);
-                    // width: 30%;
-                    // min-height: 50vh;
+                    width: 90%;
+                    margin: 20px auto;
+                    min-height: auto;
                     // padding: 20px;
                     // box-sizing: border-box;
                     // display: flex;
@@ -1488,6 +1490,8 @@ body {
                     }
                     h2 {
                         // text-align: center;
+                        // font-size: 1.2rem;
+                        
                     }
                     input[type='text'], input[type='password'] {
                         // margin-bottom: 10px;

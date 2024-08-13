@@ -12,6 +12,8 @@ function Banner() {
 
     useEffect(()=>{
 
+        window.scrollTo(0,0)
+
         let interval:any;
 
         setCount(0)
