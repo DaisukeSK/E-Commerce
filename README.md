@@ -26,12 +26,14 @@ and open [http://localhost:3000](http://localhost:3000) to view it in your brows
 
 This is a sample e-commerce app with basic functionalities of EC websites such as
 
-- aa
-- bb
-- cc
-- aa
-- bb
-- cc
+- creating a user account
+- searching products
+- adding to shopping-cart
+- adding to favorite
+- purchase
+- referring purchase history
+
+and so on.
 
 This is a sample e-commerce app with basic functionalities of EC websites such as
 
