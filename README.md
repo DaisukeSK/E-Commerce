@@ -15,16 +15,23 @@ npm run dev
 
 and open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+- aa
+- bb
+- cc
+- aa
+- bb
+- cc
+
 ## Project Description
 
-This is a sample e-commerce app width basic functionalities of EC websites such as<br/>
+- aa
+- bb
+- cc
+- aa
+- bb
+- cc
 
-- aa
-- bb
-- cc
-- aa
-- bb
-- cc
+This is a sample e-commerce app width basic functionalities of EC websites such as<br/>
 
 - creating a user account<br/>
 - searching products<br/>
