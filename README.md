@@ -9,10 +9,6 @@ and also multiple fake-shop APIs.<br/>
 
 Go to frontend directory, and run
 
-- aa
-- bb
-- cc
-
 ```
 npm run dev
 ```
@@ -22,6 +18,13 @@ and open [http://localhost:3000](http://localhost:3000) to view it in your brows
 ## Project Description
 
 This is a sample e-commerce app width basic functionalities of EC websites such as<br/>
+
+- aa
+- bb
+- cc
+- aa
+- bb
+- cc
 
 - creating a user account<br/>
 - searching products<br/>
