@@ -31,13 +31,13 @@ and open [http://localhost:3000](http://localhost:3000) to view it in your brows
 - bb
 - cc
 
-This is a sample e-commerce app width basic functionalities of EC websites such as<br/>
+This is a sample e-commerce app width basic functionalities of EC websites such as
 
-- creating a user account<br/>
-- searching products<br/>
-- adding to shopping-cart<br/>
-- adding to favorite<br/>
-- purchase<br/>
+- creating a user account
+- searching products
+- adding to shopping-cart
+- adding to favorite
+- purchase
 - referring purchase history
 
   and so on.
