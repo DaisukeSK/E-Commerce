@@ -1,19 +1,19 @@
-# Project Description
-
 Welcome to E-commerce app!<br/>
 
 This is a sample e-commerce app made width<br/>
-<b>React.js + TypeScript</b> for front-end,<br/>
-<b>Node.js + PostgreSQL</b> for back-end<br/>
+[`React.JS`](https://react.dev/) + [`TypeScript`](https://www.typescriptlang.org/) for front-end,<br/>
+[`Node.JS`](https://nodejs.org/) + [`PostgreSQL`](https://www.postgresql.org/) for back-end<br/>
 and also multiple fake-shop APIs.<br/>
 
 ## Run the Project
 
 Go to frontend directory, and run:
 
-### `npm run dev`
+```bash
+npm run dev
+```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 This app has basic functionalities of EC websites such as<br/>
 
