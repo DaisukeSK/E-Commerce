@@ -24,6 +24,8 @@ and open [http://localhost:3000](http://localhost:3000) to view it in your brows
 
 ## Project Description
 
+This is a sample e-commerce app with basic functionalities of EC websites such as
+
 - aa
 - bb
 - cc
@@ -31,7 +33,7 @@ and open [http://localhost:3000](http://localhost:3000) to view it in your brows
 - bb
 - cc
 
-This is a sample e-commerce app width basic functionalities of EC websites such as
+This is a sample e-commerce app with basic functionalities of EC websites such as
 
 - creating a user account
 - searching products
