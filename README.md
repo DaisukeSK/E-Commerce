@@ -19,21 +19,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 This is a sample e-commerce app width basic functionalities of EC websites such as<br/>
 
--creating a user account,<br/>
--searching products,<br/>
--adding to shopping-cart,<br/>
--adding to favorite,<br/>
--purchase,<br/>
--referring purchase history<br/>
--and so on.<br/>
+- creating a user account,<br/>
+- searching products,<br/>
+- adding to shopping-cart,<br/>
+- adding to favorite,<br/>
+- purchase,<br/>
+- referring purchase history<br/>
+  and so on.<br/>
 
 If you don't feel like creating your own user account, please use the below shared account.<br/>
--username:
 
-```
-guest
-```
-
--password: 123456<br/>
+- username: guest<br/>
+- password: 123456<br/>
 
 I'm afraid it may sometimes take some time up to 1 minute to access database since it is using free database.
