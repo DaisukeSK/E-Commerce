@@ -9,7 +9,11 @@ and also multiple fake-shop APIs.<br/>
 
 Go to frontend directory, and run
 
-```bash
+- aa
+- bb
+- cc
+
+```
 npm run dev
 ```
 
