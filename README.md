@@ -15,18 +15,25 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-This app has basic functionalities of EC websites such as<br/>
+## Project Description
 
-&nbsp;&nbsp;creating a user account,<br/>
-&nbsp;&nbsp;searching products,<br/>
-&nbsp;&nbsp;adding to shopping-cart,<br/>
-&nbsp;&nbsp;adding to favorite,<br/>
-&nbsp;&nbsp;purchase,<br/>
-&nbsp;&nbsp;referring purchase history<br/>
-&nbsp;&nbsp;and so on.<br/>
+This is a sample e-commerce app width basic functionalities of EC websites such as<br/>
+
+-creating a user account,<br/>
+-searching products,<br/>
+-adding to shopping-cart,<br/>
+-adding to favorite,<br/>
+-purchase,<br/>
+-referring purchase history<br/>
+-and so on.<br/>
 
 If you don't feel like creating your own user account, please use the below shared account.<br/>
-&nbsp;&nbsp;username: guest<br/>
-&nbsp;&nbsp;password: 123456<br/>
+-username:
+
+```
+guest
+```
+
+-password: 123456<br/>
 
 I'm afraid it may sometimes take some time up to 1 minute to access database since it is using free database.
